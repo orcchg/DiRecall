@@ -1,0 +1,6 @@
+include ':util'
+include ':base'
+include ':domain'
+include ':data'
+include ':app'
+rootProject.name = "DiRecall"
