@@ -1,16 +1,19 @@
+import com.orcchg.direcall.build.Dependencies
+
 apply plugin: 'java-library'
 apply plugin: 'kotlin'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(':domain')
-    implementation project(':util')
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation "com.squareup.retrofit2:retrofit:2.9.0"
-    implementation "com.squareup.retrofit2:converter-moshi:2.9.0"
-    implementation "com.squareup.retrofit2:adapter-rxjava2:2.9.0"
-    implementation "com.squareup.moshi:moshi-adapters:1.9.3"
+    implementation(
+            project(':domain'),
+            project(':util')
+    )
+    implementation(
+            Dependencies.Lib.ktStdLibJdk7,
+            Dependencies.Network.retrofit,
+            Dependencies.Network.retrofitMoshi,
+            Dependencies.Network.retrofitRx,
+            Dependencies.Parser.moshi
+    )
 }
-
-sourceCompatibility = "1.7"
-targetCompatibility = "1.7"
