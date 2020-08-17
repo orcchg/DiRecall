@@ -52,6 +52,8 @@ dependencies {
             Dependencies.Lib.ktStdLib,
             Dependencies.Lib.timber,
             Dependencies.Rx.rx,
+            Dependencies.Rx.autoDispose,
+            Dependencies.Rx.autoDisposeAndroidAC,
             Dependencies.View.constraintLayout,
             Dependencies.View.recyclerView
     )

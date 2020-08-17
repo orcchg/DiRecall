@@ -2,6 +2,7 @@ package com.orcchg.direcall.build
 
 object Versions {
     const val appCompat = "1.2.0"
+    const val autoDispose = "1.4.0"
     const val constraintLayout = "2.0.0-rc1"
     const val coreKtx = "1.3.1"
     const val espresso = "3.2.0"
@@ -52,6 +53,8 @@ object Dependencies {
     }
 
     object Rx {
+        @JvmStatic val autoDispose = dependency("com.uber.autodispose:autodispose:${Versions.autoDispose}")
+        @JvmStatic val autoDisposeAndroidAC = dependency("com.uber.autodispose:autodispose-android-archcomponents:${Versions.autoDispose}")
         @JvmStatic val rx = dependency("io.reactivex.rxjava2:rxjava:${Versions.rx}")
         @JvmStatic val rxKt = dependency("io.reactivex.rxjava2:rxkotlin:${Versions.rxKt}")
     }

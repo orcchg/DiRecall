@@ -31,6 +31,9 @@ dependencies {
     implementation(
             Dependencies.AndroidX.appCompat,
             Dependencies.AndroidX.fragmentKtx,
-            Dependencies.AndroidX.liveData
+            Dependencies.AndroidX.liveData,
+            Dependencies.Rx.rx,
+            Dependencies.Rx.autoDispose,
+            Dependencies.Rx.autoDisposeAndroidAC
     )
 }

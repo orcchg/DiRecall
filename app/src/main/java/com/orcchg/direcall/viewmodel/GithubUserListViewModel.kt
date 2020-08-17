@@ -2,19 +2,20 @@ package com.orcchg.direcall.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import com.orcchg.direcall.androidutil.AutoDisposeViewModel
 import com.orcchg.direcall.domain.model.GithubUser
 import com.orcchg.direcall.domain.usecase.GetGithubUsersUseCase
-import io.reactivex.Single
+import com.uber.autodispose.autoDispose
 import timber.log.Timber
 
 class GithubUserListViewModel(
     private val getGithubUsersUseCase: GetGithubUsersUseCase
-) : ViewModel() {
+) : AutoDisposeViewModel() {
 
     val users: LiveData<List<GithubUser>> by lazy(LazyThreadSafetyMode.NONE) {
         val liveData = MutableLiveData<List<GithubUser>>()
         getGithubUsersUseCase.source()
+            .autoDispose(this)
             .subscribe({ liveData.value = it }, Timber::e)
         liveData
     }
