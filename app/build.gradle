@@ -17,6 +17,10 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    buildFeatures {
+        viewBinding true
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -44,7 +48,9 @@ dependencies {
             Dependencies.AndroidX.coreKtx,
             Dependencies.AndroidX.fragmentKtx,
             Dependencies.Lib.ktStdLib,
-            Dependencies.Rx.rx
+            Dependencies.Rx.rx,
+            Dependencies.View.constraintLayout,
+            Dependencies.View.recyclerView
     )
     testImplementation Dependencies.Test.junit
     androidTestImplementation(

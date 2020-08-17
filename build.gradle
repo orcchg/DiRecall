@@ -7,8 +7,8 @@ buildscript {
     }
     dependencies {
         classpath(
-                Dependencies.Gradle.androidGradle,
-                Dependencies.Gradle.ktGradle
+            Dependencies.Gradle.androidGradle,
+            Dependencies.Gradle.ktGradle
         )
     }
 }
