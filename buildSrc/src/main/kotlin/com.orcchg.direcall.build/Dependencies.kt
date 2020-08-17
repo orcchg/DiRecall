@@ -4,6 +4,7 @@ object Versions {
     const val appCompat = "1.2.0"
     const val coreKtx = "1.3.1"
     const val espresso = "3.2.0"
+    const val fragmentKtx = "1.2.5"
     const val gradleAndroid = "4.0.1"
     const val junit = "4.13"
     const val junitAndroidExt = "1.1.1"
@@ -19,6 +20,7 @@ object Dependencies {
     object AndroidX {
         @JvmStatic val appCompat = dependency("androidx.appcompat:appcompat:${Versions.appCompat}")
         @JvmStatic val coreKtx = dependency("androidx.core:core-ktx:${Versions.coreKtx}")
+        @JvmStatic val fragmentKtx = dependency("androidx.fragment:fragment-ktx:${Versions.fragmentKtx}")
     }
 
     object Gradle {
