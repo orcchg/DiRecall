@@ -1,3 +1,4 @@
+include ':androidUtil'
 include ':util'
 include ':base'
 include ':domain'

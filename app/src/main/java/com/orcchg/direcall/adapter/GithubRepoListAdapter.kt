@@ -7,7 +7,7 @@ import com.orcchg.direcall.databinding.RvGithubRepoListItemBinding
 import com.orcchg.direcall.domain.model.GithubRepo
 
 class GithubRepoListAdapter(
-    private val models: List<GithubRepo>
+    private val models: MutableList<GithubRepo> = mutableListOf()
 ) : RecyclerView.Adapter<GithubRepoViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GithubRepoViewHolder =
@@ -18,4 +18,11 @@ class GithubRepoListAdapter(
     }
 
     override fun getItemCount(): Int = models.size
+
+    fun update(models: List<GithubRepo>) {
+        with(this.models) {
+            clear()
+            addAll(models)
+        }
+    }
 }

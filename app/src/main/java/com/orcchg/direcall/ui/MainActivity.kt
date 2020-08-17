@@ -7,5 +7,5 @@ import com.orcchg.direcall.viewBindings
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
-    val binding by viewBindings(ActivityMainBinding::inflate)
+    private val binding by viewBindings(ActivityMainBinding::inflate)
 }

@@ -11,11 +11,13 @@ object Versions {
     const val junit = "4.13"
     const val junitAndroidExt = "1.1.1"
     const val ktStdLib = "1.3.72"
+    const val lifecycle = "2.2.0"
     const val moshi = "1.9.3"
     const val recyclerView = "1.1.0"
     const val retrofit = "2.9.0"
     const val rx = "2.2.19"
     const val rxKt = "2.4.0"
+    const val timber = "4.7.1"
 }
 
 object Dependencies {
@@ -24,6 +26,7 @@ object Dependencies {
         @JvmStatic val appCompat = dependency("androidx.appcompat:appcompat:${Versions.appCompat}")
         @JvmStatic val coreKtx = dependency("androidx.core:core-ktx:${Versions.coreKtx}")
         @JvmStatic val fragmentKtx = dependency("androidx.fragment:fragment-ktx:${Versions.fragmentKtx}")
+        @JvmStatic val liveData = dependency("androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle}")
     }
 
     object Gradle {
@@ -35,6 +38,7 @@ object Dependencies {
         @JvmStatic val glide = dependency("com.github.bumptech.glide:glide:${Versions.glide}")
         @JvmStatic val ktStdLib = dependency("org.jetbrains.kotlin:kotlin-stdlib:${Versions.ktStdLib}")
         @JvmStatic val ktStdLibJdk7 = dependency("org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.ktStdLib}")
+        @JvmStatic val timber = dependency("com.jakewharton.timber:timber:${Versions.timber}")
     }
 
     object Network {
