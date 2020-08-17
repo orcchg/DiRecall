@@ -47,6 +47,7 @@ dependencies {
             Dependencies.AndroidX.appCompat,
             Dependencies.AndroidX.coreKtx,
             Dependencies.AndroidX.fragmentKtx,
+            Dependencies.Lib.glide,
             Dependencies.Lib.ktStdLib,
             Dependencies.Rx.rx,
             Dependencies.View.constraintLayout,

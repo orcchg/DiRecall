@@ -6,6 +6,7 @@ object Versions {
     const val coreKtx = "1.3.1"
     const val espresso = "3.2.0"
     const val fragmentKtx = "1.2.5"
+    const val glide = "4.11.0"
     const val gradleAndroid = "4.0.1"
     const val junit = "4.13"
     const val junitAndroidExt = "1.1.1"
@@ -31,6 +32,7 @@ object Dependencies {
     }
 
     object Lib {
+        @JvmStatic val glide = dependency("com.github.bumptech.glide:glide:${Versions.glide}")
         @JvmStatic val ktStdLib = dependency("org.jetbrains.kotlin:kotlin-stdlib:${Versions.ktStdLib}")
         @JvmStatic val ktStdLibJdk7 = dependency("org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.ktStdLib}")
     }
