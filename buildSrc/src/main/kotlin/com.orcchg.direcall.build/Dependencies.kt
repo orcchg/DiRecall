@@ -14,9 +14,11 @@ object Versions {
     const val ktStdLib = "1.3.72"
     const val lifecycle = "2.2.0"
     const val moshi = "1.9.3"
+    const val navigation = "2.3.0"
     const val recyclerView = "1.1.0"
     const val retrofit = "2.9.0"
     const val rx = "2.2.19"
+    const val rxBinding = "4.0.0"
     const val rxKt = "2.4.0"
     const val timber = "4.7.1"
 }
@@ -28,6 +30,9 @@ object Dependencies {
         @JvmStatic val coreKtx = dependency("androidx.core:core-ktx:${Versions.coreKtx}")
         @JvmStatic val fragmentKtx = dependency("androidx.fragment:fragment-ktx:${Versions.fragmentKtx}")
         @JvmStatic val liveData = dependency("androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle}")
+        @JvmStatic val navigation = dependency("androidx.navigation:navigation-fragment-ktx:${Versions.navigation}")
+        @JvmStatic val navigationSafeArgs = dependency("androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navigation}")
+        @JvmStatic val navigationUi = dependency("androidx.navigation:navigation-ui-ktx:${Versions.navigation}")
     }
 
     object Gradle {
@@ -57,6 +62,8 @@ object Dependencies {
         @JvmStatic val autoDisposeAndroidAC = dependency("com.uber.autodispose:autodispose-android-archcomponents:${Versions.autoDispose}")
         @JvmStatic val rx = dependency("io.reactivex.rxjava2:rxjava:${Versions.rx}")
         @JvmStatic val rxKt = dependency("io.reactivex.rxjava2:rxkotlin:${Versions.rxKt}")
+        @JvmStatic val rxBinding = dependency("com.jakewharton.rxbinding4:rxbinding:${Versions.rxBinding}")
+        @JvmStatic val rxBindingCore = dependency("com.jakewharton.rxbinding4:rxbinding-core:${Versions.rxBinding}")
     }
 
     object View {

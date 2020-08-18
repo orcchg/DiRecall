@@ -10,8 +10,15 @@ class GithubUserListAdapter(
     private val models: MutableList<GithubUser> = mutableListOf()
 ) : RecyclerView.Adapter<GithubUserViewHolder>() {
 
+    internal var itemClickListener: ((model: GithubUser) -> Unit)? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GithubUserViewHolder =
         GithubUserViewHolder(RvGithubUserListItemBinding.inflate(LayoutInflater.from(parent.context)))
+            .apply {
+                adapterPosition
+                    .takeIf { it != RecyclerView.NO_POSITION }
+                    ?.let { itemClickListener?.invoke(models[it]) }
+            }
 
     override fun onBindViewHolder(holder: GithubUserViewHolder, position: Int) {
         holder.bind(models[position])

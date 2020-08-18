@@ -3,6 +3,7 @@ import com.orcchg.direcall.build.Dependencies
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: "androidx.navigation.safeargs.kotlin"
 
 android {
     compileSdkVersion 29
@@ -48,12 +49,16 @@ dependencies {
             Dependencies.AndroidX.appCompat,
             Dependencies.AndroidX.coreKtx,
             Dependencies.AndroidX.fragmentKtx,
+            Dependencies.AndroidX.navigation,
+            Dependencies.AndroidX.navigationUi,
             Dependencies.Lib.glide,
             Dependencies.Lib.ktStdLib,
             Dependencies.Lib.timber,
-            Dependencies.Rx.rx,
             Dependencies.Rx.autoDispose,
             Dependencies.Rx.autoDisposeAndroidAC,
+            Dependencies.Rx.rx,
+            Dependencies.Rx.rxBinding,
+            Dependencies.Rx.rxBindingCore,
             Dependencies.View.constraintLayout,
             Dependencies.View.recyclerView
     )
