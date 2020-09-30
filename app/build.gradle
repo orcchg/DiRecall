@@ -57,6 +57,7 @@ dependencies {
             Dependencies.Rx.autoDispose,
             Dependencies.Rx.autoDisposeAndroidAC,
             Dependencies.Rx.rx,
+            Dependencies.Rx.rxAndroid,
             Dependencies.Rx.rxBinding,
             Dependencies.Rx.rxBindingCore,
             Dependencies.View.constraintLayout,
