@@ -16,6 +16,7 @@ dependencies {
     implementation(
             project(':androidUtil'),
             project(':base'),
+            project(':data'),
             project(':domain')
     )
     implementation(
@@ -27,6 +28,9 @@ dependencies {
             Dependencies.Lib.glide,
             Dependencies.Lib.ktStdLib,
             Dependencies.Lib.timber,
+            Dependencies.Network.okHttpLog,
+            Dependencies.Network.retrofit,
+            Dependencies.Parser.moshi,
             Dependencies.Rx.autoDispose,
             Dependencies.Rx.autoDisposeAndroidAC,
             Dependencies.Rx.rx,
