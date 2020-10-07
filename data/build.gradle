@@ -2,6 +2,7 @@ import com.orcchg.direcall.build.Dependencies
 
 apply plugin: 'java-library'
 apply plugin: 'kotlin'
+apply plugin: 'kotlin-kapt'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -11,9 +12,15 @@ dependencies {
     )
     implementation(
             Dependencies.Lib.ktStdLibJdk7,
+            Dependencies.Network.okHttpLog,
             Dependencies.Network.retrofit,
             Dependencies.Network.retrofitMoshi,
             Dependencies.Network.retrofitRx,
-            Dependencies.Parser.moshi
+            Dependencies.Parser.moshi,
+            Dependencies.Parser.moshiAdapters,
+            Dependencies.Parser.moshiKotlin
+    )
+    kapt(
+            Dependencies.Parser.moshiKotlinCodegen
     )
 }

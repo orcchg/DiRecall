@@ -15,6 +15,7 @@ object Versions {
     const val lifecycle = "2.2.0"
     const val moshi = "1.9.3"
     const val navigation = "2.3.0"
+    const val okHttp = "4.8.1"
     const val recyclerView = "1.1.0"
     const val retrofit = "2.9.0"
     const val rx = "2.2.19"
@@ -49,6 +50,7 @@ object Dependencies {
     }
 
     object Network {
+        @JvmStatic val okHttpLog = dependency("com.squareup.okhttp3:logging-interceptor:${Versions.okHttp}")
         @JvmStatic val retrofit = dependency("com.squareup.retrofit2:retrofit:${Versions.retrofit}")
         @JvmStatic val retrofitMoshi = dependency("com.squareup.retrofit2:converter-moshi:${Versions.retrofit}")
         @JvmStatic val retrofitRx = dependency("com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofit}")
@@ -56,6 +58,9 @@ object Dependencies {
 
     object Parser {
         @JvmStatic val moshi = dependency("com.squareup.moshi:moshi-adapters:${Versions.moshi}")
+        @JvmStatic val moshiAdapters = dependency("com.squareup.moshi:moshi-adapters:${Versions.moshi}")
+        @JvmStatic val moshiKotlin = dependency("com.squareup.moshi:moshi-kotlin:${Versions.moshi}")
+        @JvmStatic val moshiKotlinCodegen = dependency("com.squareup.moshi:moshi-kotlin-codegen:${Versions.moshi}")
     }
 
     object Rx {
