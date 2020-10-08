@@ -13,7 +13,7 @@ class GithubUserListAdapter(
     internal var itemClickListener: ((model: GithubUser) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GithubUserViewHolder =
-        GithubUserViewHolder(RvGithubUserListItemBinding.inflate(LayoutInflater.from(parent.context)))
+        GithubUserViewHolder(RvGithubUserListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
             .apply {
                 adapterPosition
                     .takeIf { it != RecyclerView.NO_POSITION }
@@ -31,5 +31,6 @@ class GithubUserListAdapter(
             clear()
             addAll(models)
         }
+        notifyDataSetChanged()
     }
 }

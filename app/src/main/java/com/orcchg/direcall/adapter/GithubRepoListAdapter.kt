@@ -11,7 +11,7 @@ class GithubRepoListAdapter(
 ) : RecyclerView.Adapter<GithubRepoViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GithubRepoViewHolder =
-        GithubRepoViewHolder(RvGithubRepoListItemBinding.inflate(LayoutInflater.from(parent.context)))
+        GithubRepoViewHolder(RvGithubRepoListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
     override fun onBindViewHolder(holder: GithubRepoViewHolder, position: Int) {
         holder.bind(models[position])
@@ -24,5 +24,6 @@ class GithubRepoListAdapter(
             clear()
             addAll(models)
         }
+        notifyDataSetChanged()
     }
 }
