@@ -15,7 +15,7 @@ class Params {
 
     @Suppress("UNCHECKED_CAST")
     @PublishedApi internal inline fun <T, R> getOrElse(key: String, body: (p: T) -> R, elseBody: () -> R): R =
-        map[key] as R ?: elseBody()
+        map[key]?.let { body(it as T) } ?: elseBody()
 
     @Suppress("UNCHECKED_CAST")
     fun <T> get(key: String): T? = map[key] as? T

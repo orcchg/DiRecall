@@ -6,13 +6,15 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
-import com.jakewharton.rxbinding4.view.clicks
+import com.jakewharton.rxbinding3.view.clicks
 import com.orcchg.direcall.R
+import com.orcchg.direcall.androidutil.clickDebounce
 import com.orcchg.direcall.androidutil.observe
 import com.orcchg.direcall.databinding.FragmentGithubUserDetailsBinding
 import com.orcchg.direcall.viewBindings
 import com.orcchg.direcall.viewmodel.GithubUserDetailsViewModel
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import com.orcchg.direcall.viewmodel.GithubUserDetailsViewModelFactory
+import retrofit2.create
 import java.util.concurrent.TimeUnit
 
 class GithubUserDetailsFragment : Fragment(R.layout.fragment_github_user_details) {
@@ -24,8 +26,7 @@ class GithubUserDetailsFragment : Fragment(R.layout.fragment_github_user_details
         super.onViewCreated(view, savedInstanceState)
         val login = arguments?.getString("login") ?: throw NullPointerException("Missing 'login' argument")
 
-        binding.btnRepoList.clicks()
-            .debounce(200L, TimeUnit.MILLISECONDS, AndroidSchedulers.mainThread())
+        binding.btnRepoList.clicks().clickDebounce()
             .subscribe {
                 GithubUserDetailsFragmentDirections.navActionOpenGithubRepoList(login = login)
                     .let(findNavController()::navigate)
