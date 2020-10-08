@@ -33,6 +33,8 @@ dependencies {
             Dependencies.AndroidX.fragmentKtx,
             Dependencies.AndroidX.liveData,
             Dependencies.Rx.rx,
+            Dependencies.Rx.rxAndroid,
+            Dependencies.Rx.rxBinding,
             Dependencies.Rx.autoDispose,
             Dependencies.Rx.autoDisposeAndroidAC
     )

@@ -20,7 +20,7 @@ object Versions {
     const val retrofit = "2.9.0"
     const val rx = "2.2.19"
     const val rxAndroid = "2.1.1"
-    const val rxBinding = "4.0.0"
+    const val rxBinding = "3.1.0"
     const val rxKt = "2.4.0"
     const val timber = "4.7.1"
 }
@@ -69,8 +69,8 @@ object Dependencies {
         @JvmStatic val rx = dependency("io.reactivex.rxjava2:rxjava:${Versions.rx}")
         @JvmStatic val rxKt = dependency("io.reactivex.rxjava2:rxkotlin:${Versions.rxKt}")
         @JvmStatic val rxAndroid = dependency("io.reactivex.rxjava2:rxandroid:${Versions.rxAndroid}")
-        @JvmStatic val rxBinding = dependency("com.jakewharton.rxbinding4:rxbinding:${Versions.rxBinding}")
-        @JvmStatic val rxBindingCore = dependency("com.jakewharton.rxbinding4:rxbinding-core:${Versions.rxBinding}")
+        @JvmStatic val rxBinding = dependency("com.jakewharton.rxbinding3:rxbinding:${Versions.rxBinding}")
+        @JvmStatic val rxBindingCore = dependency("com.jakewharton.rxbinding3:rxbinding-core:${Versions.rxBinding}")
     }
 
     object View {

@@ -3,8 +3,10 @@ package com.orcchg.direcall.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.jakewharton.rxbinding3.view.clicks
 import com.orcchg.direcall.databinding.RvGithubUserListItemBinding
 import com.orcchg.direcall.domain.model.GithubUser
+import com.orcchg.direcall.androidutil.clickDebounce
 
 class GithubUserListAdapter(
     private val models: MutableList<GithubUser> = mutableListOf()
@@ -15,9 +17,11 @@ class GithubUserListAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GithubUserViewHolder =
         GithubUserViewHolder(RvGithubUserListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
             .apply {
-                adapterPosition
-                    .takeIf { it != RecyclerView.NO_POSITION }
-                    ?.let { itemClickListener?.invoke(models[it]) }
+                itemView.clicks().clickDebounce().subscribe {
+                    adapterPosition
+                        .takeIf { it != RecyclerView.NO_POSITION }
+                        ?.let { itemClickListener?.invoke(models[it]) }
+                }
             }
 
     override fun onBindViewHolder(holder: GithubUserViewHolder, position: Int) {
