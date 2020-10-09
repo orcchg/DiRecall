@@ -1,5 +1,6 @@
 package com.orcchg.direcall.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -14,6 +15,7 @@ class GithubUserListAdapter(
 
     internal var itemClickListener: ((model: GithubUser) -> Unit)? = null
 
+    @SuppressLint("AutoDispose", "CheckResult")
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GithubUserViewHolder =
         GithubUserViewHolder(RvGithubUserListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
             .apply {

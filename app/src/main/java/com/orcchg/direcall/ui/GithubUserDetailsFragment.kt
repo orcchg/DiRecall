@@ -1,5 +1,6 @@
 package com.orcchg.direcall.ui
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -15,13 +16,13 @@ import com.orcchg.direcall.viewBindings
 import com.orcchg.direcall.viewmodel.GithubUserDetailsViewModel
 import com.orcchg.direcall.viewmodel.GithubUserDetailsViewModelFactory
 import retrofit2.create
-import java.util.concurrent.TimeUnit
 
 class GithubUserDetailsFragment : Fragment(R.layout.fragment_github_user_details) {
 
     private val binding by viewBindings(FragmentGithubUserDetailsBinding::bind)
     private val viewModel by viewModels<GithubUserDetailsViewModel>()
 
+    @SuppressLint("AutoDispose", "CheckResult")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val login = arguments?.getString("login") ?: throw NullPointerException("Missing 'login' argument")
