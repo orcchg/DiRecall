@@ -1,9 +1,9 @@
 import com.orcchg.direcall.build.Dependencies
 
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: "androidx.navigation.safeargs.kotlin"
+apply plugin: Dependencies.Plugin.androidApp
+apply plugin: Dependencies.Plugin.kotlinAndroid
+apply plugin: Dependencies.Plugin.kotlinAndroidExt
+apply plugin: Dependencies.Plugin.navSafeArgs
 
 android {
     compileSdkVersion 29
@@ -68,4 +68,6 @@ dependencies {
             Dependencies.AndroidTest.espresso,
             Dependencies.AndroidTest.junit
     )
+
+    lintChecks(project(':lint-rules'))
 }

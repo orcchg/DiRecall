@@ -11,8 +11,11 @@ object Versions {
     const val gradleAndroid = "4.0.1"
     const val junit = "4.13"
     const val junitAndroidExt = "1.1.1"
-    const val ktStdLib = "1.3.72"
+    const val ktlint = "0.38.0"
+    const val ktlintGradle = "9.4.1"
+    const val ktStdLib = "1.4.10"
     const val lifecycle = "2.2.0"
+    const val lint = "27.0.1"
     const val moshi = "1.9.3"
     const val navigation = "2.3.0"
     const val okHttp = "4.8.1"
@@ -63,6 +66,19 @@ object Dependencies {
         @JvmStatic val moshiKotlinCodegen = dependency("com.squareup.moshi:moshi-kotlin-codegen:${Versions.moshi}")
     }
 
+    object Plugin {
+        const val androidApp = "com.android.application"
+        const val androidLib = "com.android.library"
+        const val javaLib = "java-library"
+        const val google = "com.google.gms.google-services"
+        const val kotlin = "kotlin"
+        const val kotlinAndroid = "kotlin-android"
+        const val kotlinAndroidExt = "kotlin-android-extensions"
+        const val kotlinAnnotation = "kotlin-kapt"
+        const val ktlint = "org.jlleitschuh.gradle.ktlint"
+        const val navSafeArgs = "androidx.navigation.safeargs.kotlin"
+    }
+
     object Rx {
         @JvmStatic val autoDispose = dependency("com.uber.autodispose:autodispose:${Versions.autoDispose}")
         @JvmStatic val autoDisposeAndroidAC = dependency("com.uber.autodispose:autodispose-android-archcomponents:${Versions.autoDispose}")
@@ -76,6 +92,13 @@ object Dependencies {
     object View {
         @JvmStatic val constraintLayout = dependency("androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}")
         @JvmStatic val recyclerView = dependency("androidx.recyclerview:recyclerview:${Versions.recyclerView}")
+    }
+
+    object Lint {
+        @JvmStatic val lintApi = dependency("com.android.tools.lint:lint-api:${Versions.lint}")
+        @JvmStatic val lintChecks = dependency("com.android.tools.lint:lint-checks:${Versions.lint}")
+        @JvmStatic val lintCore = dependency("com.android.tools.lint:lint:${Versions.lint}")
+        @JvmStatic val lintTests = dependency("com.android.tools.lint:lint-tests:${Versions.lint}")
     }
 
     object AndroidTest {

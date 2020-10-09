@@ -14,8 +14,6 @@ import com.orcchg.direcall.androidutil.observe
 import com.orcchg.direcall.databinding.FragmentGithubUserDetailsBinding
 import com.orcchg.direcall.viewBindings
 import com.orcchg.direcall.viewmodel.GithubUserDetailsViewModel
-import com.orcchg.direcall.viewmodel.GithubUserDetailsViewModelFactory
-import retrofit2.create
 
 class GithubUserDetailsFragment : Fragment(R.layout.fragment_github_user_details) {
 

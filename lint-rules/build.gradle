@@ -1,0 +1,32 @@
+import com.orcchg.direcall.build.Dependencies
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
+apply plugin: Dependencies.Plugin.javaLib
+apply plugin: Dependencies.Plugin.kotlin
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation Dependencies.Lib.ktStdLib
+
+    compileOnly Dependencies.Lint.lintApi
+    compileOnly Dependencies.Lint.lintChecks
+
+    testImplementation Dependencies.Lint.lintCore
+    testImplementation Dependencies.Lint.lintTests
+}
+
+tasks.withType(KotlinCompile).configureEach {
+    kotlinOptions {
+        jvmTarget = "1.8"
+        freeCompilerArgs += '-Xjvm-default=enable'
+    }
+}
+
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"
+
+jar {
+    manifest {
+        attributes 'Lint-Registry-v2': 'com.orcchg.direcall.lint_rules.DiRecallIssueRegistry'
+    }
+}

@@ -1,8 +1,8 @@
 import com.orcchg.direcall.build.Dependencies
 
-apply plugin: 'java-library'
-apply plugin: 'kotlin'
-apply plugin: 'kotlin-kapt'
+apply plugin: Dependencies.Plugin.javaLib
+apply plugin: Dependencies.Plugin.kotlin
+apply plugin: Dependencies.Plugin.kotlinAnnotation
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])

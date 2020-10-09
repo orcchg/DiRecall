@@ -1,7 +1,8 @@
 include ':androidUtil'
-include ':util'
-include ':base'
-include ':domain'
-include ':data'
 include ':app'
+include ':base'
+include ':data'
+include ':domain'
+include ':util'
+include ':lint-rules'
 rootProject.name = "DiRecall"

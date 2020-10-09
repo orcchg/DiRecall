@@ -13,4 +13,3 @@ class GithubUserDetailsViewModelFactory(
     override fun <T : ViewModel> create(modelClass: Class<T>): T =
         GithubUserDetailsViewModel(login, getGithubUserDetailsUseCase) as T
 }
-
