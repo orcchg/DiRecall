@@ -3,6 +3,7 @@ import com.orcchg.direcall.build.Dependencies
 apply plugin: Dependencies.Plugin.androidApp
 apply plugin: Dependencies.Plugin.kotlinAndroid
 apply plugin: Dependencies.Plugin.kotlinAndroidExt
+apply plugin: Dependencies.Plugin.kotlinAnnotation
 apply plugin: Dependencies.Plugin.navSafeArgs
 
 android {
@@ -16,6 +17,7 @@ dependencies {
     implementation(
             project(':androidUtil'),
             project(':base'),
+            project(':data'),
             project(':domain')
     )
     implementation(
@@ -24,6 +26,8 @@ dependencies {
             Dependencies.AndroidX.fragmentKtx,
             Dependencies.AndroidX.navigation,
             Dependencies.AndroidX.navigationUi,
+            Dependencies.Di.dagger,
+            Dependencies.Di.daggerAndroidSupport,
             Dependencies.Lib.glide,
             Dependencies.Lib.ktStdLib,
             Dependencies.Lib.timber,
@@ -36,6 +40,11 @@ dependencies {
             Dependencies.View.constraintLayout,
             Dependencies.View.recyclerView
     )
+    kapt(
+            Dependencies.Di.daggerAndroidProcessor,
+            Dependencies.Di.daggerCompiler
+    )
+
     testImplementation Dependencies.Test.junit
     androidTestImplementation(
             Dependencies.AndroidTest.espresso,

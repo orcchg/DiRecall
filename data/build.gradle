@@ -4,6 +4,10 @@ apply plugin: Dependencies.Plugin.javaLib
 apply plugin: Dependencies.Plugin.kotlin
 apply plugin: Dependencies.Plugin.kotlinAnnotation
 
+compileKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation(
@@ -11,6 +15,7 @@ dependencies {
             project(':util')
     )
     implementation(
+            Dependencies.Di.dagger,
             Dependencies.Lib.ktStdLibJdk7,
             Dependencies.Network.okHttpLog,
             Dependencies.Network.retrofit,
@@ -21,6 +26,7 @@ dependencies {
             Dependencies.Parser.moshiKotlin
     )
     kapt(
+            Dependencies.Di.daggerCompiler,
             Dependencies.Parser.moshiKotlinCodegen
     )
 }
