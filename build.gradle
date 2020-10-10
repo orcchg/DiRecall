@@ -26,6 +26,14 @@ allprojects {
         jcenter()
     }
 
+    ext {
+        androidVersionName = "1.0.0"
+        androidVersionCode = 1
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testApplicationId = 'com.orcchg.direcall.test'
+    }
+
     ktlint {
         version = Versions.ktlint
         outputToConsole = true
@@ -37,6 +45,56 @@ allprojects {
             exclude("**/generated/**")
             exclude("**/script/**")
             include("**/kotlin/**")
+        }
+    }
+}
+
+subprojects {
+    afterEvaluate { p ->
+        if (p.hasProperty('android')) {
+            android {
+                buildToolsVersion Versions.buildToolsVersion
+                defaultConfig {
+                    minSdkVersion Versions.minSdkVersion
+                    targetSdkVersion Versions.targetSdkVersion
+                    compileSdkVersion Versions.compileSdkVersion
+
+                    versionCode rootProject.ext.androidVersionCode
+                    versionName rootProject.ext.androidVersionName
+                    testInstrumentationRunner rootProject.ext.testInstrumentationRunner
+
+                    javaCompileOptions {
+                        annotationProcessorOptions {
+                            arguments = [
+                                    "room.schemaLocation"  : "$projectDir/schemas".toString(),
+                                    "room.incremental"     : "true",
+                                    "room.expandProjection": "true"
+                            ]
+                        }
+                    }
+                }
+
+                buildFeatures {
+                    buildConfig true
+                    viewBinding true
+                }
+
+                buildTypes {
+                    release {
+                        minifyEnabled false
+                        proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+                    }
+                }
+
+                compileOptions {
+                    sourceCompatibility JavaVersion.VERSION_1_8
+                    targetCompatibility JavaVersion.VERSION_1_8
+                }
+
+                kotlinOptions {
+                    jvmTarget = JavaVersion.VERSION_1_8
+                }
+            }
         }
     }
 }

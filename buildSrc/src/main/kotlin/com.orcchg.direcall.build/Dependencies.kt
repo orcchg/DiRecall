@@ -1,8 +1,13 @@
 package com.orcchg.direcall.build
 
 object Versions {
+    const val minSdkVersion = 21
+    const val targetSdkVersion = 30
+    const val compileSdkVersion = 30
+
     const val appCompat = "1.2.0"
     const val autoDispose = "1.4.0"
+    const val buildToolsVersion = "30.0.0"
     const val constraintLayout = "2.0.0-rc1"
     const val coreKtx = "1.3.1"
     const val espresso = "3.2.0"
