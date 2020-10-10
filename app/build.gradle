@@ -3,7 +3,7 @@ import com.orcchg.direcall.build.Dependencies
 apply plugin: Dependencies.Plugin.androidApp
 apply plugin: Dependencies.Plugin.kotlinAndroid
 apply plugin: Dependencies.Plugin.kotlinAndroidExt
-apply plugin: Dependencies.Plugin.navSafeArgs
+apply plugin: Dependencies.Plugin.kotlinAnnotation
 
 android {
     defaultConfig {
@@ -16,7 +16,20 @@ dependencies {
     implementation(
             project(':androidUtil'),
             project(':base'),
-            project(':domain')
+            project(':design'),
+            project(':navigation'),
+            project(':Core:DiCoreLib'),
+            project(':Core:NetCoreLib:NetCoreLibApi'),
+            project(':Core:NetCoreLib:NetCoreLibImpl'),
+            project(':Core:SchedulerCoreLib:SchedulerCoreLibApi'),
+            project(':Core:SchedulerCoreLib:SchedulerCoreLibImpl'),
+            project(':Core:UiCoreLib'),
+            project(':Feature:GithubRepo:GithubRepoApi'),
+            project(':Feature:GithubRepo:GithubRepoImpl'),
+            project(':Feature:GithubUserDetails:GithubUserDetailsApi'),
+            project(':Feature:GithubUserDetails:GithubUserDetailsImpl'),
+            project(':Feature:GithubUserList:GithubUserListApi'),
+            project(':Feature:GithubUserList:GithubUserListImpl')
     )
     implementation(
             Dependencies.AndroidX.appCompat,
@@ -24,6 +37,8 @@ dependencies {
             Dependencies.AndroidX.fragmentKtx,
             Dependencies.AndroidX.navigation,
             Dependencies.AndroidX.navigationUi,
+            Dependencies.Di.dagger,
+            Dependencies.Di.daggerAndroidSupport,
             Dependencies.Lib.glide,
             Dependencies.Lib.ktStdLib,
             Dependencies.Lib.timber,
@@ -35,6 +50,10 @@ dependencies {
             Dependencies.Rx.rxBindingCore,
             Dependencies.View.constraintLayout,
             Dependencies.View.recyclerView
+    )
+    kapt(
+            Dependencies.Di.daggerAndroidProcessor,
+            Dependencies.Di.daggerCompiler
     )
     testImplementation Dependencies.Test.junit
     androidTestImplementation(
