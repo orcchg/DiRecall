@@ -5,6 +5,12 @@ apply plugin: Dependencies.Plugin.kotlinAndroid
 apply plugin: Dependencies.Plugin.kotlinAndroidExt
 apply plugin: Dependencies.Plugin.navSafeArgs
 
+android {
+    defaultConfig {
+        applicationId = 'com.orcchg.direcall'
+    }
+}
+
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation(
