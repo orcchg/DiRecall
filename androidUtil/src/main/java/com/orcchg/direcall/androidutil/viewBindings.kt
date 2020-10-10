@@ -1,4 +1,4 @@
-package com.orcchg.direcall
+package com.orcchg.direcall.androidutil
 
 import android.view.LayoutInflater
 import android.view.View

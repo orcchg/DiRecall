@@ -17,6 +17,10 @@ android {
         consumerProguardFiles "consumer-rules.pro"
     }
 
+    buildFeatures {
+        viewBinding true
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -27,7 +31,10 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation project(':util')
+    implementation(
+            project(':base'),
+            project(':util')
+    )
     implementation(
             Dependencies.AndroidX.appCompat,
             Dependencies.AndroidX.fragmentKtx,

@@ -12,7 +12,7 @@ import com.orcchg.direcall.R
 import com.orcchg.direcall.androidutil.clickDebounce
 import com.orcchg.direcall.androidutil.observe
 import com.orcchg.direcall.databinding.FragmentGithubUserDetailsBinding
-import com.orcchg.direcall.viewBindings
+import com.orcchg.direcall.androidutil.viewBindings
 import com.orcchg.direcall.viewmodel.GithubUserDetailsViewModel
 
 class GithubUserDetailsFragment : Fragment(R.layout.fragment_github_user_details) {

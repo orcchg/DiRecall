@@ -8,7 +8,7 @@ import com.orcchg.direcall.R
 import com.orcchg.direcall.adapter.GithubRepoListAdapter
 import com.orcchg.direcall.androidutil.observe
 import com.orcchg.direcall.databinding.FragmentGithubRepoListBinding
-import com.orcchg.direcall.viewBindings
+import com.orcchg.direcall.androidutil.viewBindings
 import com.orcchg.direcall.viewmodel.GithubRepoViewModel
 
 class GithubRepoFragment : Fragment(R.layout.fragment_github_repo_list) {

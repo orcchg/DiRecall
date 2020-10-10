@@ -9,7 +9,7 @@ import com.orcchg.direcall.R
 import com.orcchg.direcall.adapter.GithubUserListAdapter
 import com.orcchg.direcall.androidutil.observe
 import com.orcchg.direcall.databinding.FragmentGithubUserListBinding
-import com.orcchg.direcall.viewBindings
+import com.orcchg.direcall.androidutil.viewBindings
 import com.orcchg.direcall.viewmodel.GithubUserListViewModel
 
 class GithubUserListFragment : Fragment(R.layout.fragment_github_user_list) {
