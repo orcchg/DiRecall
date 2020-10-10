@@ -7,7 +7,6 @@ apply plugin: Dependencies.Plugin.kotlinAndroidExt
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation(
-            project(':base'),
             project(':util')
     )
     implementation(
@@ -16,8 +15,6 @@ dependencies {
             Dependencies.AndroidX.liveData,
             Dependencies.Rx.rx,
             Dependencies.Rx.rxAndroid,
-            Dependencies.Rx.rxBinding,
-            Dependencies.Rx.autoDispose,
-            Dependencies.Rx.autoDisposeAndroidAC
+            Dependencies.Rx.rxBinding
     )
 }

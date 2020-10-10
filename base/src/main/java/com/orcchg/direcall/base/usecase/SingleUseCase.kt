@@ -1,7 +1,7 @@
 package com.orcchg.direcall.base.usecase
 
 import com.orcchg.direcall.base.Params
-import com.orcchg.direcall.base.SchedulersFactory
+import com.orcchg.direcall.core.scheduler.api.SchedulersFactory
 import io.reactivex.Scheduler
 import io.reactivex.Single
 
