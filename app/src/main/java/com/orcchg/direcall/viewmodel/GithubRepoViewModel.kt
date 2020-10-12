@@ -8,12 +8,16 @@ import com.orcchg.direcall.domain.usecase.GetGithubReposUseCase
 import com.uber.autodispose.autoDispose
 import timber.log.Timber
 import javax.inject.Inject
-import javax.inject.Named
 
 class GithubRepoViewModel @Inject constructor(
-    @Named("login") private val login: String,
     private val getGithubReposUseCase: GetGithubReposUseCase
 ) : AutoDisposeViewModel() {
+
+    private lateinit var login: String
+
+    internal fun setLogin(login: String) {
+        this.login = login
+    }
 
     val repos: LiveData<List<GithubRepo>> by lazy(LazyThreadSafetyMode.NONE) {
         val liveData = MutableLiveData<List<GithubRepo>>()

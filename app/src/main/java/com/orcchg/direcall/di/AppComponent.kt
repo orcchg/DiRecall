@@ -11,20 +11,12 @@ import javax.inject.Singleton
     modules = [
         AndroidInjectionModule::class,
         AppModule::class,
-        SchedulersFactoryModule::class
+        SchedulersFactoryModule::class,
+        ViewModelModule::class
     ],
     dependencies = [
         DataFeatureApi::class
     ]
 )
 @Singleton
-interface AppComponent : AndroidInjector<App> {
-
-    fun repoComponent(
-        module: GithubUserRepoFragmentModule
-    ): GithubUserRepoFragmentComponent
-
-    fun userDetailsComponent(
-        module: GithubUserDetailsFragmentModule
-    ): GithubUserDetailsFragmentComponent
-}
+interface AppComponent : AndroidInjector<App>
