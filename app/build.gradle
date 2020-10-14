@@ -16,6 +16,7 @@ dependencies {
     implementation(
             project(':androidUtil'),
             project(':base'),
+            project(':data'),
             project(':domain')
     )
     implementation(

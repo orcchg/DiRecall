@@ -1,6 +1,6 @@
-## Architecture Playground
+## Service Locator
 
-This Repo contains a set of modern architectural approaches for building Android apps from scratch.
-It utilizes different DI frameworks but the main concept is based on Clean Arch + MVVM.
-Switch the branch to see various implementations. The App consists of several screens that shows up
-a list of github users, user details, her followers and repos, etc.
+https://medium.com/inloopx/service-locator-pattern-in-android-af3830924c69
+https://medium.com/mobile-app-development-publication/dependency-injection-and-service-locator-4dbe4559a3ba
+https://martinfowler.com/articles/injection.html
+http://guy-murphy.github.io/2014/11/24/service-locator-vs-dependency-injection/
