@@ -1,6 +1,6 @@
 package com.orcchg.direcall.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import com.orcchg.direcall.R
+import dagger.android.support.DaggerAppCompatActivity
 
-class MainActivity : AppCompatActivity(R.layout.activity_main)
+class MainActivity : DaggerAppCompatActivity(R.layout.activity_main)

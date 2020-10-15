@@ -10,6 +10,7 @@ dependencies {
     )
     implementation(
             Dependencies.Lib.ktStdLib,
+            Dependencies.Di.dagger,
             Dependencies.Rx.rx
     )
 }

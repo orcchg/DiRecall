@@ -10,6 +10,8 @@ dependencies {
             Dependencies.AndroidX.appCompat,
             Dependencies.AndroidX.fragmentKtx,
             Dependencies.AndroidX.liveData,
+            Dependencies.Di.dagger,
+            Dependencies.Di.daggerAndroidSupport,
             Dependencies.Rx.rx,
             Dependencies.Rx.autoDispose,
             Dependencies.Rx.autoDisposeAndroidAC
