@@ -16,6 +16,7 @@ dependencies {
     implementation(
             project(':androidUtil'),
             project(':base'),
+            project(':data'),
             project(':domain')
     )
     implementation(
@@ -24,9 +25,20 @@ dependencies {
             Dependencies.AndroidX.fragmentKtx,
             Dependencies.AndroidX.navigation,
             Dependencies.AndroidX.navigationUi,
+            Dependencies.Di.koin,
+            Dependencies.Di.koinAndroid,
+            Dependencies.Di.koinAndroidVM,
+            Dependencies.Di.koinExt,
             Dependencies.Lib.glide,
             Dependencies.Lib.ktStdLib,
             Dependencies.Lib.timber,
+            Dependencies.Network.okHttpLog,
+            Dependencies.Network.retrofit,
+            Dependencies.Network.retrofitMoshi,
+            Dependencies.Network.retrofitRx,
+            Dependencies.Parser.moshi,
+            Dependencies.Parser.moshiAdapters,
+            Dependencies.Parser.moshiKotlin,
             Dependencies.Rx.autoDispose,
             Dependencies.Rx.autoDisposeAndroidAC,
             Dependencies.Rx.rx,

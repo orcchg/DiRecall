@@ -1,6 +1,7 @@
-## Architecture Playground
+## Koin
 
-This Repo contains a set of modern architectural approaches for building Android apps from scratch.
-It utilizes different DI frameworks but the main concept is based on Clean Arch + MVVM.
-Switch the branch to see various implementations. The App consists of several screens that shows up
-a list of github users, user details, her followers and repos, etc.
+DI is made with Koin, which is essentially a Service Locator with sugar.
+
+https://start.insert-koin.io/#/quickstart/android-viewmodel
+https://medium.com/swlh/dependency-injection-with-koin-6b6364dc8dba
+https://github.com/InsertKoinIO/getting-started-koin-android

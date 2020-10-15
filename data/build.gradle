@@ -11,7 +11,8 @@ dependencies {
             project(':util')
     )
     implementation(
-            Dependencies.Lib.ktStdLibJdk7,
+            Dependencies.Di.koin,
+            Dependencies.Lib.ktStdLib,
             Dependencies.Network.okHttpLog,
             Dependencies.Network.retrofit,
             Dependencies.Network.retrofitMoshi,

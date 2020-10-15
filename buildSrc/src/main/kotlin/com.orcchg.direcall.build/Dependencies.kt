@@ -16,6 +16,7 @@ object Versions {
     const val gradleAndroid = "4.0.1"
     const val junit = "4.13"
     const val junitAndroidExt = "1.1.1"
+    const val koin = "2.1.6"
     const val ktlint = "0.38.0"
     const val ktlintGradle = "9.4.1"
     const val ktStdLib = "1.4.10"
@@ -43,6 +44,14 @@ object Dependencies {
         @JvmStatic val navigation = dependency("androidx.navigation:navigation-fragment-ktx:${Versions.navigation}")
         @JvmStatic val navigationSafeArgs = dependency("androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navigation}")
         @JvmStatic val navigationUi = dependency("androidx.navigation:navigation-ui-ktx:${Versions.navigation}")
+    }
+
+    object Di {
+        @JvmStatic val koin = dependency("org.koin:koin-core:${Versions.koin}")
+        @JvmStatic val koinAndroid = dependency("org.koin:koin-android:${Versions.koin}")
+        @JvmStatic val koinAndroidVM = dependency("org.koin:koin-android-viewmodel:${Versions.koin}")
+        @JvmStatic val koinExt = dependency("org.koin:koin-core-ext:${Versions.koin}")
+        @JvmStatic val koinTest = dependency("org.koin:koin-test:${Versions.koin}")
     }
 
     object Gradle {
