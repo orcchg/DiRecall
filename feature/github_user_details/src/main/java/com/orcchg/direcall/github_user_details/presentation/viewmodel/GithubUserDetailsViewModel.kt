@@ -8,12 +8,12 @@ import com.orcchg.direcall.github_user_details.domain.usecase.GetGithubUserDetai
 import com.uber.autodispose.autoDispose
 import timber.log.Timber
 import javax.inject.Inject
+import javax.inject.Named
 
 class GithubUserDetailsViewModel @Inject constructor(
+    @Named("login") private val login: String,
     private val getGithubUserDetailsUseCase: GetGithubUserDetailsUseCase
 ) : AutoDisposeViewModel() {
-
-    internal var login: String = ""
 
     val user: LiveData<GithubUserDetails> by lazy(LazyThreadSafetyMode.NONE) {
         val liveData = MutableLiveData<GithubUserDetails>()
