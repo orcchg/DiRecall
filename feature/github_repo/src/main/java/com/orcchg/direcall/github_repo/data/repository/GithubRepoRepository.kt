@@ -4,8 +4,9 @@ import com.orcchg.direcall.github_repo.data.convert.GithubRepoCloudConverter
 import com.orcchg.direcall.github_repo.data.remote.GithubRepoCloudRest
 import com.orcchg.direcall.github_repo.domain.model.GithubRepo
 import io.reactivex.Single
+import javax.inject.Inject
 
-class GithubRepoRepository(
+class GithubRepoRepository @Inject constructor(
     private val repoCloud: GithubRepoCloudRest,
     private val repoConverter: GithubRepoCloudConverter
 ) {
