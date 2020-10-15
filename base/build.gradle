@@ -6,7 +6,10 @@ apply plugin: Dependencies.Plugin.kotlin
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation(
-            Dependencies.Lib.ktStdLibJdk7,
+            project(':core:scheduler_api')
+    )
+    implementation(
+            Dependencies.Lib.ktStdLib,
             Dependencies.Rx.rx
     )
 }

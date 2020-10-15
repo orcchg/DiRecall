@@ -1,0 +1,18 @@
+import com.orcchg.direcall.build.Dependencies
+
+apply plugin: Dependencies.Plugin.androidLib
+apply plugin: Dependencies.Plugin.kotlinAndroid
+apply plugin: Dependencies.Plugin.kotlinAndroidExt
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation(
+            project(':base'),
+            project(':core:scheduler_api')
+    )
+    implementation(
+            Dependencies.Lib.ktStdLib,
+            Dependencies.Rx.rx,
+            Dependencies.Rx.rxAndroid
+    )
+}

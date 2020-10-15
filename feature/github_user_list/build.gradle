@@ -1,0 +1,39 @@
+import com.orcchg.direcall.build.Dependencies
+
+apply plugin: Dependencies.Plugin.androidLib
+apply plugin: Dependencies.Plugin.kotlinAndroid
+apply plugin: Dependencies.Plugin.kotlinAndroidExt
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation(
+            project(':androidUtil'),
+            project(':base'),
+            project(':core:scheduler_api'),
+            project(':core:ui_core_lib'),
+            project(':design'),
+            project(':navigation'),
+            project(':util')
+    )
+    implementation(
+            Dependencies.AndroidX.appCompat,
+            Dependencies.AndroidX.coreKtx,
+            Dependencies.AndroidX.fragmentKtx,
+            Dependencies.AndroidX.navigation,
+            Dependencies.AndroidX.navigationUi,
+            Dependencies.Lib.glide,
+            Dependencies.Lib.ktStdLib,
+            Dependencies.Lib.timber,
+            Dependencies.Network.retrofit,
+            Dependencies.Network.retrofitMoshi,
+            Dependencies.Network.retrofitRx,
+            Dependencies.Rx.autoDispose,
+            Dependencies.Rx.autoDisposeAndroidAC,
+            Dependencies.Rx.rx,
+            Dependencies.Rx.rxAndroid,
+            Dependencies.Rx.rxBinding,
+            Dependencies.Rx.rxBindingCore,
+            Dependencies.View.constraintLayout,
+            Dependencies.View.recyclerView
+    )
+}

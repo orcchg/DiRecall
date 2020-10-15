@@ -3,7 +3,6 @@ import com.orcchg.direcall.build.Dependencies
 apply plugin: Dependencies.Plugin.androidApp
 apply plugin: Dependencies.Plugin.kotlinAndroid
 apply plugin: Dependencies.Plugin.kotlinAndroidExt
-apply plugin: Dependencies.Plugin.navSafeArgs
 
 android {
     defaultConfig {
@@ -14,27 +13,18 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation(
-            project(':androidUtil'),
-            project(':base'),
-            project(':domain')
+            project(':design'),
+            project(':feature:github_repo'),
+            project(':feature:github_user_details'),
+            project(':feature:github_user_list'),
+            project(':navigation')
     )
     implementation(
             Dependencies.AndroidX.appCompat,
             Dependencies.AndroidX.coreKtx,
-            Dependencies.AndroidX.fragmentKtx,
-            Dependencies.AndroidX.navigation,
-            Dependencies.AndroidX.navigationUi,
-            Dependencies.Lib.glide,
             Dependencies.Lib.ktStdLib,
             Dependencies.Lib.timber,
-            Dependencies.Rx.autoDispose,
-            Dependencies.Rx.autoDisposeAndroidAC,
-            Dependencies.Rx.rx,
-            Dependencies.Rx.rxAndroid,
-            Dependencies.Rx.rxBinding,
-            Dependencies.Rx.rxBindingCore,
-            Dependencies.View.constraintLayout,
-            Dependencies.View.recyclerView
+            Dependencies.View.constraintLayout
     )
     testImplementation Dependencies.Test.junit
     androidTestImplementation(

@@ -1,5 +1,5 @@
 package com.orcchg.direcall.base.usecase
 
-import com.orcchg.direcall.base.SchedulersFactory
+import com.orcchg.direcall.scheduler_api.SchedulersFactory
 
 abstract class UseCase(protected val schedulersFactory: SchedulersFactory)

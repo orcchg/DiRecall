@@ -1,0 +1,16 @@
+import com.orcchg.direcall.build.Dependencies
+
+apply plugin: Dependencies.Plugin.androidLib
+apply plugin: Dependencies.Plugin.kotlinAndroid
+apply plugin: Dependencies.Plugin.kotlinAndroidExt
+apply plugin: Dependencies.Plugin.navSafeArgs
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation(
+            Dependencies.AndroidX.appCompat,
+            Dependencies.AndroidX.navigation,
+            Dependencies.AndroidX.navigationUi,
+            Dependencies.Lib.ktStdLib
+    )
+}
