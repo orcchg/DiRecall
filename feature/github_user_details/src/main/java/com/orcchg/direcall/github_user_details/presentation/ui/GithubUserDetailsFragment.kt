@@ -14,13 +14,17 @@ import com.orcchg.direcall.androidutil.viewBindings
 import com.orcchg.direcall.github_user_details.R
 import com.orcchg.direcall.github_user_details.databinding.FragmentGithubUserDetailsBinding
 import com.orcchg.direcall.github_user_details.presentation.viewmodel.GithubUserDetailsViewModel
+import com.orcchg.direcall.github_user_details.presentation.viewmodel.GithubUserDetailsViewModelFactory
 import com.orcchg.direcall.ui_core_lib.BaseFragment
+import javax.inject.Inject
 
 class GithubUserDetailsFragment : BaseFragment(R.layout.fragment_github_user_details) {
 
+    @Inject lateinit var factory: GithubUserDetailsViewModelFactory
+
     private val binding by viewBindings(FragmentGithubUserDetailsBinding::bind)
     private val login by argument<String>("login")
-    private val viewModel by viewModels<GithubUserDetailsViewModel>()
+    private val viewModel by viewModels<GithubUserDetailsViewModel> { factory }
 
     @SuppressLint("AutoDispose", "CheckResult")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -32,6 +36,7 @@ class GithubUserDetailsFragment : BaseFragment(R.layout.fragment_github_user_det
                     .let(findNavController()::navigate)
             }
 
+        viewModel.login = login
         observe(viewModel.user) {
             Glide.with(this)
                 .load(it.avatarUrl)

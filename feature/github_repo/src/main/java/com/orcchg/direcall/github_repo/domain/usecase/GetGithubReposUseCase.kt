@@ -7,8 +7,9 @@ import com.orcchg.direcall.github_repo.data.repository.GithubRepoRepository
 import com.orcchg.direcall.github_repo.domain.model.GithubRepo
 import com.orcchg.direcall.scheduler_api.SchedulersFactory
 import io.reactivex.Single
+import javax.inject.Inject
 
-class GetGithubReposUseCase(
+class GetGithubReposUseCase @Inject constructor(
     private val repository: GithubRepoRepository,
     schedulersFactory: SchedulersFactory
 ) : SingleUseCase<List<GithubRepo>>(schedulersFactory) {
