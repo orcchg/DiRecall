@@ -10,7 +10,8 @@ import dagger.android.AndroidInjector
     modules = [
         AndroidInjectionModule::class,
         AppModule::class,
-        NetworkModule::class
+        NetworkModule::class,
+        ViewModelModule::class
     ],
     dependencies = [
         SchedulersApi::class
