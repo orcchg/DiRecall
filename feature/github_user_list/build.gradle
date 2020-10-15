@@ -10,6 +10,7 @@ dependencies {
             project(':androidUtil'),
             project(':base'),
             project(':core:scheduler_api'),
+            project(':core:service_locator'),
             project(':core:ui_core_lib'),
             project(':design'),
             project(':navigation'),

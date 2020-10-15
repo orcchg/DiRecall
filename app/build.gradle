@@ -13,7 +13,12 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation(
+            project(':base'),
             project(':design'),
+            project(':core:scheduler_api'),
+            project(':core:scheduler'),
+            project(':core:service_locator'),
+            project(':core:service_locator_impl'),
             project(':feature:github_repo'),
             project(':feature:github_user_details'),
             project(':feature:github_user_list'),

@@ -7,6 +7,9 @@ apply plugin: Dependencies.Plugin.kotlinAndroidExt
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation(
+            project(':core:service_locator')
+    )
+    implementation(
             Dependencies.AndroidX.appCompat,
             Dependencies.AndroidX.fragmentKtx,
             Dependencies.AndroidX.liveData,
