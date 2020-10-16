@@ -3,6 +3,7 @@ package com.orcchg.direcall.github_repo.presentation.ui
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import com.orcchg.direcall.androidutil.argument
 import com.orcchg.direcall.androidutil.observe
 import com.orcchg.direcall.androidutil.viewBindings
 import com.orcchg.direcall.github_repo.R
@@ -15,6 +16,7 @@ class GithubRepoFragment : BaseFragment(R.layout.fragment_github_repo_list) {
 
     private val adapter = GithubRepoListAdapter()
     private val binding by viewBindings(FragmentGithubRepoListBinding::bind)
+    private val login by argument<String>("login")
     private val viewModel by viewModels<GithubRepoViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
