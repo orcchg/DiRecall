@@ -33,6 +33,7 @@ class GithubUserDetailsFragment : Fragment(R.layout.fragment_github_user_details
                     .let(findNavController()::navigate)
             }
 
+        viewModel.login = login
         observe(viewModel.user) {
             Glide.with(this)
                 .load(it.avatarUrl)

@@ -9,9 +9,10 @@ import com.uber.autodispose.autoDispose
 import timber.log.Timber
 
 class GithubUserDetailsViewModel(
-    private val login: String,
     private val getGithubUserDetailsUseCase: GetGithubUserDetailsUseCase
 ) : AutoDisposeViewModel() {
+
+    internal lateinit var login: String
 
     val user: LiveData<GithubUserDetails> by lazy(LazyThreadSafetyMode.NONE) {
         val liveData = MutableLiveData<GithubUserDetails>()

@@ -8,7 +8,7 @@ import org.koin.dsl.module
 
 val appModule = module {
 
-    viewModel { (login: String) -> GithubRepoViewModel(login, getGithubReposUseCase = get()) }
-    viewModel { (login: String) -> GithubUserDetailsViewModel(login, getGithubUserDetailsUseCase = get()) }
+    viewModel { GithubRepoViewModel(getGithubReposUseCase = get()) }
+    viewModel { GithubUserDetailsViewModel(getGithubUserDetailsUseCase = get()) }
     viewModel { GithubUserListViewModel(getGithubUsersUseCase = get()) }
 }

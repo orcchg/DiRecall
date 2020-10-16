@@ -24,6 +24,7 @@ class GithubRepoFragment : Fragment(R.layout.fragment_github_repo_list) {
         super.onViewCreated(view, savedInstanceState)
         binding.rvRepos.adapter = adapter
 
+        viewModel.login = login
         observe(viewModel.repos, adapter::update)
     }
 }
