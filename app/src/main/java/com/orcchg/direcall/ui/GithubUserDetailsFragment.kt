@@ -15,12 +15,13 @@ import com.orcchg.direcall.androidutil.viewBindings
 import com.orcchg.direcall.databinding.FragmentGithubUserDetailsBinding
 import com.orcchg.direcall.viewmodel.GithubUserDetailsViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 
 class GithubUserDetailsFragment : Fragment(R.layout.fragment_github_user_details) {
 
     private val binding by viewBindings(FragmentGithubUserDetailsBinding::bind)
     private val login by argument<String>("login")
-    private val viewModel by viewModel<GithubUserDetailsViewModel>()
+    private val viewModel by viewModel<GithubUserDetailsViewModel> { parametersOf(login) }
 
     @SuppressLint("AutoDispose", "CheckResult")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
