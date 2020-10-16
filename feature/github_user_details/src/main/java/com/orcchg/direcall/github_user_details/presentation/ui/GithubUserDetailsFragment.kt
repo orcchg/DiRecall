@@ -3,7 +3,6 @@ package com.orcchg.direcall.github_user_details.presentation.ui
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.jakewharton.rxbinding3.view.clicks
@@ -15,12 +14,14 @@ import com.orcchg.direcall.github_user_details.R
 import com.orcchg.direcall.github_user_details.databinding.FragmentGithubUserDetailsBinding
 import com.orcchg.direcall.github_user_details.presentation.viewmodel.GithubUserDetailsViewModel
 import com.orcchg.direcall.ui_core_lib.BaseFragment
+import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 
 class GithubUserDetailsFragment : BaseFragment(R.layout.fragment_github_user_details) {
 
     private val binding by viewBindings(FragmentGithubUserDetailsBinding::bind)
     private val login by argument<String>("login")
-    private val viewModel by viewModels<GithubUserDetailsViewModel>()
+    private val viewModel by viewModel<GithubUserDetailsViewModel> { parametersOf(login) }
 
     @SuppressLint("AutoDispose", "CheckResult")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -1,4 +1,6 @@
-## Modularized
+## Koin Modularized
 
-Modularized version from *master* branch. See git graph to figure out
-which base is for whatever branch.
+Modularized version with *koin*.
+
+https://github.com/InsertKoinIO/koin/issues/472
+

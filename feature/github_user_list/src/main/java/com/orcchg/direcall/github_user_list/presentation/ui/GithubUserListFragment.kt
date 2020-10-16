@@ -2,7 +2,6 @@ package com.orcchg.direcall.github_user_list.presentation.ui
 
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.orcchg.direcall.androidutil.observe
 import com.orcchg.direcall.androidutil.viewBindings
@@ -11,6 +10,7 @@ import com.orcchg.direcall.github_user_list.databinding.FragmentGithubUserListBi
 import com.orcchg.direcall.github_user_list.presentation.adapter.GithubUserListAdapter
 import com.orcchg.direcall.github_user_list.presentation.viewmodel.GithubUserListViewModel
 import com.orcchg.direcall.ui_core_lib.BaseFragment
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class GithubUserListFragment : BaseFragment(R.layout.fragment_github_user_list) {
 
@@ -21,7 +21,7 @@ class GithubUserListFragment : BaseFragment(R.layout.fragment_github_user_list) 
         }
     }
     private val binding by viewBindings(FragmentGithubUserListBinding::bind)
-    private val viewModel by viewModels<GithubUserListViewModel>()
+    private val viewModel by viewModel<GithubUserListViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

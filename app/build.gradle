@@ -14,6 +14,9 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation(
             project(':design'),
+            project(':core:network'),
+            project(':core:scheduler'),
+            project(':core:scheduler_api'),
             project(':feature:github_repo'),
             project(':feature:github_user_details'),
             project(':feature:github_user_list'),
@@ -22,6 +25,10 @@ dependencies {
     implementation(
             Dependencies.AndroidX.appCompat,
             Dependencies.AndroidX.coreKtx,
+            Dependencies.Di.koin,
+            Dependencies.Di.koinAndroid,
+            Dependencies.Di.koinAndroidVM,
+            Dependencies.Di.koinExt,
             Dependencies.Lib.ktStdLib,
             Dependencies.Lib.timber,
             Dependencies.View.constraintLayout
