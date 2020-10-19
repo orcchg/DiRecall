@@ -1,7 +1,8 @@
 import com.orcchg.direcall.build.Dependencies
 
-apply plugin: Dependencies.Plugin.javaLib
-apply plugin: Dependencies.Plugin.kotlin
+apply plugin: Dependencies.Plugin.androidLib
+apply plugin: Dependencies.Plugin.kotlinAndroid
+apply plugin: Dependencies.Plugin.kotlinAnnotation
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -10,7 +11,7 @@ dependencies {
     )
     implementation(
             Dependencies.Lib.ktStdLib,
-            Dependencies.Di.dagger,
+            Dependencies.Di.hilt,
             Dependencies.Rx.rx
     )
 }

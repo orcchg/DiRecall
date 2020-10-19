@@ -1,7 +1,6 @@
 package com.orcchg.direcall.github_user_details.presentation.ui
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -15,27 +14,15 @@ import com.orcchg.direcall.androidutil.observe
 import com.orcchg.direcall.androidutil.viewBindings
 import com.orcchg.direcall.github_user_details.R
 import com.orcchg.direcall.github_user_details.databinding.FragmentGithubUserDetailsBinding
-import com.orcchg.direcall.github_user_details.di.GithubUserDetailsFragmentComponentHolder
-import com.orcchg.direcall.github_user_details.di.GithubUserDetailsModule
 import com.orcchg.direcall.github_user_details.presentation.viewmodel.GithubUserDetailsViewModel
-import com.orcchg.direcall.github_user_details.presentation.viewmodel.GithubUserDetailsViewModelFactory
-import javax.inject.Inject
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class GithubUserDetailsFragment : Fragment(R.layout.fragment_github_user_details) {
-
-    @Inject lateinit var factory: GithubUserDetailsViewModelFactory
 
     private val binding by viewBindings(FragmentGithubUserDetailsBinding::bind)
     private val login by argument<String>("login")
-    private val viewModel by viewModels<GithubUserDetailsViewModel> { factory }
-
-    override fun onAttach(context: Context) {
-        val login = arguments?.getString("login").orEmpty()
-        (requireActivity().application as? GithubUserDetailsFragmentComponentHolder)
-            ?.userDetailsComponent(GithubUserDetailsModule(login))
-            ?.inject(this)
-        super.onAttach(context)
-    }
+    private val viewModel by viewModels<GithubUserDetailsViewModel>()
 
     @SuppressLint("AutoDispose", "CheckResult")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -54,5 +41,10 @@ class GithubUserDetailsFragment : Fragment(R.layout.fragment_github_user_details
 
             binding.tvTitle.text = it.login
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        viewModel.getUser(login)
     }
 }

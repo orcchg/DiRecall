@@ -10,13 +10,11 @@ import com.orcchg.direcall.github_user_list.R
 import com.orcchg.direcall.github_user_list.databinding.FragmentGithubUserListBinding
 import com.orcchg.direcall.github_user_list.presentation.adapter.GithubUserListAdapter
 import com.orcchg.direcall.github_user_list.presentation.viewmodel.GithubUserListViewModel
-import com.orcchg.direcall.github_user_list.presentation.viewmodel.GithubUserListViewModelFactory
 import com.orcchg.direcall.ui_core_lib.BaseFragment
-import javax.inject.Inject
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class GithubUserListFragment : BaseFragment(R.layout.fragment_github_user_list) {
-
-    @Inject lateinit var factory: GithubUserListViewModelFactory
 
     private val adapter = GithubUserListAdapter().apply {
         itemClickListener = {
@@ -25,7 +23,7 @@ class GithubUserListFragment : BaseFragment(R.layout.fragment_github_user_list) 
         }
     }
     private val binding by viewBindings(FragmentGithubUserListBinding::bind)
-    private val viewModel by viewModels<GithubUserListViewModel> { factory }
+    private val viewModel by viewModels<GithubUserListViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

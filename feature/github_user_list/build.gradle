@@ -3,6 +3,8 @@ import com.orcchg.direcall.build.Dependencies
 apply plugin: Dependencies.Plugin.androidLib
 apply plugin: Dependencies.Plugin.kotlinAndroid
 apply plugin: Dependencies.Plugin.kotlinAndroidExt
+apply plugin: Dependencies.Plugin.kotlinAnnotation
+apply plugin: Dependencies.Plugin.daggerHilt
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
@@ -21,8 +23,8 @@ dependencies {
             Dependencies.AndroidX.fragmentKtx,
             Dependencies.AndroidX.navigation,
             Dependencies.AndroidX.navigationUi,
-            Dependencies.Di.dagger,
-            Dependencies.Di.daggerAndroidSupport,
+            Dependencies.Di.hilt,
+            Dependencies.Di.hiltVM,
             Dependencies.Lib.glide,
             Dependencies.Lib.ktStdLib,
             Dependencies.Lib.timber,
@@ -38,4 +40,12 @@ dependencies {
             Dependencies.View.constraintLayout,
             Dependencies.View.recyclerView
     )
+    kapt(
+            Dependencies.Di.hiltCompiler,
+            Dependencies.Di.hiltVMCompiler
+    )
+}
+
+kapt {
+    correctErrorTypes true
 }

@@ -4,6 +4,7 @@ apply plugin: Dependencies.Plugin.androidApp
 apply plugin: Dependencies.Plugin.kotlinAndroid
 apply plugin: Dependencies.Plugin.kotlinAndroidExt
 apply plugin: Dependencies.Plugin.kotlinAnnotation
+apply plugin: Dependencies.Plugin.daggerHilt
 
 android {
     defaultConfig {
@@ -23,13 +24,14 @@ dependencies {
             project(':feature:github_repo'),
             project(':feature:github_user_details'),
             project(':feature:github_user_list'),
-            project(':navigation')
+            project(':navigation'),
+            project(':util')
     )
     implementation(
             Dependencies.AndroidX.appCompat,
             Dependencies.AndroidX.coreKtx,
-            Dependencies.Di.dagger,
-            Dependencies.Di.daggerAndroidSupport,
+            Dependencies.Di.hilt,
+            Dependencies.Di.hiltVM,
             Dependencies.Lib.ktStdLib,
             Dependencies.Lib.timber,
             Dependencies.Network.okHttpLog,
@@ -41,8 +43,8 @@ dependencies {
             Dependencies.View.constraintLayout
     )
     kapt(
-            Dependencies.Di.daggerAndroidProcessor,
-            Dependencies.Di.daggerCompiler
+            Dependencies.Di.hiltCompiler,
+            Dependencies.Di.hiltVMCompiler
     )
     testImplementation Dependencies.Test.junit
     androidTestImplementation(
@@ -51,4 +53,8 @@ dependencies {
     )
 
     lintChecks(project(':lint-rules'))
+}
+
+kapt {
+    correctErrorTypes true
 }

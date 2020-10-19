@@ -13,11 +13,11 @@ dependencies {
     )
     implementation(
             Dependencies.Lib.ktStdLib,
-            Dependencies.Di.dagger,
+            Dependencies.Di.hilt,
             Dependencies.Rx.rx,
             Dependencies.Rx.rxAndroid
     )
     kapt(
-            Dependencies.Di.daggerCompiler
+            Dependencies.Di.hiltCompiler
     )
 }
