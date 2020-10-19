@@ -5,5 +5,5 @@ apply plugin: Dependencies.Plugin.kotlin
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation Dependencies.Lib.ktStdLibJdk7
+    implementation Dependencies.Lib.ktStdLib
 }

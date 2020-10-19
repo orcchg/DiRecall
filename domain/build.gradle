@@ -8,12 +8,12 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(":base")
     implementation(
-            Dependencies.Di.dagger,
-            Dependencies.Lib.ktStdLibJdk7,
+            Dependencies.Di.hilt,
+            Dependencies.Lib.ktStdLib,
             Dependencies.Rx.rx,
             Dependencies.Rx.rxKt
     )
     kapt(
-            Dependencies.Di.daggerCompiler
+            Dependencies.Di.hiltCompiler
     )
 }

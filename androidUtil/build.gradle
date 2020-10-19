@@ -15,7 +15,7 @@ dependencies {
             Dependencies.AndroidX.appCompat,
             Dependencies.AndroidX.fragmentKtx,
             Dependencies.AndroidX.liveData,
-            Dependencies.Di.dagger,
+            Dependencies.Di.hilt,
             Dependencies.Rx.rx,
             Dependencies.Rx.rxAndroid,
             Dependencies.Rx.rxBinding,
@@ -23,6 +23,6 @@ dependencies {
             Dependencies.Rx.autoDisposeAndroidAC
     )
     kapt(
-            Dependencies.Di.daggerCompiler
+            Dependencies.Di.hiltCompiler
     )
 }

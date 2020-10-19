@@ -4,6 +4,7 @@ apply plugin: Dependencies.Plugin.androidApp
 apply plugin: Dependencies.Plugin.kotlinAndroid
 apply plugin: Dependencies.Plugin.kotlinAndroidExt
 apply plugin: Dependencies.Plugin.kotlinAnnotation
+apply plugin: Dependencies.Plugin.daggerHilt
 apply plugin: Dependencies.Plugin.navSafeArgs
 
 android {
@@ -18,7 +19,8 @@ dependencies {
             project(':androidUtil'),
             project(':base'),
             project(':data'),
-            project(':domain')
+            project(':domain'),
+            project(':util')
     )
     implementation(
             Dependencies.AndroidX.appCompat,
@@ -26,11 +28,14 @@ dependencies {
             Dependencies.AndroidX.fragmentKtx,
             Dependencies.AndroidX.navigation,
             Dependencies.AndroidX.navigationUi,
-            Dependencies.Di.dagger,
-            Dependencies.Di.daggerAndroidSupport,
+            Dependencies.Di.hilt,
+            Dependencies.Di.hiltVM,
             Dependencies.Lib.glide,
             Dependencies.Lib.ktStdLib,
             Dependencies.Lib.timber,
+            Dependencies.Network.okHttpLog,
+            Dependencies.Network.retrofit,
+            Dependencies.Parser.moshi,
             Dependencies.Rx.autoDispose,
             Dependencies.Rx.autoDisposeAndroidAC,
             Dependencies.Rx.rx,
@@ -41,8 +46,8 @@ dependencies {
             Dependencies.View.recyclerView
     )
     kapt(
-            Dependencies.Di.daggerAndroidProcessor,
-            Dependencies.Di.daggerCompiler
+            Dependencies.Di.hiltCompiler,
+            Dependencies.Di.hiltVMCompiler
     )
 
     testImplementation Dependencies.Test.junit
@@ -52,4 +57,8 @@ dependencies {
     )
 
     lintChecks(project(':lint-rules'))
+}
+
+kapt {
+    correctErrorTypes true
 }

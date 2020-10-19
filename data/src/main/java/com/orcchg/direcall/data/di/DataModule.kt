@@ -4,6 +4,8 @@ import com.orcchg.direcall.data.repository.GithubRepositoryImpl
 import com.orcchg.direcall.domain.repository.GithubRepository
 import dagger.Binds
 import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
 import javax.inject.Singleton
 
 @Module(
@@ -13,6 +15,7 @@ import javax.inject.Singleton
         UserCloudModule::class
     ]
 )
+@InstallIn(ApplicationComponent::class)
 interface DataModule {
 
     @Binds

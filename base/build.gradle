@@ -7,11 +7,11 @@ apply plugin: Dependencies.Plugin.kotlinAnnotation
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation(
-            Dependencies.Di.dagger,
-            Dependencies.Lib.ktStdLibJdk7,
+            Dependencies.Di.hilt,
+            Dependencies.Lib.ktStdLib,
             Dependencies.Rx.rx
     )
     kapt(
-            Dependencies.Di.daggerCompiler
+            Dependencies.Di.hiltCompiler
     )
 }

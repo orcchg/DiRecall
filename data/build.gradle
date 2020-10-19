@@ -1,12 +1,8 @@
 import com.orcchg.direcall.build.Dependencies
 
-apply plugin: Dependencies.Plugin.javaLib
-apply plugin: Dependencies.Plugin.kotlin
+apply plugin: Dependencies.Plugin.androidLib
+apply plugin: Dependencies.Plugin.kotlinAndroid
 apply plugin: Dependencies.Plugin.kotlinAnnotation
-
-compileKotlin {
-    kotlinOptions.jvmTarget = "1.8"
-}
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -15,8 +11,8 @@ dependencies {
             project(':util')
     )
     implementation(
-            Dependencies.Di.dagger,
-            Dependencies.Lib.ktStdLibJdk7,
+            Dependencies.Di.hilt,
+            Dependencies.Lib.ktStdLib,
             Dependencies.Network.okHttpLog,
             Dependencies.Network.retrofit,
             Dependencies.Network.retrofitMoshi,
@@ -26,7 +22,7 @@ dependencies {
             Dependencies.Parser.moshiKotlin
     )
     kapt(
-            Dependencies.Di.daggerCompiler,
+            Dependencies.Di.hiltCompiler,
             Dependencies.Parser.moshiKotlinCodegen
     )
 }

@@ -10,11 +10,12 @@ object Versions {
     const val buildToolsVersion = "30.0.0"
     const val constraintLayout = "2.0.0-rc1"
     const val coreKtx = "1.3.1"
-    const val dagger = "2.29"
     const val espresso = "3.2.0"
     const val fragmentKtx = "1.2.5"
     const val glide = "4.11.0"
     const val gradleAndroid = "4.0.1"
+    const val hilt = "2.28-alpha"
+    const val hiltVM = "1.0.0-alpha01"
     const val junit = "4.13"
     const val junitAndroidExt = "1.1.1"
     const val ktlint = "0.38.0"
@@ -47,10 +48,10 @@ object Dependencies {
     }
 
     object Di {
-        @JvmStatic val dagger = dependency("com.google.dagger:dagger:${Versions.dagger}")
-        @JvmStatic val daggerAndroidProcessor = dependency("com.google.dagger:dagger-android-processor:${Versions.dagger}")
-        @JvmStatic val daggerAndroidSupport = dependency("com.google.dagger:dagger-android-support:${Versions.dagger}")
-        @JvmStatic val daggerCompiler = dependency("com.google.dagger:dagger-compiler:${Versions.dagger}")
+        @JvmStatic val hilt = dependency("com.google.dagger:hilt-android:${Versions.hilt}")
+        @JvmStatic val hiltCompiler = dependency("com.google.dagger:hilt-android-compiler:${Versions.hilt}")
+        @JvmStatic val hiltVM = dependency("androidx.hilt:hilt-lifecycle-viewmodel:${Versions.hiltVM}")
+        @JvmStatic val hiltVMCompiler = dependency("androidx.hilt:hilt-compiler:${Versions.hiltVM}")
     }
 
     object Gradle {
@@ -82,6 +83,7 @@ object Dependencies {
     object Plugin {
         const val androidApp = "com.android.application"
         const val androidLib = "com.android.library"
+        const val daggerHilt = "dagger.hilt.android.plugin"
         const val javaLib = "java-library"
         const val google = "com.google.gms.google-services"
         const val kotlin = "kotlin"
