@@ -9,6 +9,7 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation(
             project(':base'),
+            project(':core:di'),
             project(':core:scheduler_api')
     )
     implementation(

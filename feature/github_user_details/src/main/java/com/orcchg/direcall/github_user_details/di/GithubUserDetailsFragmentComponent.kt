@@ -1,8 +1,30 @@
 package com.orcchg.direcall.github_user_details.di
 
 import com.orcchg.direcall.github_user_details.presentation.ui.GithubUserDetailsFragment
-import dagger.Subcomponent
-import dagger.android.AndroidInjector
+import com.orcchg.direcall.network.api.NetworkApi
+import com.orcchg.direcall.scheduler_api.di.SchedulerApi
+import dagger.Component
 
-@Subcomponent(modules = [GithubUserDetailsModule::class])
-interface GithubUserDetailsFragmentComponent : AndroidInjector<GithubUserDetailsFragment>
+@Component(
+    modules = [
+        GithubUserDetailsModule::class
+    ],
+    dependencies = [
+        NetworkApi::class,
+        SchedulerApi::class
+    ]
+)
+interface GithubUserDetailsFragmentComponent {
+
+    @Component.Factory
+    interface Factory {
+
+        fun create(
+            module: GithubUserDetailsModule,
+            networkApi: NetworkApi,
+            schedulerApi: SchedulerApi
+        ): GithubUserDetailsFragmentComponent
+    }
+
+    fun inject(target: GithubUserDetailsFragment)
+}

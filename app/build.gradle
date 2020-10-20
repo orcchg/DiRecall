@@ -16,20 +16,18 @@ dependencies {
     implementation(
             project(':base'),
             project(':design'),
+            project(':core:di'),
+            project(':core:network_api'),
             project(':core:network'),
             project(':core:scheduler_api'),
             project(':core:scheduler'),
             project(':core:ui_core_lib'),
-            project(':feature:github_repo'),
-            project(':feature:github_user_details'),
-            project(':feature:github_user_list'),
             project(':navigation')
     )
     implementation(
             Dependencies.AndroidX.appCompat,
             Dependencies.AndroidX.coreKtx,
             Dependencies.Di.dagger,
-            Dependencies.Di.daggerAndroidSupport,
             Dependencies.Lib.ktStdLib,
             Dependencies.Lib.timber,
             Dependencies.Network.okHttpLog,
@@ -41,7 +39,6 @@ dependencies {
             Dependencies.View.constraintLayout
     )
     kapt(
-            Dependencies.Di.daggerAndroidProcessor,
             Dependencies.Di.daggerCompiler
     )
     testImplementation Dependencies.Test.junit

@@ -13,9 +13,11 @@ import com.orcchg.direcall.androidutil.argument
 import com.orcchg.direcall.androidutil.clickDebounce
 import com.orcchg.direcall.androidutil.observe
 import com.orcchg.direcall.androidutil.viewBindings
+import com.orcchg.direcall.di.AppCoreApi
+import com.orcchg.direcall.di.getFeature
 import com.orcchg.direcall.github_user_details.R
 import com.orcchg.direcall.github_user_details.databinding.FragmentGithubUserDetailsBinding
-import com.orcchg.direcall.github_user_details.di.GithubUserDetailsFragmentComponentHolder
+import com.orcchg.direcall.github_user_details.di.DaggerGithubUserDetailsFragmentComponent
 import com.orcchg.direcall.github_user_details.di.GithubUserDetailsModule
 import com.orcchg.direcall.github_user_details.presentation.viewmodel.GithubUserDetailsViewModel
 import com.orcchg.direcall.github_user_details.presentation.viewmodel.GithubUserDetailsViewModelFactory
@@ -30,9 +32,14 @@ class GithubUserDetailsFragment : Fragment(R.layout.fragment_github_user_details
     private val viewModel by viewModels<GithubUserDetailsViewModel> { factory }
 
     override fun onAttach(context: Context) {
-        (requireActivity().application as? GithubUserDetailsFragmentComponentHolder)
-            ?.userDetailsComponent(GithubUserDetailsModule(login))
-            ?.inject(this)
+        val api = (requireActivity().application as AppCoreApi)
+        DaggerGithubUserDetailsFragmentComponent.factory()
+            .create(
+                module = GithubUserDetailsModule(login),
+                networkApi = api.getFeature(),
+                schedulerApi = api.getFeature()
+            )
+            .inject(this)
         super.onAttach(context)
     }
 

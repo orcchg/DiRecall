@@ -48,8 +48,6 @@ object Dependencies {
 
     object Di {
         @JvmStatic val dagger = dependency("com.google.dagger:dagger:${Versions.dagger}")
-        @JvmStatic val daggerAndroidProcessor = dependency("com.google.dagger:dagger-android-processor:${Versions.dagger}")
-        @JvmStatic val daggerAndroidSupport = dependency("com.google.dagger:dagger-android-support:${Versions.dagger}")
         @JvmStatic val daggerCompiler = dependency("com.google.dagger:dagger-compiler:${Versions.dagger}")
     }
 

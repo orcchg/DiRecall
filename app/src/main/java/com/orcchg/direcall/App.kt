@@ -1,38 +1,22 @@
 package com.orcchg.direcall
 
-import com.orcchg.direcall.di.AppComponent
+import android.app.Application
+import com.orcchg.direcall.core_di.Api
+import com.orcchg.direcall.di.AppCoreApi
 import com.orcchg.direcall.di.DaggerAppComponent
-import com.orcchg.direcall.github_repo.di.GithubRepoFragmentComponent
-import com.orcchg.direcall.github_repo.di.GithubRepoFragmentComponentHolder
-import com.orcchg.direcall.github_repo.di.GithubRepoModule
-import com.orcchg.direcall.github_user_details.di.GithubUserDetailsFragmentComponent
-import com.orcchg.direcall.github_user_details.di.GithubUserDetailsFragmentComponentHolder
-import com.orcchg.direcall.github_user_details.di.GithubUserDetailsModule
-import com.orcchg.direcall.scheduler.di.DaggerSchedulersComponent
-import dagger.android.AndroidInjector
-import dagger.android.support.DaggerApplication
 import timber.log.Timber
+import javax.inject.Inject
 
-class App :
-    DaggerApplication(),
-    GithubRepoFragmentComponentHolder,
-    GithubUserDetailsFragmentComponentHolder {
+class App : Application(), AppCoreApi {
 
-    private lateinit var appInjector: AppComponent
+    @JvmSuppressWildcards
+    @Inject lateinit var featuresMap: Map<Class<*>, Api>
 
-    override fun applicationInjector(): AndroidInjector<out DaggerApplication> =
-        DaggerAppComponent.builder()
-            .schedulersApi(DaggerSchedulersComponent.create())
-            .build()
-            .also { appInjector = it }
-
-    override fun repoComponent(module: GithubRepoModule): GithubRepoFragmentComponent =
-        appInjector.repoComponent(module)
-
-    override fun userDetailsComponent(module: GithubUserDetailsModule): GithubUserDetailsFragmentComponent =
-        appInjector.userDetailsComponent(module)
+    @Suppress("Unchecked_Cast")
+    override fun <T> getFeature(key: Class<T>): T = featuresMap[key] as T
 
     override fun onCreate() {
+        DaggerAppComponent.create().inject(this)
         super.onCreate()
         Timber.plant(Timber.DebugTree())
     }

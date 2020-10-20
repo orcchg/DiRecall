@@ -1,7 +1,7 @@
 package com.orcchg.direcall.scheduler.di
 
-import com.orcchg.direcall.scheduler_api.di.SchedulersApi
+import com.orcchg.direcall.scheduler_api.di.SchedulerApi
 import dagger.Component
 
 @Component(modules = [SchedulersModule::class])
-interface SchedulersComponent : SchedulersApi
+interface SchedulerComponent : SchedulerApi

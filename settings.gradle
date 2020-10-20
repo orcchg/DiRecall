@@ -1,6 +1,8 @@
 include ':androidUtil'
 include ':app'
 include ':base'
+include ':core:di'
+include ':core:network_api'
 include ':core:network'
 include ':core:scheduler_api'
 include ':core:scheduler'
