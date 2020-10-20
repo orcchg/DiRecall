@@ -9,11 +9,17 @@ android {
     defaultConfig {
         applicationId = 'com.orcchg.direcall'
     }
+    dynamicFeatures = [
+            ':feature:github_repo',
+            ':feature:github_user_details',
+            ':feature:github_user_list'
+    ]
 }
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation(
+            project(':androidUtil'),
             project(':base'),
             project(':design'),
             project(':core:di'),
@@ -22,18 +28,22 @@ dependencies {
             project(':core:scheduler_api'),
             project(':core:scheduler'),
             project(':core:ui_core_lib'),
-            project(':navigation')
+            project(':navigation'),
+            project(':util')
     )
     implementation(
             Dependencies.AndroidX.appCompat,
             Dependencies.AndroidX.coreKtx,
             Dependencies.Di.dagger,
+            Dependencies.Lib.glide,
             Dependencies.Lib.ktStdLib,
             Dependencies.Lib.timber,
             Dependencies.Network.okHttpLog,
             Dependencies.Network.retrofit,
             Dependencies.Parser.moshi,
             Dependencies.Rx.rx,
+            Dependencies.Rx.rxBinding,
+            Dependencies.Rx.rxBindingCore,
             Dependencies.Rx.autoDispose,
             Dependencies.Rx.autoDisposeAndroidAC,
             Dependencies.View.constraintLayout

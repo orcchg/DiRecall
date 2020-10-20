@@ -1,6 +1,6 @@
 import com.orcchg.direcall.build.Dependencies
 
-apply plugin: Dependencies.Plugin.androidLib
+apply plugin: Dependencies.Plugin.androidDynamicFeature
 apply plugin: Dependencies.Plugin.kotlinAndroid
 apply plugin: Dependencies.Plugin.kotlinAnnotation
 
