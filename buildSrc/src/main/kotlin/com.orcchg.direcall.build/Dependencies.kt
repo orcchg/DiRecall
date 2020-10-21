@@ -83,6 +83,7 @@ object Dependencies {
 
     object Plugin {
         const val androidApp = "com.android.application"
+        const val androidDynamicFeature = "com.android.dynamic-feature"
         const val androidLib = "com.android.library"
         const val javaLib = "java-library"
         const val google = "com.google.gms.google-services"

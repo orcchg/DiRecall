@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">DiRecall</string>
+    <string name="title_github_user_gists">Github User Gists</string>
 </resources>

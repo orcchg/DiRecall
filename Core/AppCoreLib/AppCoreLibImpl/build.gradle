@@ -1,0 +1,22 @@
+import com.orcchg.direcall.build.Dependencies
+
+apply plugin: Dependencies.Plugin.androidLib
+apply plugin: Dependencies.Plugin.kotlinAndroid
+apply plugin: Dependencies.Plugin.kotlinAnnotation
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation(
+            project(':base'),
+            project(':Core:DiCoreLib'),
+            project(':Core:AppCoreLib:AppCoreLibApi')
+    )
+    implementation(
+            Dependencies.AndroidX.appCompat,
+            Dependencies.Di.dagger,
+            Dependencies.Lib.ktStdLib
+    )
+    kapt(
+            Dependencies.Di.daggerCompiler
+    )
+}
