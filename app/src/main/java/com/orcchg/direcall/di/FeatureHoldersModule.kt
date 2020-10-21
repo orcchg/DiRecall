@@ -1,5 +1,7 @@
 package com.orcchg.direcall.di
 
+import com.orcchg.direcall.core.app.api.AppCoreLibApi
+import com.orcchg.direcall.core.app.impl.di.AppCoreLibFeatureHolder
 import com.orcchg.direcall.core.di.FeatureHolder
 import com.orcchg.direcall.core.di.FeatureHolderManager
 import com.orcchg.direcall.core.net.api.NetCoreLibApi
@@ -26,6 +28,11 @@ object FeatureHoldersModule {
 
     @Module
     interface Declarations {
+
+        @Binds
+        @IntoMap
+        @ClassKey(AppCoreLibApi::class)
+        fun bindAppCoreApi(binding: AppCoreLibFeatureHolder): FeatureHolder<*>
 
         @Binds
         @IntoMap
