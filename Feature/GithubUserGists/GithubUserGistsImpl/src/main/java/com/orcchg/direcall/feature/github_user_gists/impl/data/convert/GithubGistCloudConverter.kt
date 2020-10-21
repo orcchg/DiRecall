@@ -10,7 +10,7 @@ class GithubGistCloudConverter @Inject constructor() : Converter<GithubGistEntit
     override fun convert(from: GithubGistEntity): GithubGist =
         GithubGist(
             id = from.id,
-            description = from.description,
+            description = from.description.orEmpty(),
             url = from.url
         )
 }
