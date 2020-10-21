@@ -4,6 +4,6 @@ import com.squareup.moshi.Json
 
 data class GithubGistEntity(
     @Json(name = "id") val id: String,
-    @Json(name = "description") val description: String,
+    @Json(name = "description") val description: String?,
     @Json(name = "url") val url: String?
 )
