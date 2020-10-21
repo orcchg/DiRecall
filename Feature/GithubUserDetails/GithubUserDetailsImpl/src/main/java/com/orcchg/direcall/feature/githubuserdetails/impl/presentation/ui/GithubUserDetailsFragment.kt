@@ -35,6 +35,12 @@ class GithubUserDetailsFragment : DaggerFragment(R.layout.fragment_github_user_d
                     .let(findNavController()::navigate)
             }
 
+        binding.btnOrganizationList.clicks().clickDebounce()
+            .subscribe {
+                GithubUserDetailsFragmentDirections.navActionOpenGithubOrganizationList(login = login)
+                    .let(findNavController()::navigate)
+            }
+
         binding.btnRepoList.clicks().clickDebounce()
             .subscribe {
                 GithubUserDetailsFragmentDirections.navActionOpenGithubRepoList(login = login)

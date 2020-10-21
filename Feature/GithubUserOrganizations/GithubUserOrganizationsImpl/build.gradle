@@ -19,7 +19,7 @@ dependencies {
             project(':Core:NetCoreLib:NetCoreLibApi'),
             project(':Core:SchedulerCoreLib:SchedulerCoreLibApi'),
             project(':Core:UiCoreLib'),
-            project(':Feature:GithubUserGists:GithubUserGistsApi')
+            project(':Feature:GithubUserOrganizations:GithubUserOrganizationsApi')
     )
     implementation(
             Dependencies.AndroidX.appCompat,
@@ -29,6 +29,7 @@ dependencies {
             Dependencies.AndroidX.navigation,
             Dependencies.AndroidX.navigationUi,
             Dependencies.Di.dagger,
+            Dependencies.Lib.glide,
             Dependencies.Lib.ktStdLib,
             Dependencies.Lib.timber,
             Dependencies.Network.retrofit,

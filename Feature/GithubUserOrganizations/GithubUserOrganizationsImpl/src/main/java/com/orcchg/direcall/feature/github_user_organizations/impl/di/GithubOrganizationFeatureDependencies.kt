@@ -1,9 +1,9 @@
-package com.orcchg.direcall.feature.github_user_gists.impl.di
+package com.orcchg.direcall.feature.github_user_organizations.impl.di
 
 import com.orcchg.direcall.core.scheduler.api.SchedulersFactory
 import retrofit2.Retrofit
 
-interface GithubGistFeatureDependencies {
+interface GithubOrganizationFeatureDependencies {
 
     fun retrofit(): Retrofit
 

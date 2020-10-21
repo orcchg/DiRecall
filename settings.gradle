@@ -19,6 +19,8 @@ include ':Feature:GithubUserDetails:GithubUserDetailsApi'
 include ':Feature:GithubUserDetails:GithubUserDetailsImpl'
 include ':Feature:GithubUserGists:GithubUserGistsApi'
 include ':Feature:GithubUserGists:GithubUserGistsImpl'
+include ':Feature:GithubUserOrganizations:GithubUserOrganizationsApi'
+include ':Feature:GithubUserOrganizations:GithubUserOrganizationsImpl'
 include ':Feature:GithubRepo:GithubRepoApi'
 include ':Feature:GithubRepo:GithubRepoImpl'
 rootProject.name = "DiRecall"
