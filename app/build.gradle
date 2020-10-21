@@ -9,7 +9,10 @@ android {
     defaultConfig {
         applicationId = 'com.orcchg.direcall'
     }
-    dynamicFeatures = [':Feature:GithubUserGists:GithubUserGistsImpl']
+    dynamicFeatures = [
+            ':Feature:GithubUserGists:GithubUserGistsImpl',
+            ':Feature:GithubUserOrganizations:GithubUserOrganizationsImpl'
+    ]
 }
 
 dependencies {
