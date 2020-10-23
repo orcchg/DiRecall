@@ -1,4 +1,4 @@
-package com.orcchg.direcall.androidutil
+package com.orcchg.direcall.core.ui
 
 import androidx.lifecycle.ViewModel
 import com.uber.autodispose.lifecycle.CorrespondingEventsFunction

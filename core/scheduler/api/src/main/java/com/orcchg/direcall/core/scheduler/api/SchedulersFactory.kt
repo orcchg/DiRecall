@@ -1,4 +1,4 @@
-package com.orcchg.direcall.base
+package com.orcchg.direcall.core.scheduler.api
 
 import io.reactivex.Scheduler
 

@@ -2,8 +2,6 @@ import com.orcchg.direcall.build.Dependencies
 
 apply plugin: Dependencies.Plugin.androidApp
 apply plugin: Dependencies.Plugin.kotlinAndroid
-apply plugin: Dependencies.Plugin.kotlinAndroidExt
-apply plugin: Dependencies.Plugin.navSafeArgs
 
 android {
     defaultConfig {
@@ -16,7 +14,10 @@ dependencies {
     implementation(
             project(':androidUtil'),
             project(':base'),
-            project(':domain')
+            project(':core:ui'),
+            project(':design'),
+            project(':domain'),
+            project(':navigation')
     )
     implementation(
             Dependencies.AndroidX.appCompat,
