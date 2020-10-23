@@ -6,17 +6,9 @@ apply plugin: Dependencies.Plugin.kotlinAndroid
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation(
-            project(':base'),
-            project(':util')
-    )
-    implementation(
-            Dependencies.AndroidX.appCompat,
-            Dependencies.AndroidX.fragmentKtx,
-            Dependencies.AndroidX.liveData,
+            Dependencies.AndroidX.lifecycle,
             Dependencies.Lib.ktStdLib,
             Dependencies.Rx.rx,
-            Dependencies.Rx.rxAndroid,
-            Dependencies.Rx.rxBinding,
             Dependencies.Rx.autoDispose,
             Dependencies.Rx.autoDisposeAndroidAC
     )

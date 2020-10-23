@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav_graph"
     app:startDestination="@id/nav_fragment_github_user_list">
 
     <fragment
         android:id="@id/nav_fragment_github_user_list"
-        android:name="com.orcchg.direcall.ui.GithubUserListFragment"
-        tools:layout="@layout/fragment_github_user_list">
+        android:name="com.orcchg.direcall.ui.GithubUserListFragment">
 
         <action
             android:id="@+id/nav_action_open_github_user_details"
@@ -17,8 +15,7 @@
 
     <fragment
         android:id="@id/nav_fragment_github_user_details"
-        android:name="com.orcchg.direcall.ui.GithubUserDetailsFragment"
-        tools:layout="@layout/fragment_github_user_details">
+        android:name="com.orcchg.direcall.ui.GithubUserDetailsFragment">
 
         <argument
             android:name="login"
@@ -32,8 +29,7 @@
 
     <fragment
         android:id="@id/nav_fragment_github_repo_list"
-        android:name="com.orcchg.direcall.ui.GithubRepoFragment"
-        tools:layout="@layout/fragment_github_repo_list">
+        android:name="com.orcchg.direcall.ui.GithubRepoFragment">
 
         <argument
             android:name="login"

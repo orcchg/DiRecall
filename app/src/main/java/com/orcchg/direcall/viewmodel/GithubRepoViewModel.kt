@@ -2,7 +2,7 @@ package com.orcchg.direcall.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.orcchg.direcall.androidutil.AutoDisposeViewModel
+import com.orcchg.direcall.core.ui.AutoDisposeViewModel
 import com.orcchg.direcall.domain.model.GithubRepo
 import com.orcchg.direcall.domain.usecase.GetGithubReposUseCase
 import com.uber.autodispose.autoDispose

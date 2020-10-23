@@ -1,7 +1,7 @@
-package com.orcchg.direcall.androidutil
+package com.orcchg.direcall.core.scheduler.impl
 
-import com.orcchg.direcall.base.SchedulersFactory
 import com.orcchg.direcall.base.usecase.UseCaseThreadExecutor
+import com.orcchg.direcall.core.scheduler.api.SchedulersFactory
 import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers

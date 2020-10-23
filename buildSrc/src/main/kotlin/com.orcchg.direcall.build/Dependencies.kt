@@ -39,6 +39,7 @@ object Dependencies {
         @JvmStatic val appCompat = dependency("androidx.appcompat:appcompat:${Versions.appCompat}")
         @JvmStatic val coreKtx = dependency("androidx.core:core-ktx:${Versions.coreKtx}")
         @JvmStatic val fragmentKtx = dependency("androidx.fragment:fragment-ktx:${Versions.fragmentKtx}")
+        @JvmStatic val lifecycle = dependency("androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle}")
         @JvmStatic val liveData = dependency("androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle}")
         @JvmStatic val navigation = dependency("androidx.navigation:navigation-fragment-ktx:${Versions.navigation}")
         @JvmStatic val navigationSafeArgs = dependency("androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navigation}")
@@ -53,7 +54,6 @@ object Dependencies {
     object Lib {
         @JvmStatic val glide = dependency("com.github.bumptech.glide:glide:${Versions.glide}")
         @JvmStatic val ktStdLib = dependency("org.jetbrains.kotlin:kotlin-stdlib:${Versions.ktStdLib}")
-        @JvmStatic val ktStdLibJdk7 = dependency("org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.ktStdLib}")
         @JvmStatic val timber = dependency("com.jakewharton.timber:timber:${Versions.timber}")
     }
 
