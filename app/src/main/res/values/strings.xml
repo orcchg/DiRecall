@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">DiRecall</string>
     <string name="btn_github_repo_list">Repositories</string>
+
+    <string name="feature_module_github_repo">Github Repos</string>
+    <string name="feature_module_github_user_details">Github User Details</string>
+    <string name="feature_module_github_user_list">Github Users</string>
 </resources>

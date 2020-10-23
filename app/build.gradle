@@ -7,6 +7,8 @@ android {
     defaultConfig {
         applicationId = 'com.orcchg.direcall'
     }
+    dynamicFeatures = [
+    ]
 }
 
 dependencies {
@@ -14,9 +16,22 @@ dependencies {
     implementation(
             project(':androidUtil'),
             project(':base'),
+            project(':core:network:public'),
+            project(':core:network:wiring'),
+            project(':core:scheduler:public'),
+            project(':core:scheduler:wiring'),
+            project(':core:scopes'),
             project(':core:ui'),
             project(':design'),
-            project(':domain'),
+            project(':feature:github_repo:impl'),
+            project(':feature:github_repo:public'),
+            project(':feature:github_repo:wiring'),
+            project(':feature:github_user_details:impl'),
+            project(':feature:github_user_details:public'),
+            project(':feature:github_user_details:wiring'),
+            project(':feature:github_user_list:impl'),
+            project(':feature:github_user_list:public'),
+            project(':feature:github_user_list:wiring'),
             project(':navigation')
     )
     implementation(
@@ -25,9 +40,17 @@ dependencies {
             Dependencies.AndroidX.fragmentKtx,
             Dependencies.AndroidX.navigation,
             Dependencies.AndroidX.navigationUi,
+            Dependencies.Di.dagger,
             Dependencies.Lib.glide,
             Dependencies.Lib.ktStdLib,
             Dependencies.Lib.timber,
+            Dependencies.Network.okHttpLog,
+            Dependencies.Network.retrofit,
+            Dependencies.Network.retrofitMoshi,
+            Dependencies.Network.retrofitRx,
+            Dependencies.Parser.moshi,
+            Dependencies.Parser.moshiAdapters,
+            Dependencies.Parser.moshiKotlin,
             Dependencies.Rx.autoDispose,
             Dependencies.Rx.autoDisposeAndroidAC,
             Dependencies.Rx.rx,

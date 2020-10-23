@@ -94,6 +94,13 @@ subprojects {
                 kotlinOptions {
                     jvmTarget = JavaVersion.VERSION_1_8
                 }
+
+                packagingOptions {
+                    exclude 'META-INF/impl_debug.kotlin_module'
+                    exclude 'META-INF/main.kotlin_module'
+                    exclude 'META-INF/public.kotlin_module'
+                    exclude 'META-INF/wiring_debug.kotlin_module'
+                }
             }
         }
     }

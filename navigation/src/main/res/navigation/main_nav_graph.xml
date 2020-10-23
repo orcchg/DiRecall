@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@id/nav_fragment_github_user_list"
-        android:name="com.orcchg.direcall.ui.GithubUserListFragment">
+        android:name="com.orcchg.direcall.feature.github_user_list.impl.presentation.ui.GithubUserListFragment">
 
         <action
             android:id="@+id/nav_action_open_github_user_details"
@@ -15,7 +15,7 @@
 
     <fragment
         android:id="@id/nav_fragment_github_user_details"
-        android:name="com.orcchg.direcall.ui.GithubUserDetailsFragment">
+        android:name="com.orcchg.direcall.feature.github_user_details.impl.presentation.ui.GithubUserDetailsFragment">
 
         <argument
             android:name="login"
@@ -29,7 +29,7 @@
 
     <fragment
         android:id="@id/nav_fragment_github_repo_list"
-        android:name="com.orcchg.direcall.ui.GithubRepoFragment">
+        android:name="com.orcchg.direcall.feature.github_repo.impl.presentation.ui.GithubRepoFragment">
 
         <argument
             android:name="login"

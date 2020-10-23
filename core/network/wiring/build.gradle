@@ -1,0 +1,23 @@
+import com.orcchg.direcall.build.Dependencies
+
+apply plugin: Dependencies.Plugin.javaLib
+apply plugin: Dependencies.Plugin.kotlin
+apply plugin: Dependencies.Plugin.kotlinAnnotation
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation(
+            project(':core:network:impl'),
+            project(':core:network:public')
+    )
+    implementation(
+            Dependencies.Di.dagger,
+            Dependencies.Lib.ktStdLib,
+            Dependencies.Network.okHttpLog,
+            Dependencies.Network.retrofit,
+            Dependencies.Parser.moshi
+    )
+    kapt(
+            Dependencies.Di.daggerCompiler
+    )
+}

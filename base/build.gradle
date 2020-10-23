@@ -6,7 +6,7 @@ apply plugin: Dependencies.Plugin.kotlin
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation(
-            project(':core:scheduler:api')
+            project(':core:scheduler:public')
     )
     implementation(
             Dependencies.Lib.ktStdLib,

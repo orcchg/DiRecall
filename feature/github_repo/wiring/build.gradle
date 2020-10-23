@@ -1,0 +1,26 @@
+import com.orcchg.direcall.build.Dependencies
+
+apply plugin: Dependencies.Plugin.androidLib
+apply plugin: Dependencies.Plugin.kotlinAndroid
+apply plugin: Dependencies.Plugin.kotlinAnnotation
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation(
+            project(':base'),
+            project(':core:network:public'),
+            project(':core:scheduler:public'),
+            project(':core:ui'),
+            project(':feature:github_repo:public'),
+            project(':feature:github_repo:impl')
+    )
+    implementation(
+            Dependencies.AndroidX.appCompat,
+            Dependencies.Di.dagger,
+            Dependencies.Lib.ktStdLib,
+            Dependencies.Network.retrofit
+    )
+    kapt(
+            Dependencies.Di.daggerCompiler
+    )
+}

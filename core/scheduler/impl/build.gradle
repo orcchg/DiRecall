@@ -6,10 +6,10 @@ apply plugin: Dependencies.Plugin.kotlinAndroid
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation(
-            project(':base'),
-            project(':core:scheduler:api')
+            project(':core:scheduler:public')
     )
     implementation(
+            Dependencies.Di.dagger,
             Dependencies.Lib.ktStdLib,
             Dependencies.Rx.rx,
             Dependencies.Rx.rxAndroid
