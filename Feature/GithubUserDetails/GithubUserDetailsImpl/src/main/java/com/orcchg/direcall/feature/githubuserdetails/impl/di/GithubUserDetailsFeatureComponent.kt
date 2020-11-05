@@ -1,5 +1,6 @@
 package com.orcchg.direcall.feature.githubuserdetails.impl.di
 
+import com.orcchg.direcall.core.analytics.api.AnalyticsCoreLibApi
 import com.orcchg.direcall.core.net.api.NetCoreLibApi
 import com.orcchg.direcall.core.scheduler.api.SchedulerCoreLibApi
 import com.orcchg.direcall.feature.githubuserdetails.impl.presentation.viewmodel.GithubUserDetailsViewModel
@@ -27,6 +28,7 @@ interface GithubUserDetailsFeatureComponent : GithubUserDetailsInternalFeatureAp
 
 @Component(
     dependencies = [
+        AnalyticsCoreLibApi::class,
         NetCoreLibApi::class,
         SchedulerCoreLibApi::class
     ]
@@ -37,6 +39,7 @@ interface GithubUserDetailsFeatureDependenciesComponent : GithubUserDetailsFeatu
     interface Factory {
 
         fun create(
+            analyticsCoreLibApi: AnalyticsCoreLibApi,
             netCoreLibApi: NetCoreLibApi,
             schedulerCoreLibApi: SchedulerCoreLibApi
         ): GithubUserDetailsFeatureDependenciesComponent

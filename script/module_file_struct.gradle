@@ -1,0 +1,39 @@
+void includeApiImplModules(String moduleNameBase, String topLevelDirectory, String relativePath) {
+    String modulesBasePath = buildModulePath(topLevelDirectory, relativePath)
+    String apiModuleName = "${moduleNameBase}Api"
+    String implModuleName = "${moduleNameBase}Impl"
+    includeSubproject(apiModuleName, modulesBasePath)
+    includeSubproject(implModuleName, modulesBasePath)
+}
+
+void includeApiImplModules(String moduleNameBase, String topLevelDirectory) {
+    includeApiImplModules(moduleNameBase, topLevelDirectory, moduleNameBase)
+}
+
+void includeSingleModule(String moduleName, String topLevelDirectory, String relativePath) {
+    String modulePath = buildModulePath(topLevelDirectory, relativePath)
+    includeSubproject(moduleName, modulePath)
+}
+
+void includeSingleModule(String moduleName, String topLevelDirectory) {
+    includeSubproject(moduleName, topLevelDirectory)
+}
+
+void includeSubproject(String moduleName, String moduleRelativePath) {
+    include ":$moduleName"
+    project(":$moduleName").projectDir = new File("${moduleRelativePath}/${moduleName}")
+}
+
+static String buildModulePath(String topLevelDirectory, String relativePath) {
+    "${topLevelDirectory}/${relativePath}"
+}
+
+/*
+  Экспортируем методы, чтобы они были доступны в подключемом скрипте
+  Решение взято отсюда:
+  https://stackoverflow.com/a/23290820
+*/
+ext {
+    includeApiImplModules = this.&includeApiImplModules
+    includeSingleModule = this.&includeSingleModule
+}

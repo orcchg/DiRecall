@@ -2,6 +2,7 @@ package com.orcchg.direcall.feature.github_user_organizations.impl.presentation.
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.orcchg.direcall.core.analytics.api.Analytics
 import com.orcchg.direcall.core.ui.AutoDisposeViewModel
 import com.orcchg.direcall.feature.github_user_organizations.api.interactor.GithubOrganizationInteractor
 import com.orcchg.direcall.feature.github_user_organizations.api.model.GithubOrganization
@@ -12,12 +13,14 @@ import javax.inject.Named
 
 class GithubUserOrganizationsViewModel @Inject constructor(
     @Named("login") private val login: String,
+    private val analytics: Analytics,
     private val interactor: GithubOrganizationInteractor
 ) : AutoDisposeViewModel() {
 
     val organizations: LiveData<List<GithubOrganization>> by lazy(LazyThreadSafetyMode.NONE) {
         val liveData = MutableLiveData<List<GithubOrganization>>()
         interactor.organizations(login)
+            .doOnSubscribe { analytics.sendEvent("get_organizations", "Get list of organizations for github user $login") }
             .autoDispose(this)
             .subscribe({ liveData.value = it }, Timber::e)
         liveData

@@ -16,6 +16,7 @@ class GithubUserListFeatureHolder @Inject constructor(
     override fun buildFeature(params: Params): GithubUserListFeatureApi =
         DaggerGithubUserListFeatureDependenciesComponent.factory()
             .create(
+                analyticsCoreLibApi = featureContainer.getFeature(),
                 netCoreLibApi = featureContainer.getFeature(),
                 schedulerCoreLibApi = featureContainer.getFeature()
             )

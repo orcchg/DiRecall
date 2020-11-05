@@ -14,6 +14,7 @@ dependencies {
             project(':design'),
             project(':navigation'),
             project(':util'),
+            project(':AnalyticsCoreLibApi'),
             project(':Core:AppCoreLib:AppCoreLibApi'),
             project(':Core:DiCoreLib'),
             project(':Core:NetCoreLib:NetCoreLibApi'),

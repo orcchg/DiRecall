@@ -2,6 +2,7 @@ package com.orcchg.direcall.core.di
 
 import androidx.annotation.MainThread
 import com.orcchg.direcall.base.Params
+import com.orcchg.direcall.core.di.square.ComponentHolder
 import javax.inject.Inject
 
 class FeatureHolderManager @Inject constructor(
@@ -10,7 +11,7 @@ class FeatureHolderManager @Inject constructor(
 
     @MainThread
     fun <T> getFeature(key: Class<T>, params: Params): T =
-        retrieveFeatureHolder(key).getFeature(params)
+        ComponentHolder.component(key) ?: retrieveFeatureHolder(key).getFeature(params)
 
     @MainThread
     fun releaseFeature(key: Class<*>) {
