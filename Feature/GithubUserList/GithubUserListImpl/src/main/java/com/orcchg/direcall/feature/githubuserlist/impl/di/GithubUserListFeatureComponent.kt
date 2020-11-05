@@ -1,5 +1,6 @@
 package com.orcchg.direcall.feature.githubuserlist.impl.di
 
+import com.orcchg.direcall.core.analytics.api.AnalyticsCoreLibApi
 import com.orcchg.direcall.core.net.api.NetCoreLibApi
 import com.orcchg.direcall.core.scheduler.api.SchedulerCoreLibApi
 import com.orcchg.direcall.feature.githubuserlist.impl.presentation.viewmodel.GithubUserListViewModel
@@ -22,6 +23,7 @@ interface GithubUserListFeatureComponent : GithubUserListInternalFeatureApi {
 
 @Component(
     dependencies = [
+        AnalyticsCoreLibApi::class,
         NetCoreLibApi::class,
         SchedulerCoreLibApi::class
     ]
@@ -32,6 +34,7 @@ interface GithubUserListFeatureDependenciesComponent : GithubUserListFeatureDepe
     interface Factory {
 
         fun create(
+            analyticsCoreLibApi: AnalyticsCoreLibApi,
             netCoreLibApi: NetCoreLibApi,
             schedulerCoreLibApi: SchedulerCoreLibApi
         ): GithubUserListFeatureDependenciesComponent

@@ -1,5 +1,6 @@
 package com.orcchg.direcall.feature.github_user_gists.impl.di
 
+import com.orcchg.direcall.core.analytics.api.AnalyticsCoreLibApi
 import com.orcchg.direcall.core.net.api.NetCoreLibApi
 import com.orcchg.direcall.core.scheduler.api.SchedulerCoreLibApi
 import com.orcchg.direcall.feature.github_user_gists.impl.presentation.viewmodel.GithubUserGistsViewModel
@@ -27,6 +28,7 @@ interface GithubGistFeatureComponent : GithubGistInternalFeatureApi {
 
 @Component(
     dependencies = [
+        AnalyticsCoreLibApi::class,
         NetCoreLibApi::class,
         SchedulerCoreLibApi::class
     ]
@@ -37,6 +39,7 @@ interface GithubGistFeatureDependenciesComponent : GithubGistFeatureDependencies
     interface Factory {
 
         fun create(
+            analyticsCoreLibApi: AnalyticsCoreLibApi,
             netCoreLibApi: NetCoreLibApi,
             schedulerCoreLibApi: SchedulerCoreLibApi
         ): GithubGistFeatureDependenciesComponent

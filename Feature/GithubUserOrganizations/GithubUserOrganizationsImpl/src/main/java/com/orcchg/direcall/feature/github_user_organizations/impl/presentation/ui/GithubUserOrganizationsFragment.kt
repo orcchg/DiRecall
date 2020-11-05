@@ -15,7 +15,6 @@ import com.orcchg.direcall.feature.github_user_organizations.impl.databinding.Fr
 import com.orcchg.direcall.feature.github_user_organizations.impl.di.DaggerGithubOrganizationFeatureComponent
 import com.orcchg.direcall.feature.github_user_organizations.impl.di.DaggerGithubOrganizationFeatureDependenciesComponent
 import com.orcchg.direcall.feature.github_user_organizations.impl.presentation.adapter.GithubOrganizationsAdapter
-import com.orcchg.direcall.feature.github_user_organizations.impl.presentation.di.DaggerGithubUserOrganizationsFragmentComponent
 import com.orcchg.direcall.feature.github_user_organizations.impl.presentation.viewmodel.GithubUserOrganizationsViewModel
 import com.orcchg.direcall.feature.github_user_organizations.impl.presentation.viewmodel.GithubUserOrganizationsViewModelFactory
 import javax.inject.Inject
@@ -34,6 +33,7 @@ class GithubUserOrganizationsFragment : Fragment(R.layout.fragment_github_user_o
 
         DaggerGithubOrganizationFeatureDependenciesComponent.factory()
             .create(
+                analyticsCoreLibApi = featureContainer.getFeature(),
                 netCoreLibApi = featureContainer.getFeature(),
                 schedulerCoreLibApi = featureContainer.getFeature()
             )
@@ -43,10 +43,6 @@ class GithubUserOrganizationsFragment : Fragment(R.layout.fragment_github_user_o
                         login = login,
                         dependencies = dependencies
                     )
-            }
-            .let { featureApi ->
-                DaggerGithubUserOrganizationsFragmentComponent.factory()
-                    .create(githubOrganizationFeatureApi = featureApi)
             }
             .inject(this)
 

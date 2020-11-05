@@ -22,6 +22,8 @@ dependencies {
             project(':base'),
             project(':design'),
             project(':navigation'),
+            project(':AnalyticsCoreLibApi'),
+            project(':AnalyticsCoreLibImpl'),
             project(':Core:AppCoreLib:AppCoreLibApi'),
             project(':Core:AppCoreLib:AppCoreLibImpl'),
             project(':Core:DiCoreLib'),

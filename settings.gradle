@@ -1,3 +1,5 @@
+apply from: 'script/module_file_struct.gradle'
+
 include ':androidUtil'
 include ':app'
 include ':base'
@@ -5,6 +7,7 @@ include ':design'
 include ':navigation'
 include ':util'
 include ':lint-rules'
+includeApiImplModules('AnalyticsCoreLib', 'Core')
 include ':Core:AppCoreLib:AppCoreLibApi'
 include ':Core:AppCoreLib:AppCoreLibImpl'
 include ':Core:DiCoreLib'

@@ -17,6 +17,7 @@ class GithubUserGistsViewModelFactory @Inject constructor(
     override fun create(): ViewModel =
         DaggerGithubGistFeatureDependenciesComponent.factory()
             .create(
+                analyticsCoreLibApi = featureContainer.getFeature(),
                 netCoreLibApi = featureContainer.getFeature(),
                 schedulerCoreLibApi = featureContainer.getFeature()
             )

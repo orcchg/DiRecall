@@ -1,8 +1,10 @@
 package com.orcchg.direcall
 
 import com.orcchg.direcall.base.Params
+import com.orcchg.direcall.core.analytics.impl.di.DaggerAnalyticsCoreLibComponent
 import com.orcchg.direcall.core.di.FeatureContainer
 import com.orcchg.direcall.core.di.FeatureHolderManager
+import com.orcchg.direcall.core.di.square.ComponentHolder
 import com.orcchg.direcall.di.DaggerAppComponent
 import dagger.android.AndroidInjector
 import dagger.android.support.DaggerApplication
@@ -19,6 +21,8 @@ class App : DaggerApplication(), FeatureContainer {
     override fun onCreate() {
         super.onCreate()
         Timber.plant(Timber.DebugTree())
+
+        ComponentHolder.components += DaggerAnalyticsCoreLibComponent.create()
     }
 
     override fun <T> getFeature(key: Class<T>, params: Params): T =

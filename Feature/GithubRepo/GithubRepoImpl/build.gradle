@@ -13,6 +13,7 @@ dependencies {
             project(':design'),
             project(':navigation'),
             project(':util'),
+            project(':AnalyticsCoreLibApi'),
             project(':Core:DiCoreLib'),
             project(':Core:NetCoreLib:NetCoreLibApi'),
             project(':Core:SchedulerCoreLib:SchedulerCoreLibApi'),

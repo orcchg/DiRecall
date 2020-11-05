@@ -3,6 +3,7 @@ package com.orcchg.direcall.feature.github_user_gists.impl.presentation.viewmode
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.orcchg.direcall.core.analytics.api.Analytics
 import com.orcchg.direcall.core.di.FeatureContainer
 import com.orcchg.direcall.core.ui.AutoDisposeViewModel
 import com.orcchg.direcall.core.ui.BaseViewModel
@@ -20,12 +21,14 @@ import javax.inject.Named
  */
 class GithubUserGistsViewModel @Inject constructor(
     @Named("login") private val login: String,
+    private val analytics: Analytics,
     private val interactor: GithubGistInteractor
 ) : AutoDisposeViewModel() {
 
     val gists: LiveData<List<GithubGist>> by lazy(LazyThreadSafetyMode.NONE) {
         val liveData = MutableLiveData<List<GithubGist>>()
         interactor.gists(login)
+            .doOnSubscribe { analytics.sendEvent("get_gists", "Get list of gists for github user $login") }
             .autoDispose(this)
             .subscribe({ liveData.value = it }, Timber::e)
         liveData
