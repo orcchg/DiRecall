@@ -1,8 +1,7 @@
 package com.orcchg.direcall.core.network.wiring
 
-import com.orcchg.direcall.core.network.impl.NetworkCoreModule
-import com.orcchg.direcall.core.network.pub.NetworkCoreApi
-import dagger.Component
+import com.orcchg.direcall.core.network.pub.NetworkScope
+import com.squareup.anvil.annotations.MergeComponent
 
-@Component(modules = [NetworkCoreModule::class])
-interface NetworkCoreComponent : NetworkCoreApi
+@MergeComponent(NetworkScope::class)
+interface NetworkCoreComponent

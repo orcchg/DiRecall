@@ -1,5 +1,7 @@
 package com.orcchg.direcall.core.network.impl
 
+import com.orcchg.direcall.core.network.pub.NetworkScope
+import com.squareup.anvil.annotations.ContributesTo
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
@@ -12,6 +14,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 @Module
+@ContributesTo(NetworkScope::class)
 object NetworkCoreModule {
 
     @Provides

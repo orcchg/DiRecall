@@ -1,7 +1,7 @@
 package com.orcchg.direcall.core.scheduler.wiring
 
-import com.orcchg.direcall.core.scheduler.api.SchedulerCoreApi
-import dagger.Component
+import com.orcchg.direcall.core.scheduler.api.SchedulerScope
+import com.squareup.anvil.annotations.MergeComponent
 
-@Component(modules = [SchedulerCoreModule::class])
-interface SchedulerCoreComponent : SchedulerCoreApi
+@MergeComponent(SchedulerScope::class)
+interface SchedulerCoreComponent

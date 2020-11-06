@@ -5,6 +5,7 @@ object Versions {
     const val targetSdkVersion = 30
     const val compileSdkVersion = 30
 
+    const val anvil = "2.0.6"
     const val appCompat = "1.2.0"
     const val autoDispose = "1.4.0"
     const val buildToolsVersion = "30.0.0"
@@ -83,6 +84,7 @@ object Dependencies {
         const val androidApp = "com.android.application"
         const val androidDynamicFeature = "com.android.dynamic-feature"
         const val androidLib = "com.android.library"
+        const val anvil = "com.squareup.anvil"
         const val javaLib = "java-library"
         const val google = "com.google.gms.google-services"
         const val kotlin = "kotlin"
