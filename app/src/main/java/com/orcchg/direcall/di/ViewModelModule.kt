@@ -2,8 +2,8 @@ package com.orcchg.direcall.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.orcchg.direcall.github_repo.presentation.viewmodel.GithubRepoViewModel
-import com.orcchg.direcall.github_user_details.presentation.viewmodel.GithubUserDetailsViewModel
+import com.orcchg.direcall.github_repo.di.GithubRepoViewModelModule
+import com.orcchg.direcall.github_user_details.di.GithubUserDetailsViewModelModule
 import com.orcchg.direcall.github_user_list.presentation.viewmodel.GithubUserListViewModel
 import dagger.Binds
 import dagger.Module
@@ -12,21 +12,17 @@ import dagger.Reusable
 import dagger.multibindings.IntoMap
 import javax.inject.Provider
 
-@Module(includes = [ViewModelModule.Declarations::class])
+@Module(
+    includes = [
+        GithubRepoViewModelModule::class, // from assisted inject
+        GithubUserDetailsViewModelModule::class, // from assisted inject
+        ViewModelModule.Declarations::class
+    ]
+)
 object ViewModelModule {
 
     @Module
     interface Declarations {
-
-        @Binds
-        @IntoMap
-        @ViewModelKey(GithubRepoViewModel::class)
-        fun bindGithubRepoViewModel(vm: GithubRepoViewModel): ViewModel
-
-        @Binds
-        @IntoMap
-        @ViewModelKey(GithubUserDetailsViewModel::class)
-        fun bindGithubUserDetailsViewModel(vm: GithubUserDetailsViewModel): ViewModel
 
         @Binds
         @IntoMap

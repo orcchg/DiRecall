@@ -16,7 +16,7 @@ import javax.inject.Inject
 
 class GithubUserListFragment : BaseFragment(R.layout.fragment_github_user_list) {
 
-    @Inject lateinit var factory: ViewModelProvider.Factory
+    @Inject lateinit var factory: ViewModelProvider.Factory // with Dagger-Android
 
     private val adapter = GithubUserListAdapter().apply {
         itemClickListener = {

@@ -2,18 +2,19 @@ package com.orcchg.direcall.github_user_details.presentation.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.orcchg.direcall.ui_core_lib.AutoDisposeViewModel
+import com.orcchg.direcall.base.AssistedFactory
 import com.orcchg.direcall.github_user_details.domain.model.GithubUserDetails
 import com.orcchg.direcall.github_user_details.domain.usecase.GetGithubUserDetailsUseCase
+import com.orcchg.direcall.ui_core_lib.AutoDisposeViewModel
+import com.squareup.inject.assisted.Assisted
+import com.squareup.inject.assisted.AssistedInject
 import com.uber.autodispose.autoDispose
 import timber.log.Timber
-import javax.inject.Inject
 
-class GithubUserDetailsViewModel @Inject constructor(
-    private val getGithubUserDetailsUseCase: GetGithubUserDetailsUseCase
+class GithubUserDetailsViewModel @AssistedInject constructor(
+    private val getGithubUserDetailsUseCase: GetGithubUserDetailsUseCase,
+    @Assisted private val login: String
 ) : AutoDisposeViewModel() {
-
-    internal var login: String = ""
 
     val user: LiveData<GithubUserDetails> by lazy(LazyThreadSafetyMode.NONE) {
         val liveData = MutableLiveData<GithubUserDetails>()
@@ -21,5 +22,10 @@ class GithubUserDetailsViewModel @Inject constructor(
             .autoDispose(this)
             .subscribe({ liveData.value = it }, Timber::e)
         liveData
+    }
+
+    @AssistedInject.Factory
+    interface RealAssistedFactory : AssistedFactory {
+        fun create(login: String): GithubUserDetailsViewModel
     }
 }

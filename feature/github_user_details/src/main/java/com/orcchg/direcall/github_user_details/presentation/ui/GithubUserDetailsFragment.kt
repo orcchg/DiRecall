@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
@@ -14,13 +15,17 @@ import com.orcchg.direcall.androidutil.observe
 import com.orcchg.direcall.androidutil.viewBindings
 import com.orcchg.direcall.github_user_details.R
 import com.orcchg.direcall.github_user_details.databinding.FragmentGithubUserDetailsBinding
+import com.orcchg.direcall.github_user_details.di.GithubUserDetailsBindingsProvider
 import com.orcchg.direcall.github_user_details.presentation.viewmodel.GithubUserDetailsViewModel
 import com.orcchg.direcall.ui_core_lib.BaseFragment
-import javax.inject.Inject
 
 class GithubUserDetailsFragment : BaseFragment(R.layout.fragment_github_user_details) {
 
-    @Inject lateinit var factory: ViewModelProvider.Factory
+    private val factory = object : ViewModelProvider.Factory {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T =
+            (requireActivity().application as GithubUserDetailsBindingsProvider).githubUserDetailsViewModelAssistedFactory
+                .create(login) as T
+    }
 
     private val binding by viewBindings(FragmentGithubUserDetailsBinding::bind)
     private val login by argument<String>("login")
@@ -36,7 +41,6 @@ class GithubUserDetailsFragment : BaseFragment(R.layout.fragment_github_user_det
                     .let(findNavController()::navigate)
             }
 
-        viewModel.login = login
         observe(viewModel.user) {
             Glide.with(this)
                 .load(it.avatarUrl)
