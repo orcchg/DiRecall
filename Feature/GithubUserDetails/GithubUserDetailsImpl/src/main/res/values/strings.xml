@@ -1,4 +1,5 @@
 <resources>
+    <string name="btn_github_follower_list">Followers</string>
     <string name="btn_github_gist_list">Gists</string>
     <string name="btn_github_organization_list">Organizations</string>
     <string name="btn_github_repo_list">Repositories</string>
