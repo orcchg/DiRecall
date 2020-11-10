@@ -23,6 +23,10 @@
             android:defaultValue="" />
 
         <action
+            android:id="@+id/nav_action_open_github_follower_list"
+            app:destination="@id/nav_fragment_github_follower_list" />
+
+        <action
             android:id="@+id/nav_action_open_github_gist_list"
             app:destination="@id/nav_fragment_github_gist_list" />
 
@@ -33,6 +37,16 @@
         <action
             android:id="@+id/nav_action_open_github_repo_list"
             app:destination="@id/nav_fragment_github_repo_list" />
+    </fragment>
+
+    <fragment
+        android:id="@id/nav_fragment_github_follower_list"
+        android:name="com.orcchg.direcall.feature.github_user_followers.dfm.presentation.ui.GithubUserFollowersFragment">
+
+        <argument
+            android:name="login"
+            app:argType="string"
+            android:defaultValue="" />
     </fragment>
 
     <fragment

@@ -11,7 +11,8 @@ android {
     }
     dynamicFeatures = [
             ':Feature:GithubUserGists:GithubUserGistsImpl',
-            ':Feature:GithubUserOrganizations:GithubUserOrganizationsImpl'
+            ':Feature:GithubUserOrganizations:GithubUserOrganizationsImpl',
+            ':Feature:GithubUserFollowers:GithubUserFollowersDfm'
     ]
 }
 
@@ -36,6 +37,8 @@ dependencies {
             project(':Feature:GithubRepo:GithubRepoImpl'),
             project(':Feature:GithubUserDetails:GithubUserDetailsApi'),
             project(':Feature:GithubUserDetails:GithubUserDetailsImpl'),
+            project(':Feature:GithubUserFollowers:GithubUserFollowersApi'),
+            project(':Feature:GithubUserFollowers:GithubUserFollowersImpl'),
             project(':Feature:GithubUserList:GithubUserListApi'),
             project(':Feature:GithubUserList:GithubUserListImpl')
     )

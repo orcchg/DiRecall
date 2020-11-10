@@ -29,6 +29,12 @@ class GithubUserDetailsFragment : DaggerFragment(R.layout.fragment_github_user_d
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.btnFollowerList.clicks().clickDebounce()
+            .subscribe {
+                GithubUserDetailsFragmentDirections.navActionOpenGithubFollowerList(login = login)
+                    .let(findNavController()::navigate)
+            }
+
         binding.btnGistList.clicks().clickDebounce()
             .subscribe {
                 GithubUserDetailsFragmentDirections.navActionOpenGithubGistList(login = login)
