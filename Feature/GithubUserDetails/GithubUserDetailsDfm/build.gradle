@@ -1,0 +1,44 @@
+import com.orcchg.direcall.build.Dependencies
+
+apply plugin: Dependencies.Plugin.androidDynamicFeature
+apply plugin: Dependencies.Plugin.kotlinAndroid
+apply plugin: Dependencies.Plugin.kotlinAndroidExt
+apply plugin: Dependencies.Plugin.kotlinAnnotation
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation(
+            project(':androidUtil'),
+            project(':app'), // <- base module for Dynamic Feature
+            project(':base'),
+            project(':design'),
+            project(':navigation'),
+            project(':util'),
+            project(':AnalyticsCoreLibApi'),
+            project(':Core:DiCoreLib'),
+            project(':Core:UiCoreLib'),
+            project(':Feature:GithubUserDetails:GithubUserDetailsApi')
+    )
+    implementation(
+            Dependencies.AndroidX.appCompat,
+            Dependencies.AndroidX.coreKtx,
+            Dependencies.AndroidX.fragmentKtx,
+            Dependencies.AndroidX.liveData,
+            Dependencies.AndroidX.navigation,
+            Dependencies.AndroidX.navigationUi,
+            Dependencies.Di.dagger,
+            Dependencies.Lib.glide,
+            Dependencies.Lib.ktStdLib,
+            Dependencies.Lib.timber,
+            Dependencies.Rx.rx,
+            Dependencies.Rx.rxAndroid,
+            Dependencies.Rx.rxBinding,
+            Dependencies.Rx.autoDispose,
+            Dependencies.Rx.autoDisposeAndroidAC,
+            Dependencies.View.constraintLayout,
+            Dependencies.View.recyclerView
+    )
+    kapt(
+            Dependencies.Di.daggerCompiler
+    )
+}

@@ -1,8 +1,11 @@
-package com.orcchg.direcall.feature.githubuserdetails.impl.presentation.ui
+package com.orcchg.direcall.feature.github_user_details.dfm.presentation.ui
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.jakewharton.rxbinding3.view.clicks
@@ -10,20 +13,35 @@ import com.orcchg.direcall.androidutil.argument
 import com.orcchg.direcall.androidutil.clickDebounce
 import com.orcchg.direcall.androidutil.observe
 import com.orcchg.direcall.androidutil.viewBindings
-import com.orcchg.direcall.core.ui.viewModels
-import com.orcchg.direcall.feature.githubuserdetails.impl.R
-import com.orcchg.direcall.feature.githubuserdetails.impl.databinding.FragmentGithubUserDetailsBinding
-import com.orcchg.direcall.feature.githubuserdetails.impl.presentation.viewmodel.GithubUserDetailsViewModelFactory
-import dagger.android.support.DaggerFragment
+import com.orcchg.direcall.core.di.FeatureContainer
+import com.orcchg.direcall.core.di.getFeature
+import com.orcchg.direcall.feature.github_user_details.dfm.R
+import com.orcchg.direcall.feature.github_user_details.dfm.databinding.FragmentGithubUserDetailsBinding
+import com.orcchg.direcall.feature.github_user_details.dfm.di.DaggerGithubUserDetailsFragmentComponent
+import com.orcchg.direcall.feature.github_user_details.dfm.presentation.viewmodel.GithubUserDetailsViewModel
+import com.orcchg.direcall.feature.github_user_details.dfm.presentation.viewmodel.GithubUserDetailsViewModelFactory
 import javax.inject.Inject
 
-class GithubUserDetailsFragment : DaggerFragment(R.layout.fragment_github_user_details) {
+class GithubUserDetailsFragment : Fragment(R.layout.fragment_github_user_details) {
 
     @Inject lateinit var factory: GithubUserDetailsViewModelFactory
 
     private val binding by viewBindings(FragmentGithubUserDetailsBinding::bind)
     private val login by argument<String>("login")
-    private val viewModel by viewModels(::factory)
+    private val viewModel by viewModels<GithubUserDetailsViewModel> { factory }
+
+    override fun onAttach(context: Context) {
+        val featureContainer = (requireActivity().application as FeatureContainer)
+
+        DaggerGithubUserDetailsFragmentComponent.factory()
+            .create(
+                login = login,
+                analyticsCoreLibApi = featureContainer.getFeature(),
+                githubUserDetailsFeatureApi = featureContainer.getFeature()
+            )
+            .inject(this)
+        super.onAttach(context)
+    }
 
     @SuppressLint("AutoDispose", "CheckResult")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

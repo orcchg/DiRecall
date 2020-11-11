@@ -13,7 +13,6 @@ import com.orcchg.direcall.feature.githubrepo.impl.di.GithubRepoFeatureHolder
 import com.orcchg.direcall.feature.githubrepo.impl.di.GithubRepoInternalFeatureApi
 import com.orcchg.direcall.feature.githubuserdetails.api.domain.di.GithubUserDetailsFeatureApi
 import com.orcchg.direcall.feature.githubuserdetails.impl.di.GithubUserDetailsFeatureHolder
-import com.orcchg.direcall.feature.githubuserdetails.impl.di.GithubUserDetailsInternalFeatureApi
 import com.orcchg.direcall.feature.githubuserlist.api.domain.di.GithubUserListFeatureApi
 import com.orcchg.direcall.feature.githubuserlist.impl.di.GithubUserListFeatureHolder
 import com.orcchg.direcall.feature.githubuserlist.impl.di.GithubUserListInternalFeatureApi
@@ -58,11 +57,6 @@ object FeatureHoldersModule {
         @IntoMap
         @ClassKey(GithubUserDetailsFeatureApi::class)
         fun bindGithubUserDetailsFeature(holder: GithubUserDetailsFeatureHolder): FeatureHolder<*>
-
-        @Binds
-        @IntoMap
-        @ClassKey(GithubUserDetailsInternalFeatureApi::class)
-        fun bindGithubUserDetailsInternalFeature(holder: GithubUserDetailsFeatureHolder): FeatureHolder<*>
 
         @Binds
         @IntoMap
