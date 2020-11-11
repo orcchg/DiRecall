@@ -1,3 +1,4 @@
+include ':Feature:GithubUserGists:GithubUserGistsDfm'
 apply from: 'script/module_file_struct.gradle'
 
 include ':androidUtil'

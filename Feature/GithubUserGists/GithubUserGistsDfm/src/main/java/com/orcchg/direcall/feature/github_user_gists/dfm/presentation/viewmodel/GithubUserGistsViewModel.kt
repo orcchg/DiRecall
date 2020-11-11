@@ -1,4 +1,4 @@
-package com.orcchg.direcall.feature.github_user_gists.impl.presentation.viewmodel
+package com.orcchg.direcall.feature.github_user_gists.dfm.presentation.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -7,9 +7,9 @@ import com.orcchg.direcall.core.analytics.api.Analytics
 import com.orcchg.direcall.core.di.FeatureContainer
 import com.orcchg.direcall.core.ui.AutoDisposeViewModel
 import com.orcchg.direcall.core.ui.BaseViewModel
+import com.orcchg.direcall.feature.github_user_gists.api.di.GistLogin
 import com.orcchg.direcall.feature.github_user_gists.api.interactor.GithubGistInteractor
 import com.orcchg.direcall.feature.github_user_gists.api.model.GithubGist
-import com.orcchg.direcall.feature.github_user_gists.impl.di.GistLogin
 import com.uber.autodispose.autoDispose
 import timber.log.Timber
 import javax.inject.Inject
