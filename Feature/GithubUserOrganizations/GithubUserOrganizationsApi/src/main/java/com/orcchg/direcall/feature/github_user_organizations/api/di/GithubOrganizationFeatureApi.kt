@@ -5,6 +5,4 @@ import com.orcchg.direcall.feature.github_user_organizations.api.interactor.Gith
 interface GithubOrganizationFeatureApi {
 
     fun interactor(): GithubOrganizationInteractor
-
-    @OrgLogin fun login(): String
 }

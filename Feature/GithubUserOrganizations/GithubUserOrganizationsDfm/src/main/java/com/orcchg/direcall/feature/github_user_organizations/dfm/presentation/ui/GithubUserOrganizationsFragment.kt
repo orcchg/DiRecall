@@ -1,4 +1,4 @@
-package com.orcchg.direcall.feature.github_user_organizations.impl.presentation.ui
+package com.orcchg.direcall.feature.github_user_organizations.dfm.presentation.ui
 
 import android.content.Context
 import android.os.Bundle
@@ -10,13 +10,12 @@ import com.orcchg.direcall.androidutil.observe
 import com.orcchg.direcall.androidutil.viewBindings
 import com.orcchg.direcall.core.di.FeatureContainer
 import com.orcchg.direcall.core.di.getFeature
-import com.orcchg.direcall.feature.github_user_organizations.impl.R
-import com.orcchg.direcall.feature.github_user_organizations.impl.databinding.FragmentGithubUserOrganizationListBinding
-import com.orcchg.direcall.feature.github_user_organizations.impl.di.DaggerGithubOrganizationFeatureComponent
-import com.orcchg.direcall.feature.github_user_organizations.impl.di.DaggerGithubOrganizationFeatureDependenciesComponent
-import com.orcchg.direcall.feature.github_user_organizations.impl.presentation.adapter.GithubOrganizationsAdapter
-import com.orcchg.direcall.feature.github_user_organizations.impl.presentation.viewmodel.GithubUserOrganizationsViewModel
-import com.orcchg.direcall.feature.github_user_organizations.impl.presentation.viewmodel.GithubUserOrganizationsViewModelFactory
+import com.orcchg.direcall.feature.github_user_organizations.dfm.R
+import com.orcchg.direcall.feature.github_user_organizations.dfm.databinding.FragmentGithubUserOrganizationListBinding
+import com.orcchg.direcall.feature.github_user_organizations.dfm.di.DaggerGithubUserOrganizationsFragmentComponent
+import com.orcchg.direcall.feature.github_user_organizations.dfm.presentation.adapter.GithubOrganizationsAdapter
+import com.orcchg.direcall.feature.github_user_organizations.dfm.presentation.viewmodel.GithubUserOrganizationsViewModel
+import com.orcchg.direcall.feature.github_user_organizations.dfm.presentation.viewmodel.GithubUserOrganizationsViewModelFactory
 import javax.inject.Inject
 
 class GithubUserOrganizationsFragment : Fragment(R.layout.fragment_github_user_organization_list) {
@@ -31,21 +30,13 @@ class GithubUserOrganizationsFragment : Fragment(R.layout.fragment_github_user_o
     override fun onAttach(context: Context) {
         val featureContainer = (requireActivity().application as FeatureContainer)
 
-        DaggerGithubOrganizationFeatureDependenciesComponent.factory()
+        DaggerGithubUserOrganizationsFragmentComponent.factory()
             .create(
+                login = login,
                 analyticsCoreLibApi = featureContainer.getFeature(),
-                netCoreLibApi = featureContainer.getFeature(),
-                schedulerCoreLibApi = featureContainer.getFeature()
+                githubOrganizationFeatureApi = featureContainer.getFeature()
             )
-            .let { dependencies ->
-                DaggerGithubOrganizationFeatureComponent.factory()
-                    .create(
-                        login = login,
-                        dependencies = dependencies
-                    )
-            }
             .inject(this)
-
         super.onAttach(context)
     }
 
