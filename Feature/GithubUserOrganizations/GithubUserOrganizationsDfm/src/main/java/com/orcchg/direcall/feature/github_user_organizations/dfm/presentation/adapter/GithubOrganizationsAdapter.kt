@@ -1,10 +1,10 @@
-package com.orcchg.direcall.feature.github_user_organizations.impl.presentation.adapter
+package com.orcchg.direcall.feature.github_user_organizations.dfm.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.orcchg.direcall.feature.github_user_organizations.api.model.GithubOrganization
-import com.orcchg.direcall.feature.github_user_organizations.impl.databinding.RvGithubUserOrganizationListItemBinding
+import com.orcchg.direcall.feature.github_user_organizations.dfm.databinding.RvGithubUserOrganizationListItemBinding
 
 class GithubOrganizationsAdapter(
     private val models: MutableList<GithubOrganization> = mutableListOf()

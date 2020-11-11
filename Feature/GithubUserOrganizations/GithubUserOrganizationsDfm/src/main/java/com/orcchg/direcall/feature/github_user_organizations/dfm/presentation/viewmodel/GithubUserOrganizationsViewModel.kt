@@ -1,4 +1,4 @@
-package com.orcchg.direcall.feature.github_user_organizations.impl.presentation.viewmodel
+package com.orcchg.direcall.feature.github_user_organizations.dfm.presentation.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
