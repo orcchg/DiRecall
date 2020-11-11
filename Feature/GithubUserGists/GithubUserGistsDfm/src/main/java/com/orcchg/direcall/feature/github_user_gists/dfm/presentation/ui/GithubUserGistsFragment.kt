@@ -1,21 +1,21 @@
-package com.orcchg.direcall.feature.github_user_gists.impl.presentation.ui
+package com.orcchg.direcall.feature.github_user_gists.dfm.presentation.ui
 
 import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.orcchg.direcall.androidutil.argument
 import com.orcchg.direcall.androidutil.observe
 import com.orcchg.direcall.androidutil.viewBindings
-import com.orcchg.direcall.core.app.api.AppCoreLibApi
 import com.orcchg.direcall.core.di.FeatureContainer
 import com.orcchg.direcall.core.di.getFeature
-import com.orcchg.direcall.core.ui.viewModels
-import com.orcchg.direcall.feature.github_user_gists.impl.R
-import com.orcchg.direcall.feature.github_user_gists.impl.databinding.FragmentGithubGistListBinding
-import com.orcchg.direcall.feature.github_user_gists.impl.presentation.adapter.GithubGistsAdapter
-import com.orcchg.direcall.feature.github_user_gists.impl.presentation.di.DaggerGithubUserGistsFragmentComponent
-import com.orcchg.direcall.feature.github_user_gists.impl.presentation.viewmodel.GithubUserGistsViewModelFactory
+import com.orcchg.direcall.feature.github_user_gists.dfm.R
+import com.orcchg.direcall.feature.github_user_gists.dfm.databinding.FragmentGithubGistListBinding
+import com.orcchg.direcall.feature.github_user_gists.dfm.di.DaggerGithubUserGistsFragmentComponent
+import com.orcchg.direcall.feature.github_user_gists.dfm.presentation.adapter.GithubGistsAdapter
+import com.orcchg.direcall.feature.github_user_gists.dfm.presentation.viewmodel.GithubUserGistsViewModel
+import com.orcchg.direcall.feature.github_user_gists.dfm.presentation.viewmodel.GithubUserGistsViewModelFactory
 import javax.inject.Inject
 
 class GithubUserGistsFragment : Fragment(R.layout.fragment_github_gist_list) {
@@ -25,18 +25,18 @@ class GithubUserGistsFragment : Fragment(R.layout.fragment_github_gist_list) {
     private val adapter = GithubGistsAdapter()
     private val binding by viewBindings(FragmentGithubGistListBinding::bind)
     private val login by argument<String>("login")
-    private val viewModel by viewModels(::factory)
+    private val viewModel by viewModels<GithubUserGistsViewModel> { factory }
 
     override fun onAttach(context: Context) {
-        val appCoreLibApi = (requireActivity().application as FeatureContainer).getFeature<AppCoreLibApi>()
+        val featureContainer = (requireActivity().application as FeatureContainer)
 
         DaggerGithubUserGistsFragmentComponent.factory()
             .create(
                 login = login,
-                appCoreLibApi = appCoreLibApi
+                analyticsCoreLibApi = featureContainer.getFeature(),
+                githubGistFeatureApi = featureContainer.getFeature()
             )
             .inject(this)
-
         super.onAttach(context)
     }
 

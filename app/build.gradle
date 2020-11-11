@@ -10,10 +10,10 @@ android {
         applicationId = 'com.orcchg.direcall'
     }
     dynamicFeatures = [
-            ':Feature:GithubUserGists:GithubUserGistsImpl',
             ':Feature:GithubUserOrganizations:GithubUserOrganizationsImpl',
             ':Feature:GithubUserDetails:GithubUserDetailsDfm',
             ':Feature:GithubUserFollowers:GithubUserFollowersDfm',
+            ':Feature:GithubUserGists:GithubUserGistsDfm',
             ':Feature:GithubUserProfile:GithubUserProfileDfm'
     ]
 }
@@ -41,6 +41,8 @@ dependencies {
             project(':Feature:GithubUserDetails:GithubUserDetailsImpl'),
             project(':Feature:GithubUserFollowers:GithubUserFollowersApi'),
             project(':Feature:GithubUserFollowers:GithubUserFollowersImpl'),
+            project(':Feature:GithubUserGists:GithubUserGistsApi'),
+            project(':Feature:GithubUserGists:GithubUserGistsImpl'),
             project(':Feature:GithubUserList:GithubUserListApi'),
             project(':Feature:GithubUserList:GithubUserListImpl'),
             project(':Feature:GithubUserProfile:GithubUserProfileApi'),

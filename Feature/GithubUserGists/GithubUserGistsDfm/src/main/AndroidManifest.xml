@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:dist="http://schemas.android.com/apk/distribution"
-    package="com.orcchg.direcall.feature.github_user_gists.impl">
+    package="com.orcchg.direcall.feature.github_user_gists.dfm">
 
     <dist:module
         dist:instant="false"
