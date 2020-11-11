@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.orcchg.direcall.androidutil.argument
 import com.orcchg.direcall.androidutil.observe
 import com.orcchg.direcall.androidutil.viewBindings
@@ -22,7 +23,12 @@ class GithubUserFollowersFragment : Fragment(R.layout.fragment_github_follower_l
 
     @Inject lateinit var factory: GithubUserFollowersViewModelFactory
 
-    private val adapter = GithubFollowersAdapter()
+    private val adapter = GithubFollowersAdapter().apply {
+        itemClickListener = {
+            GithubUserFollowersFragmentDirections.navActionOpenGithubFollowerDetails(login = it.login)
+                .let(findNavController()::navigate)
+        }
+    }
     private val binding by viewBindings(FragmentGithubFollowerListBinding::bind)
     private val login by argument<String>("login")
     private val viewModel by viewModels<GithubUserFollowersViewModel> { factory }

@@ -47,6 +47,10 @@
             android:name="login"
             app:argType="string"
             android:defaultValue="" />
+
+        <action
+            android:id="@+id/nav_action_open_github_follower_details"
+            app:destination="@id/nav_fragment_github_user_details" />
     </fragment>
 
     <fragment
