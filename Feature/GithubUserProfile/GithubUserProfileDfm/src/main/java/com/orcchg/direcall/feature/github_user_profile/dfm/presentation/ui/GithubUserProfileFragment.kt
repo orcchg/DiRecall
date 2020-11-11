@@ -44,7 +44,7 @@ class GithubUserProfileFragment : Fragment(R.layout.fragment_user_profile) {
                 githubGistFeatureApi = featureContainer.getFeature(),
                 githubOrganizationFeatureApi = featureContainer.getFeature(),
                 githubProfileFeatureApi = featureContainer.getFeature(),
-                githubRepoFeatureApi = featureContainer.getFeature(),
+                githubRepoFeatureApi = featureContainer.getFeature { "login" of login },
                 githubUserDetailsFeatureApi = featureContainer.getFeature()
             )
             .inject(this)
