@@ -12,6 +12,7 @@ android {
     dynamicFeatures = [
             ':Feature:GithubUserGists:GithubUserGistsImpl',
             ':Feature:GithubUserOrganizations:GithubUserOrganizationsImpl',
+            ':Feature:GithubUserDetails:GithubUserDetailsDfm',
             ':Feature:GithubUserFollowers:GithubUserFollowersDfm'
     ]
 }

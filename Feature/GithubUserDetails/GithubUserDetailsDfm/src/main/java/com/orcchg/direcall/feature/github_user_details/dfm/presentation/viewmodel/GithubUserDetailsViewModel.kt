@@ -1,9 +1,9 @@
-package com.orcchg.direcall.feature.githubuserdetails.impl.presentation.viewmodel
+package com.orcchg.direcall.feature.github_user_details.dfm.presentation.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.orcchg.direcall.core.analytics.api.Analytics
-import com.orcchg.direcall.core.ui.BaseViewModel
+import com.orcchg.direcall.core.ui.AutoDisposeViewModel
 import com.orcchg.direcall.feature.githubuserdetails.api.domain.interactor.GithubUserDetailsInteractor
 import com.orcchg.direcall.feature.githubuserdetails.api.domain.model.GithubUserDetails
 import com.uber.autodispose.autoDispose
@@ -15,7 +15,7 @@ class GithubUserDetailsViewModel @Inject constructor(
     @Named("login") private val login: String,
     private val analytics: Analytics,
     private val interactor: GithubUserDetailsInteractor
-) : BaseViewModel() {
+) : AutoDisposeViewModel() {
 
     val user: LiveData<GithubUserDetails> by lazy(LazyThreadSafetyMode.NONE) {
         val liveData = MutableLiveData<GithubUserDetails>()
