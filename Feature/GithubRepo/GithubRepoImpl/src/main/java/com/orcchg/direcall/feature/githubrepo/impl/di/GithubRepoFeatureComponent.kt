@@ -6,7 +6,6 @@ import com.orcchg.direcall.core.scheduler.api.SchedulerCoreLibApi
 import com.orcchg.direcall.feature.githubrepo.impl.presentation.viewmodel.GithubRepoViewModel
 import dagger.BindsInstance
 import dagger.Component
-import javax.inject.Named
 
 @Component(
     modules = [GithubRepoFeatureModule::class],
@@ -20,7 +19,7 @@ interface GithubRepoFeatureComponent : GithubRepoInternalFeatureApi {
     interface Factory {
 
         fun create(
-            @BindsInstance @Named("login") login: String,
+            @BindsInstance @RepoLogin login: String,
             dependencies: GithubRepoFeatureDependencies
         ): GithubRepoFeatureComponent
     }

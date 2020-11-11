@@ -6,13 +6,13 @@ import com.orcchg.direcall.core.analytics.api.Analytics
 import com.orcchg.direcall.core.ui.BaseViewModel
 import com.orcchg.direcall.feature.githubrepo.api.interactor.GithubRepoInteractor
 import com.orcchg.direcall.feature.githubrepo.api.model.GithubRepo
+import com.orcchg.direcall.feature.githubrepo.impl.di.RepoLogin
 import com.uber.autodispose.autoDispose
 import timber.log.Timber
 import javax.inject.Inject
-import javax.inject.Named
 
 class GithubRepoViewModel @Inject constructor(
-    @Named("login") private val login: String,
+    @RepoLogin private val login: String,
     private val analytics: Analytics,
     private val interactor: GithubRepoInteractor
 ) : BaseViewModel() {

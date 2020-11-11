@@ -71,6 +71,12 @@ class GithubUserDetailsFragment : Fragment(R.layout.fragment_github_user_details
                     .let(findNavController()::navigate)
             }
 
+        binding.ivAvatar.clicks().clickDebounce()
+            .subscribe {
+                GithubUserDetailsFragmentDirections.navActionOpenGithubUserProfile(login = login)
+                    .let(findNavController()::navigate)
+            }
+
         observe(viewModel.user) {
             Glide.with(this)
                 .load(it.avatarUrl)

@@ -37,6 +37,10 @@
         <action
             android:id="@+id/nav_action_open_github_repo_list"
             app:destination="@id/nav_fragment_github_repo_list" />
+
+        <action
+            android:id="@+id/nav_action_open_github_user_profile"
+            app:destination="@id/nav_fragment_github_profile" />
     </fragment>
 
     <fragment
@@ -66,6 +70,16 @@
     <fragment
         android:id="@id/nav_fragment_github_organization_list"
         android:name="com.orcchg.direcall.feature.github_user_organizations.impl.presentation.ui.GithubUserOrganizationsFragment">
+
+        <argument
+            android:name="login"
+            app:argType="string"
+            android:defaultValue="" />
+    </fragment>
+
+    <fragment
+        android:id="@id/nav_fragment_github_profile"
+        android:name="com.orcchg.direcall.feature.github_user_profile.dfm.presentation.ui.GithubUserProfileFragment">
 
         <argument
             android:name="login"
