@@ -8,6 +8,7 @@ import com.orcchg.direcall.core.di.getFeature
 import com.orcchg.direcall.core.di.square.ComponentHolder
 import com.orcchg.direcall.di.DaggerAppComponent
 import com.orcchg.direcall.feature.github_user_followers.impl.di.DaggerGithubFollowerFeatureComponent
+import com.orcchg.direcall.feature.github_user_profile.impl.di.DaggerGithubProfileFeatureComponent
 import dagger.android.AndroidInjector
 import dagger.android.support.DaggerApplication
 import timber.log.Timber
@@ -26,6 +27,11 @@ class App : DaggerApplication(), FeatureContainer {
 
         ComponentHolder.components += DaggerAnalyticsCoreLibComponent.create()
         ComponentHolder.components += DaggerGithubFollowerFeatureComponent.factory()
+            .create(
+                netCoreLibApi = getFeature(),
+                schedulerCoreLibApi = getFeature()
+            )
+        ComponentHolder.components += DaggerGithubProfileFeatureComponent.factory()
             .create(
                 netCoreLibApi = getFeature(),
                 schedulerCoreLibApi = getFeature()

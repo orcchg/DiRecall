@@ -4,4 +4,5 @@
     <string name="title_github_user_gists">Github User Gists</string>
     <string name="title_github_user_organizations">Github User Organizations</string>
     <string name="title_github_user_followers">Github User Followers</string>
+    <string name="title_github_user_profile">Github User Profile</string>
 </resources>

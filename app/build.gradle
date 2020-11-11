@@ -13,7 +13,8 @@ android {
             ':Feature:GithubUserGists:GithubUserGistsImpl',
             ':Feature:GithubUserOrganizations:GithubUserOrganizationsImpl',
             ':Feature:GithubUserDetails:GithubUserDetailsDfm',
-            ':Feature:GithubUserFollowers:GithubUserFollowersDfm'
+            ':Feature:GithubUserFollowers:GithubUserFollowersDfm',
+            ':Feature:GithubUserProfile:GithubUserProfileDfm'
     ]
 }
 
@@ -41,7 +42,9 @@ dependencies {
             project(':Feature:GithubUserFollowers:GithubUserFollowersApi'),
             project(':Feature:GithubUserFollowers:GithubUserFollowersImpl'),
             project(':Feature:GithubUserList:GithubUserListApi'),
-            project(':Feature:GithubUserList:GithubUserListImpl')
+            project(':Feature:GithubUserList:GithubUserListImpl'),
+            project(':Feature:GithubUserProfile:GithubUserProfileApi'),
+            project(':Feature:GithubUserProfile:GithubUserProfileImpl')
     )
     implementation(
             Dependencies.AndroidX.appCompat,

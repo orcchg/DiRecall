@@ -4,10 +4,10 @@ import com.orcchg.direcall.core.analytics.api.AnalyticsCoreLibApi
 import com.orcchg.direcall.core.net.api.NetCoreLibApi
 import com.orcchg.direcall.core.scheduler.api.SchedulerCoreLibApi
 import com.orcchg.direcall.feature.github_user_organizations.api.di.GithubOrganizationFeatureApi
+import com.orcchg.direcall.feature.github_user_organizations.api.di.OrgLogin
 import com.orcchg.direcall.feature.github_user_organizations.impl.presentation.ui.GithubUserOrganizationsFragment
 import dagger.BindsInstance
 import dagger.Component
-import javax.inject.Named
 
 @Component(
     modules = [GithubOrganizationFeatureModule::class],
@@ -19,7 +19,7 @@ interface GithubOrganizationFeatureComponent : GithubOrganizationFeatureApi {
     interface Factory {
 
         fun create(
-            @BindsInstance @Named("login") login: String,
+            @BindsInstance @OrgLogin login: String,
             dependencies: GithubOrganizationFeatureDependencies
         ): GithubOrganizationFeatureComponent
     }

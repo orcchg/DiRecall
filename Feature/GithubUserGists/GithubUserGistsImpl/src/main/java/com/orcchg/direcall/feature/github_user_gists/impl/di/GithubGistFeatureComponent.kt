@@ -6,7 +6,6 @@ import com.orcchg.direcall.core.scheduler.api.SchedulerCoreLibApi
 import com.orcchg.direcall.feature.github_user_gists.impl.presentation.viewmodel.GithubUserGistsViewModel
 import dagger.BindsInstance
 import dagger.Component
-import javax.inject.Named
 
 @Component(
     modules = [GithubGistFeatureModule::class],
@@ -20,7 +19,7 @@ interface GithubGistFeatureComponent : GithubGistInternalFeatureApi {
     interface Factory {
 
         fun create(
-            @BindsInstance @Named("login") login: String,
+            @BindsInstance @GistLogin login: String,
             dependencies: GithubGistFeatureDependencies
         ): GithubGistFeatureComponent
     }
