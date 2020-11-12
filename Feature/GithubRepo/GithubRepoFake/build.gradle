@@ -1,0 +1,52 @@
+import com.orcchg.direcall.build.Dependencies
+
+apply plugin: Dependencies.Plugin.androidLib
+apply plugin: Dependencies.Plugin.kotlinAndroid
+apply plugin: Dependencies.Plugin.kotlinAndroidExt
+apply plugin: Dependencies.Plugin.kotlinAnnotation
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation(
+            project(':androidUtil'),
+            project(':base'),
+            project(':design'),
+            project(':navigation'),
+            project(':util'),
+            project(':AnalyticsCoreLibApi'),
+            project(':Core:DiCoreLib'),
+            project(':Core:NetCoreLib:NetCoreLibApi'),
+            project(':Core:SchedulerCoreLib:SchedulerCoreLibApi'),
+            project(':Core:UiCoreLib'),
+            project(':Feature:GithubRepo:GithubRepoApi')
+    )
+    implementation(
+            Dependencies.AndroidX.appCompat,
+            Dependencies.AndroidX.coreKtx,
+            Dependencies.AndroidX.fragmentKtx,
+            Dependencies.AndroidX.liveData,
+            Dependencies.AndroidX.navigation,
+            Dependencies.AndroidX.navigationUi,
+            Dependencies.Di.dagger,
+            Dependencies.Di.daggerAndroidSupport,
+            Dependencies.Lib.glide,
+            Dependencies.Lib.ktStdLib,
+            Dependencies.Lib.timber,
+            Dependencies.Network.retrofit,
+            Dependencies.Parser.moshi,
+            Dependencies.Parser.moshiAdapters,
+            Dependencies.Parser.moshiKotlin,
+            Dependencies.Rx.rx,
+            Dependencies.Rx.rxAndroid,
+            Dependencies.Rx.rxBinding,
+            Dependencies.Rx.autoDispose,
+            Dependencies.Rx.autoDisposeAndroidAC,
+            Dependencies.View.constraintLayout,
+            Dependencies.View.recyclerView
+    )
+    kapt(
+            Dependencies.Di.daggerAndroidProcessor,
+            Dependencies.Di.daggerCompiler,
+            Dependencies.Parser.moshiKotlinCodegen
+    )
+}

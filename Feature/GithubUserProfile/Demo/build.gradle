@@ -12,10 +12,36 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation(
-            project(':Feature:GithubUserProfile:GithubUserProfileUi')
+            project(':androidUtil'),
+            project(':base'),
+            project(':design'),
+            project(':AnalyticsCoreLibApi'),
+            project(':AnalyticsCoreLibImpl'),
+            project(':Core:AppCoreLib:AppCoreLibApi'),
+            project(':Core:AppCoreLib:AppCoreLibImpl'),
+            project(':Core:DiCoreLib'),
+            project(':Core:NetCoreLib:NetCoreLibApi'),
+            project(':Core:NetCoreLib:NetCoreLibImpl'),
+            project(':Core:SchedulerCoreLib:SchedulerCoreLibApi'),
+            project(':Core:SchedulerCoreLib:SchedulerCoreLibImpl'),
+            project(':Feature:GithubRepo:GithubRepoApi'),
+            project(':Feature:GithubRepo:GithubRepoFake'),
+            project(':Feature:GithubUserDetails:GithubUserDetailsApi'),
+            project(':Feature:GithubUserDetails:GithubUserDetailsFake'),
+            project(':Feature:GithubUserFollowers:GithubUserFollowersApi'),
+            project(':Feature:GithubUserFollowers:GithubUserFollowersFake'),
+            project(':Feature:GithubUserGists:GithubUserGistsApi'),
+            project(':Feature:GithubUserGists:GithubUserGistsFake'),
+            project(':Feature:GithubUserOrganizations:GithubUserOrganizationsApi'),
+            project(':Feature:GithubUserOrganizations:GithubUserOrganizationsFake'),
+            project(':Feature:GithubUserProfile:GithubUserProfileApi'),
+            project(':Feature:GithubUserProfile:GithubUserProfileImpl'), // <-- impl under test
+            project(':Feature:GithubUserProfile:GithubUserProfileUi')  // <-- impl under test
     )
     implementation(
             Dependencies.AndroidX.appCompat,
+            Dependencies.AndroidX.coreKtx,
+            Dependencies.AndroidX.fragmentKtx,
             Dependencies.AndroidX.material,
             Dependencies.Lib.ktStdLib,
             Dependencies.Lib.timber
