@@ -3,7 +3,12 @@ package com.orcchg.direcall.feature.github_user_profile.dfm.presentation.viewmod
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.orcchg.direcall.core.analytics.api.Analytics
+import com.orcchg.direcall.core.di.FeatureContainer
+import com.orcchg.direcall.core.di.FeatureHolder
+import com.orcchg.direcall.core.di.releaseFeature
 import com.orcchg.direcall.core.ui.AutoDisposeViewModel
+import com.orcchg.direcall.core.ui.BaseViewModel
+import com.orcchg.direcall.core.ui.BaseViewModelFactory
 import com.orcchg.direcall.feature.github_user_followers.api.interactor.GithubFollowerInteractor
 import com.orcchg.direcall.feature.github_user_gists.api.interactor.GithubGistInteractor
 import com.orcchg.direcall.feature.github_user_organizations.api.interactor.GithubOrganizationInteractor
@@ -11,6 +16,7 @@ import com.orcchg.direcall.feature.github_user_organizations.api.model.GithubOrg
 import com.orcchg.direcall.feature.github_user_profile.api.interactor.GithubProfileInteractor
 import com.orcchg.direcall.feature.github_user_profile.api.model.GithubProject
 import com.orcchg.direcall.feature.github_user_profile.dfm.model.presentation.Triplet
+import com.orcchg.direcall.feature.githubrepo.api.di.GithubRepoFeatureApi
 import com.orcchg.direcall.feature.githubrepo.api.interactor.GithubRepoInteractor
 import com.orcchg.direcall.feature.githubrepo.api.model.GithubRepo
 import com.orcchg.direcall.feature.githubuserdetails.api.domain.interactor.GithubUserDetailsInteractor
@@ -24,6 +30,7 @@ import javax.inject.Named
 class GithubUserProfileViewModel @Inject constructor(
     @Named("login") private val login: String,
     private val analytics: Analytics,
+    private val featureContainer: FeatureContainer,
     private val followerInteractor: GithubFollowerInteractor,
     private val gistInteractor: GithubGistInteractor,
     private val organizationInteractor: GithubOrganizationInteractor,
@@ -31,6 +38,24 @@ class GithubUserProfileViewModel @Inject constructor(
     private val repoInteractor: GithubRepoInteractor,
     private val userDetailsInteractor: GithubUserDetailsInteractor
 ) : AutoDisposeViewModel() {
+
+    /**
+     * DFM doesn't use [BaseViewModel] because there are some lateinit properties that
+     * aren't initialized in new Lib + DFM architecture. These properties are initialized
+     * only within [BaseViewModelFactory] where FeatureAPI and FeatureHolder is lazily
+     * created and put into FeatureHolders map in [FeatureContainer]. This is not the case.
+     *
+     * But features held by [FeatureHolder] from [FeatureContainer] could be stateful
+     * and ref counted. This makes it possible to leak the state of feature out of the scope
+     * of feature screen. So, in order to use such features in Lib + DFM, one should
+     * keep track of ref counting for them: release the feature if accessed.
+     *
+     * This is a drawback of migration. Need to investigate better solution.
+     */
+    override fun onCleared() {
+        super.onCleared()
+        featureContainer.releaseFeature<GithubRepoFeatureApi>()
+    }
 
     val organizations: LiveData<List<GithubOrganization>> by lazy(LazyThreadSafetyMode.NONE) {
         val liveData = MutableLiveData<List<GithubOrganization>>()

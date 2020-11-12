@@ -40,6 +40,7 @@ class GithubUserProfileFragment : Fragment(R.layout.fragment_user_profile) {
             .create(
                 login = login,
                 analyticsCoreLibApi = featureContainer.getFeature(),
+                appCoreLibApi = featureContainer.getFeature(),
                 githubFollowerFeatureApi = featureContainer.getFeature(),
                 githubGistFeatureApi = featureContainer.getFeature(),
                 githubOrganizationFeatureApi = featureContainer.getFeature(),

@@ -1,6 +1,7 @@
 package com.orcchg.direcall.feature.github_user_profile.dfm.di
 
 import com.orcchg.direcall.core.analytics.api.AnalyticsCoreLibApi
+import com.orcchg.direcall.core.app.api.AppCoreLibApi
 import com.orcchg.direcall.feature.github_user_followers.api.di.GithubFollowerFeatureApi
 import com.orcchg.direcall.feature.github_user_gists.api.di.GithubGistFeatureApi
 import com.orcchg.direcall.feature.github_user_organizations.api.di.GithubOrganizationFeatureApi
@@ -15,6 +16,7 @@ import javax.inject.Named
 @Component(
     dependencies = [
         AnalyticsCoreLibApi::class,
+        AppCoreLibApi::class,
         GithubFollowerFeatureApi::class,
         GithubGistFeatureApi::class,
         GithubOrganizationFeatureApi::class,
@@ -31,6 +33,7 @@ interface GithubUserProfileFragmentComponent {
         fun create(
             @BindsInstance @Named("login") login: String,
             analyticsCoreLibApi: AnalyticsCoreLibApi,
+            appCoreLibApi: AppCoreLibApi,
             githubFollowerFeatureApi: GithubFollowerFeatureApi,
             githubGistFeatureApi: GithubGistFeatureApi,
             githubOrganizationFeatureApi: GithubOrganizationFeatureApi,
