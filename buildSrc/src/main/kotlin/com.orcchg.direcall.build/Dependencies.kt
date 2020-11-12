@@ -23,6 +23,7 @@ object Versions {
     const val ktStdLib = "1.4.10"
     const val lifecycle = "2.2.0"
     const val lint = "27.0.1"
+    const val material = "1.2.1"
     const val moshi = "1.9.3"
     const val navigation = "2.3.0"
     const val okHttp = "4.8.1"
@@ -43,6 +44,7 @@ object Dependencies {
         @JvmStatic val coreKtx = dependency("androidx.core:core-ktx:${Versions.coreKtx}")
         @JvmStatic val fragmentKtx = dependency("androidx.fragment:fragment-ktx:${Versions.fragmentKtx}")
         @JvmStatic val liveData = dependency("androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle}")
+        @JvmStatic val material = dependency("com.google.android.material:material:${Versions.material}")
         @JvmStatic val navigation = dependency("androidx.navigation:navigation-fragment-ktx:${Versions.navigation}")
         @JvmStatic val navigationSafeArgs = dependency("androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navigation}")
         @JvmStatic val navigationUi = dependency("androidx.navigation:navigation-ui-ktx:${Versions.navigation}")

@@ -79,7 +79,7 @@
 
     <fragment
         android:id="@id/nav_fragment_github_profile"
-        android:name="com.orcchg.direcall.feature.github_user_profile.dfm.presentation.ui.GithubUserProfileFragment">
+        android:name="com.orcchg.direcall.feature.github_user_profile.ui.presentation.ui.GithubUserProfileFragment">
 
         <argument
             android:name="login"
