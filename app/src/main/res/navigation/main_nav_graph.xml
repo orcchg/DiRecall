@@ -3,17 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav_graph"
-    app:startDestination="@id/nav_fragment_github_user_list">
-
-    <fragment
-        android:id="@id/nav_fragment_github_user_list"
-        android:name="com.orcchg.direcall.ui.GithubUserListFragment"
-        tools:layout="@layout/fragment_github_user_list">
-
-        <action
-            android:id="@+id/nav_action_open_github_user_details"
-            app:destination="@id/nav_fragment_github_user_details" />
-    </fragment>
+    app:startDestination="@id/nav_fragment_github_user_details">
 
     <fragment
         android:id="@id/nav_fragment_github_user_details"
@@ -22,23 +12,7 @@
 
         <argument
             android:name="login"
-            app:argType="string"
-            android:defaultValue="" />
-
-        <action
-            android:id="@+id/nav_action_open_github_repo_list"
-            app:destination="@id/nav_fragment_github_repo_list" />
-    </fragment>
-
-    <fragment
-        android:id="@id/nav_fragment_github_repo_list"
-        android:name="com.orcchg.direcall.ui.GithubRepoFragment"
-        tools:layout="@layout/fragment_github_repo_list">
-
-        <argument
-            android:name="login"
-            app:argType="string"
-            android:defaultValue="" />
+            android:defaultValue="orcchg" />
     </fragment>
 
 </navigation>

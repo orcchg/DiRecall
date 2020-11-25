@@ -20,7 +20,7 @@ class GithubUserDetailsFragment : Fragment(R.layout.fragment_github_user_details
 
     private val binding by viewBindings(FragmentGithubUserDetailsBinding::bind)
     private val login by argument<String>("login")
-    private val viewModel by viewModels<GithubUserDetailsViewModel>()
+//    private val viewModel by viewModels<GithubUserDetailsViewModel>()
 
     @SuppressLint("AutoDispose", "CheckResult")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -28,16 +28,15 @@ class GithubUserDetailsFragment : Fragment(R.layout.fragment_github_user_details
 
         binding.btnRepoList.clicks().clickDebounce()
             .subscribe {
-                GithubUserDetailsFragmentDirections.navActionOpenGithubRepoList(login = login)
-                    .let(findNavController()::navigate)
+                // TODO: implement
             }
 
-        observe(viewModel.user) {
-            Glide.with(this)
-                .load(it.avatarUrl)
-                .into(binding.ivAvatar)
-
-            binding.tvTitle.text = it.login
-        }
+//        observe(viewModel.user) {
+//            Glide.with(this)
+//                .load(it.avatarUrl)
+//                .into(binding.ivAvatar)
+//
+//            binding.tvTitle.text = it.login
+//        }
     }
 }
