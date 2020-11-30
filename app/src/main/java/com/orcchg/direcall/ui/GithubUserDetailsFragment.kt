@@ -18,6 +18,7 @@ import com.orcchg.direcall.databinding.FragmentGithubUserDetailsBinding
 import com.orcchg.direcall.domain.usecase.GetGithubUserDetailsUseCase
 import com.orcchg.direcall.viewmodel.GithubUserDetailsViewModel
 import com.orcchg.direcall.viewmodel.GithubUserDetailsViewModelFactory
+import retrofit2.create
 
 class GithubUserDetailsFragment : Fragment(R.layout.fragment_github_user_details) {
     private val binding by viewBindings(FragmentGithubUserDetailsBinding::bind)
@@ -27,7 +28,7 @@ class GithubUserDetailsFragment : Fragment(R.layout.fragment_github_user_details
         CloudModule.okHttpClient(CloudModule.loggingInterceptor()),
         CloudModule.moshi()
     )
-    private val userCloud: GithubUserCloudRest = retrofit.create(GithubUserCloudRest::class.java)
+    private val userCloud: GithubUserCloudRest = retrofit.create()
     private val converter = GithubUserDetailsCloudConverter()
     private val scheduler = SchedulersFactoryImpl(executor)
     private val gitRepo = GithubRepositoryImpl(userCloud, converter)
