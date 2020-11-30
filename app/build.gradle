@@ -16,8 +16,8 @@ dependencies {
     implementation(
             project(':androidUtil'),
             project(':base'),
-            project(':domain'),
-            project(':data')
+            project(':data'),
+            project(':domain')
     )
     implementation(
             Dependencies.AndroidX.appCompat,

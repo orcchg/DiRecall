@@ -21,21 +21,24 @@ import com.orcchg.direcall.viewmodel.GithubUserDetailsViewModelFactory
 import io.reactivex.Single
 
 class GithubUserDetailsFragment : Fragment(R.layout.fragment_github_user_details) {
+    private val gitHubLogin: String = "Leramt"
+    private val gitHubAvatarUrl: String =
+        "https://avatars0.githubusercontent.com/u/44569822?s=460&u=192b16397aa71a132af38a1b6d6fd25258cc145b&v=4"
 
     private val binding by viewBindings(FragmentGithubUserDetailsBinding::bind)
     private val login by argument<String>("login")
     private val executor = UseCaseThreadExecutor()
     private val userCloud = object : GithubUserCloudRest {
         override fun userDetails(login: String): Single<GithubUserDetailsEntity> {
-            return Single.just(GithubUserDetailsEntity(0, "" , null, null, null))
+            return Single.just(GithubUserDetailsEntity(0, gitHubLogin, null, gitHubAvatarUrl, null))
         }
     }
     private val converter = GithubUserDetailsCloudConverter()
     private val scheduler = SchedulersFactoryImpl(executor)
     private val gitRepo = GithubRepositoryImpl(userCloud, converter)
     private val useCase = GetGithubUserDetailsUseCase(gitRepo, scheduler)
-    private val myFactory by lazy(){ GithubUserDetailsViewModelFactory(login, useCase) }
-    private val viewModel: GithubUserDetailsViewModel by viewModels {myFactory}
+    private val myFactory by lazy() { GithubUserDetailsViewModelFactory(login, useCase) }
+    private val viewModel: GithubUserDetailsViewModel by viewModels { myFactory }
 
     @SuppressLint("AutoDispose", "CheckResult")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
