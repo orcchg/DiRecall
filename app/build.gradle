@@ -35,7 +35,15 @@ dependencies {
             Dependencies.Rx.rxBinding,
             Dependencies.Rx.rxBindingCore,
             Dependencies.View.constraintLayout,
-            Dependencies.View.recyclerView
+            Dependencies.View.recyclerView,
+            Dependencies.Lib.ktStdLibJdk7,
+            Dependencies.Network.okHttpLog,
+            Dependencies.Network.retrofit,
+            Dependencies.Network.retrofitMoshi,
+            Dependencies.Network.retrofitRx,
+            Dependencies.Parser.moshi,
+            Dependencies.Parser.moshiAdapters,
+            Dependencies.Parser.moshiKotlin
     )
     testImplementation Dependencies.Test.junit
     androidTestImplementation(
