@@ -10,8 +10,8 @@ import com.jakewharton.rxbinding3.view.clicks
 import com.orcchg.direcall.R
 import com.orcchg.direcall.androidutil.*
 import com.orcchg.direcall.base.usecase.UseCaseThreadExecutor
-import com.orcchg.direcall.data.convert.GithubUserListCloudConverter
 import com.orcchg.direcall.data.convert.GithubUserDetailsCloudConverter
+import com.orcchg.direcall.data.convert.GithubUserListCloudConverter
 import com.orcchg.direcall.data.remote.CloudModule
 import com.orcchg.direcall.data.remote.GithubUserCloudRest
 import com.orcchg.direcall.data.repository.GithubRepositoryImpl
@@ -30,10 +30,14 @@ class GithubUserDetailsFragment : Fragment(R.layout.fragment_github_user_details
         CloudModule.moshi()
     )
     private val userCloud: GithubUserCloudRest = retrofit.create()
-    private val converter = GithubUserDetailsCloudConverter()
-    private val listConverter = GithubUserListCloudConverter()
+    private val userDetailsConverter = GithubUserDetailsCloudConverter()
+    private val userListConverter = GithubUserListCloudConverter()
     private val scheduler = SchedulersFactoryImpl(executor)
-    private val gitRepo = GithubRepositoryImpl(userCloud, converter, listConverter)
+    private val gitRepo = GithubRepositoryImpl(
+        userCloud = userCloud,
+        userDetailsConverter = userDetailsConverter,
+        userListConverter = userListConverter
+    )
     private val useCase = GetGithubUserDetailsUseCase(gitRepo, scheduler)
     private val myFactory by lazy { GithubUserDetailsViewModelFactory(login, useCase) }
     private val viewModel: GithubUserDetailsViewModel by viewModels { myFactory }

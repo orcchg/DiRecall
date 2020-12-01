@@ -9,6 +9,7 @@ class GithubUserListCloudConverter : Converter<GithubUserEntity, GithubUser> {
     override fun convert(from: GithubUserEntity): GithubUser =
         GithubUser(
             login = from.login,
-            avatarUrl = from.avatarUrl
+            avatarUrl = from.avatarUrl,
+            url = from.url
         )
 }
