@@ -12,7 +12,6 @@ class GetGithubUsersUseCase(
     schedulersFactory: SchedulersFactory
 ) : SingleUseCase<List<GithubUser>>(schedulersFactory) {
 
-    override fun sourceImpl(params: Params): Single<List<GithubUser>> {
-        return repository.users()
-    }
+    override fun sourceImpl(params: Params): Single<List<GithubUser>> =
+        repository.users()
 }
