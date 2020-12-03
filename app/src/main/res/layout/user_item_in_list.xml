@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/user_item_in_list"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginTop="@dimen/std_16">
+
+    <ImageView
+        android:id="@+id/user_avatar_in_list"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="@dimen/std_16"
+        android:layout_marginEnd="@dimen/std_16"
+        android:layout_marginTop="@dimen/std_16"
+        android:layout_marginBottom="@dimen/std_16">
+
+    </ImageView>
+
+    <TextView
+        android:id="@+id/user_login_in_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Login">
+    </TextView>
+
+</LinearLayout>
