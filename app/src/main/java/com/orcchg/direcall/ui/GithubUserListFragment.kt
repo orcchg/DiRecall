@@ -1,14 +1,10 @@
 package com.orcchg.direcall.ui
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.Glide
 import com.orcchg.direcall.R
 import com.orcchg.direcall.androidutil.SchedulersFactoryImpl
 import com.orcchg.direcall.androidutil.observe
@@ -46,13 +42,14 @@ class GithubUserListFragment : Fragment(R.layout.fragment_github_user_list) {
     private val myFactory by lazy { GithubUserListViewModelFactory(useCase) }
     private val viewModel: GithubUserListViewModel by viewModels { myFactory }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        list_recycler_view.apply{
-            layoutManager = LinearLayoutManager(activity)
-            adapter = viewModel.userList.value?.let { ListAdapter(it) }
+
+        observe(viewModel.userList) {
+            rv_items.apply {
+                layoutManager = LinearLayoutManager(activity)
+                adapter = GithubUserListAdapter(it)
+            }
         }
     }
-
 }
