@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.orcchg.direcall.R
 import com.orcchg.direcall.androidutil.SchedulersFactoryImpl
@@ -19,7 +20,6 @@ import com.orcchg.direcall.databinding.FragmentGithubUserListBinding
 import com.orcchg.direcall.domain.usecase.GetGithubUsersUseCase
 import com.orcchg.direcall.viewmodel.GithubUserListViewModel
 import com.orcchg.direcall.viewmodel.GithubUserListViewModelFactory
-import kotlinx.android.synthetic.main.fragment_github_user_list.*
 import retrofit2.create
 
 class GithubUserListFragment : Fragment(R.layout.fragment_github_user_list) {
@@ -42,14 +42,21 @@ class GithubUserListFragment : Fragment(R.layout.fragment_github_user_list) {
     private val myFactory by lazy { GithubUserListViewModelFactory(useCase) }
     private val viewModel: GithubUserListViewModel by viewModels { myFactory }
 
+    private val layoutManager = LinearLayoutManager(activity)
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val adapter = GithubUserListAdapter()
+        binding.rvItems.adapter = adapter
+
+        binding.rvItems.layoutManager = layoutManager
+        val itemDecoration =
+            DividerItemDecoration(binding.rvItems.context, layoutManager.orientation)
+        binding.rvItems.addItemDecoration(itemDecoration)
+
         observe(viewModel.userList) {
-            rv_items.apply {
-                layoutManager = LinearLayoutManager(activity)
-                adapter = GithubUserListAdapter(it)
-            }
+            adapter.update(it)
         }
     }
 }

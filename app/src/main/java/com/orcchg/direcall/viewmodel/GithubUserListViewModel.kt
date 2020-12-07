@@ -12,11 +12,11 @@ class GithubUserListViewModel(
     private val getGithubUsersUseCase: GetGithubUsersUseCase
 ) : AutoDisposeViewModel() {
 
-    val userList: LiveData<List<GithubUser>> by lazy(LazyThreadSafetyMode.NONE) {
-        val liveData = MutableLiveData<List<GithubUser>>()
+    val userList: LiveData<MutableList<GithubUser>> by lazy(LazyThreadSafetyMode.NONE) {
+        val liveData = MutableLiveData<MutableList<GithubUser>>()
         getGithubUsersUseCase.source()
             .autoDispose(this)
-            .subscribe({ liveData.value = it }, Timber::e)
+            .subscribe({ liveData.value = it as MutableList<GithubUser>? }, Timber::e)
         liveData
     }
 }
