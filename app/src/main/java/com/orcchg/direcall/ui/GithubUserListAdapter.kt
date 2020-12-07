@@ -22,7 +22,7 @@ class GithubUserListAdapter : RecyclerView.Adapter<GithubUserViewHolder>() {
 
     override fun getItemCount(): Int = userList.size
 
-    fun update(items: MutableList<GithubUser>) {
+    fun update(items: List<GithubUser>) {
         this.userList = items
         notifyDataSetChanged()
     }
