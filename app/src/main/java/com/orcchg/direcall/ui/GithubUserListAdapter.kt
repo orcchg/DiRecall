@@ -9,11 +9,12 @@ import com.orcchg.direcall.domain.model.GithubUser
 class GithubUserListAdapter : RecyclerView.Adapter<GithubUserViewHolder>() {
 
     private var userList = listOf<GithubUser>()
+    var onItemClick: ((GithubUser) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GithubUserViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = RvItemGithubUserBinding.inflate(inflater)
-        return GithubUserViewHolder(binding)
+        return GithubUserViewHolder(binding, onItemClick, userList)
     }
 
     override fun onBindViewHolder(holder: GithubUserViewHolder, position: Int) {

@@ -55,6 +55,10 @@ class GithubUserListFragment : Fragment(R.layout.fragment_github_user_list) {
             DividerItemDecoration(binding.rvItems.context, layoutManager.orientation)
         binding.rvItems.addItemDecoration(itemDecoration)
 
+        adapter.onItemClick = {
+//            Toast.makeText(context, it.login, Toast.LENGTH_SHORT).show()
+        }
+
         observe(viewModel.userList) {
             adapter.update(it)
         }
