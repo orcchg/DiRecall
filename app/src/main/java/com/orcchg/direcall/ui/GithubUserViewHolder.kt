@@ -5,11 +5,7 @@ import com.bumptech.glide.Glide
 import com.orcchg.direcall.databinding.RvItemGithubUserBinding
 import com.orcchg.direcall.domain.model.GithubUser
 
-class GithubUserViewHolder(
-    private val binding: RvItemGithubUserBinding,
-    onItemClick: ((GithubUser) -> Unit)?,
-    userList: List<GithubUser>
-) :
+class GithubUserViewHolder(private val binding: RvItemGithubUserBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
     fun bind(user: GithubUser) {
@@ -17,11 +13,5 @@ class GithubUserViewHolder(
         Glide.with(binding.ivAvatar)
             .load(user.avatarUrl)
             .into(binding.ivAvatar)
-    }
-
-    init {
-        binding.root.setOnClickListener {
-            onItemClick?.invoke(userList[adapterPosition])
-        }
     }
 }
