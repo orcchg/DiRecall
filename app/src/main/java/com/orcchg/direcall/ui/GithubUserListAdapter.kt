@@ -16,7 +16,10 @@ class GithubUserListAdapter : RecyclerView.Adapter<GithubUserViewHolder>() {
         val binding = RvItemGithubUserBinding.inflate(inflater)
         val holder = GithubUserViewHolder(binding)
         binding.root.setOnClickListener {
-            onItemClick?.invoke(userList[holder.adapterPosition])
+            val position = holder.adapterPosition
+            if (position != RecyclerView.NO_POSITION) {
+                onItemClick?.invoke(userList[position])
+            }
         }
         return holder
     }
