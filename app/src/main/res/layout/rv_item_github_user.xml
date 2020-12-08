@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
+    android:background="?attr/selectableItemBackground"
     android:gravity="center_vertical"
     android:orientation="horizontal"
     android:padding="@dimen/std_8">
@@ -13,7 +14,9 @@
         android:layout_width="@dimen/std_48"
         android:layout_height="@dimen/std_48"
         android:layout_marginStart="@dimen/std_8"
-        android:layout_marginEnd="@dimen/std_16" />
+        android:layout_marginTop="@dimen/std_8"
+        android:layout_marginEnd="@dimen/std_16"
+        android:layout_marginBottom="@dimen/std_8" />
 
     <TextView
         android:id="@+id/tv_login"

@@ -2,8 +2,10 @@ package com.orcchg.direcall.ui
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.orcchg.direcall.R
@@ -53,10 +55,19 @@ class GithubUserListFragment : Fragment(R.layout.fragment_github_user_list) {
         binding.rvItems.layoutManager = layoutManager
         val itemDecoration =
             DividerItemDecoration(binding.rvItems.context, layoutManager.orientation)
+
+        ContextCompat.getDrawable(binding.rvItems.context, R.drawable.delimiter_githubuserlistfragment)?.let {
+            itemDecoration.setDrawable(it)
+        }
+
         binding.rvItems.addItemDecoration(itemDecoration)
 
         adapter.onItemClick = {
-//            Toast.makeText(context, it.login, Toast.LENGTH_SHORT).show()
+            val action =
+                GithubUserListFragmentDirections.actionNavFragmentGithubUserListToNavFragmentGithubUserDetails(
+                    it.login
+                )
+            Navigation.findNavController(binding.root).navigate(action)
         }
 
         observe(viewModel.userList) {

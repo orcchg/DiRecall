@@ -13,7 +13,7 @@ class GithubUserListAdapter : RecyclerView.Adapter<GithubUserViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GithubUserViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val binding = RvItemGithubUserBinding.inflate(inflater)
+        val binding = RvItemGithubUserBinding.inflate(inflater, parent, false)
         val holder = GithubUserViewHolder(binding)
         binding.root.setOnClickListener {
             val position = holder.adapterPosition

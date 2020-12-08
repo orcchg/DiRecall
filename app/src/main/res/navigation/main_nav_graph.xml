@@ -9,7 +9,6 @@
         android:id="@id/nav_fragment_github_user_details"
         android:name="com.orcchg.direcall.ui.GithubUserDetailsFragment"
         tools:layout="@layout/fragment_github_user_details">
-
         <argument
             android:name="login"
             android:defaultValue="orcchg" />
@@ -18,5 +17,9 @@
     <fragment
         android:id="@id/nav_fragment_github_user_list"
         android:name="com.orcchg.direcall.ui.GithubUserListFragment"
-        tools:layout="@layout/fragment_github_user_list" />
+        tools:layout="@layout/fragment_github_user_list">
+        <action
+            android:id="@+id/action_nav_fragment_github_user_list_to_nav_fragment_github_user_details"
+            app:destination="@id/nav_fragment_github_user_details" />
+    </fragment>
 </navigation>
