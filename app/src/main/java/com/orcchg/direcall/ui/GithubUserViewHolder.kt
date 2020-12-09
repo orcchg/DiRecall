@@ -12,10 +12,7 @@ class GithubUserViewHolder(private val binding: RvItemGithubUserBinding) :
         binding.tvLogin.text = user.login
         Glide.with(binding.ivAvatar)
             .load(user.avatarUrl)
+            .circleCrop()
             .into(binding.ivAvatar)
-    }
-
-    init {
-        binding.ivAvatar.clipToOutline = true
     }
 }

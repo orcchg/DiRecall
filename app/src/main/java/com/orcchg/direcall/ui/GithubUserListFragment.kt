@@ -53,13 +53,11 @@ class GithubUserListFragment : Fragment(R.layout.fragment_github_user_list) {
         val adapter = GithubUserListAdapter()
         binding.rvItems.adapter = adapter
 
-        binding.rvItems.layoutManager = layoutManager
-
         binding.rvItems.addItemDecoration(object :
             DividerItemDecoration(requireContext(), layoutManager.orientation) {
             override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
-                outRect.top = 16
-                outRect.bottom = 16
+                outRect.top = layoutManager.paddingTop
+                outRect.bottom = layoutManager.paddingBottom
             }
         })
 
