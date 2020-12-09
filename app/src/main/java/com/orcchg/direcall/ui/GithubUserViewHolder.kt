@@ -14,4 +14,8 @@ class GithubUserViewHolder(private val binding: RvItemGithubUserBinding) :
             .load(user.avatarUrl)
             .into(binding.ivAvatar)
     }
+
+    init {
+        binding.ivAvatar.clipToOutline = true
+    }
 }
