@@ -1,13 +1,14 @@
 package com.orcchg.direcall.ui
 
+import android.graphics.Rect
 import android.os.Bundle
 import android.view.View
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.orcchg.direcall.R
 import com.orcchg.direcall.androidutil.SchedulersFactoryImpl
 import com.orcchg.direcall.androidutil.observe
@@ -53,20 +54,19 @@ class GithubUserListFragment : Fragment(R.layout.fragment_github_user_list) {
         binding.rvItems.adapter = adapter
 
         binding.rvItems.layoutManager = layoutManager
-        val itemDecoration =
-            DividerItemDecoration(binding.rvItems.context, layoutManager.orientation)
 
-        ContextCompat.getDrawable(binding.rvItems.context, R.drawable.delimiter_githubuserlistfragment)?.let {
-            itemDecoration.setDrawable(it)
-        }
-
-        binding.rvItems.addItemDecoration(itemDecoration)
+        binding.rvItems.addItemDecoration(object :
+            DividerItemDecoration(requireContext(), layoutManager.orientation) {
+            override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
+                outRect.top = 16
+                outRect.bottom = 16
+            }
+        })
 
         adapter.onItemClick = {
-            val action =
-                GithubUserListFragmentDirections.actionNavFragmentGithubUserListToNavFragmentGithubUserDetails(
-                    it.login
-                )
+            val action = GithubUserListFragmentDirections
+                .actionNavFragmentGithubUserListToNavFragmentGithubUserDetails(it.login)
+
             Navigation.findNavController(binding.root).navigate(action)
         }
 

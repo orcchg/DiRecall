@@ -14,9 +14,7 @@
         android:layout_width="@dimen/std_48"
         android:layout_height="@dimen/std_48"
         android:layout_marginStart="@dimen/std_8"
-        android:layout_marginTop="@dimen/std_8"
-        android:layout_marginEnd="@dimen/std_16"
-        android:layout_marginBottom="@dimen/std_8" />
+        android:layout_marginEnd="@dimen/std_16" />
 
     <TextView
         android:id="@+id/tv_login"
