@@ -1,15 +1,14 @@
 package com.orcchg.direcall.ui
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.Navigation
-import com.bumptech.glide.Glide
-import com.jakewharton.rxbinding3.view.clicks
 import com.orcchg.direcall.R
-import com.orcchg.direcall.androidutil.*
+import com.orcchg.direcall.androidutil.SchedulersFactoryImpl
+import com.orcchg.direcall.androidutil.argument
+import com.orcchg.direcall.androidutil.observe
+import com.orcchg.direcall.androidutil.viewBindings
 import com.orcchg.direcall.base.usecase.UseCaseThreadExecutor
 import com.orcchg.direcall.data.convert.GithubUserDetailsCloudConverter
 import com.orcchg.direcall.data.convert.GithubUserListCloudConverter
@@ -17,14 +16,14 @@ import com.orcchg.direcall.data.convert.GithubUserRepoCloudConverter
 import com.orcchg.direcall.data.remote.CloudModule
 import com.orcchg.direcall.data.remote.GithubUserCloudRest
 import com.orcchg.direcall.data.repository.GithubRepositoryImpl
-import com.orcchg.direcall.databinding.FragmentGithubUserDetailsBinding
-import com.orcchg.direcall.domain.usecase.GetGithubUserDetailsUseCase
-import com.orcchg.direcall.viewmodel.GithubUserDetailsViewModel
-import com.orcchg.direcall.viewmodel.GithubUserDetailsViewModelFactory
+import com.orcchg.direcall.databinding.FragmentGithubUserRepoListBinding
+import com.orcchg.direcall.domain.usecase.GetGithubUserRepoUseCase
+import com.orcchg.direcall.viewmodel.GithubUserRepoViewModel
+import com.orcchg.direcall.viewmodel.GithubUserRepoViewModelFactory
 import retrofit2.create
 
-class GithubUserDetailsFragment : Fragment(R.layout.fragment_github_user_details) {
-    private val binding by viewBindings(FragmentGithubUserDetailsBinding::bind)
+class GithubUserRepoFragment : Fragment(R.layout.fragment_github_user_repo_list) {
+    private val binding by viewBindings(FragmentGithubUserRepoListBinding::bind)
     private val login by argument<String>("login")
     private val executor = UseCaseThreadExecutor()
     private val retrofit = CloudModule.retrofit(
@@ -42,27 +41,18 @@ class GithubUserDetailsFragment : Fragment(R.layout.fragment_github_user_details
         userListConverter = userListConverter,
         userRepoListConverter = userRepoListConverter
     )
-    private val useCase = GetGithubUserDetailsUseCase(gitRepo, scheduler)
-    private val myFactory by lazy { GithubUserDetailsViewModelFactory(login, useCase) }
-    private val viewModel: GithubUserDetailsViewModel by viewModels { myFactory }
+    private val userCase = GetGithubUserRepoUseCase(gitRepo, scheduler)
+    private val myFactory by lazy { GithubUserRepoViewModelFactory(login, userCase) }
+    private val viewModel: GithubUserRepoViewModel by viewModels { myFactory }
 
-    @SuppressLint("AutoDispose", "CheckResult")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btnRepoList.clicks().clickDebounce()
-            .subscribe {
-                val action = GithubUserDetailsFragmentDirections
-                    .actionNavFragmentGithubUserDetailsToNavFragmentGithubRepoList(login)
-                Navigation.findNavController(binding.root).navigate(action)
-            }
+        val adapter = GithubUserRepoAdapter()
+        binding.rvRepoItems.adapter = adapter
 
-        observe(viewModel.user) {
-            Glide.with(this)
-                .load(it.avatarUrl)
-                .into(binding.ivAvatar)
-
-            binding.tvTitle.text = it.login
+        observe(viewModel.userRepoList) {
+            adapter.update(it)
         }
     }
 }
