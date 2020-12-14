@@ -2,6 +2,7 @@ package com.orcchg.direcall.data.remote
 
 import com.orcchg.direcall.data.model.GithubUserDetailsEntity
 import com.orcchg.direcall.data.model.GithubUserEntity
+import com.orcchg.direcall.data.model.GithubUserGistEntity
 import com.orcchg.direcall.data.model.GithubUserRepoEntity
 import io.reactivex.Single
 import retrofit2.http.GET
@@ -17,4 +18,7 @@ interface GithubUserCloudRest {
 
     @GET("/users/{login}/repos")
     fun userRepo(@Path("login") login: String): Single<List<GithubUserRepoEntity>>
+
+    @GET("/users/{login}/gists")
+    fun userGist(@Path("login") login: String): Single<List<GithubUserGistEntity>>
 }

@@ -1,14 +1,10 @@
 package com.orcchg.direcall.ui
 
-import android.graphics.Rect
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.Navigation
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.orcchg.direcall.R
 import com.orcchg.direcall.androidutil.SchedulersFactoryImpl
 import com.orcchg.direcall.androidutil.observe
@@ -21,14 +17,14 @@ import com.orcchg.direcall.data.convert.GithubUserRepoCloudConverter
 import com.orcchg.direcall.data.remote.CloudModule
 import com.orcchg.direcall.data.remote.GithubUserCloudRest
 import com.orcchg.direcall.data.repository.GithubRepositoryImpl
-import com.orcchg.direcall.databinding.FragmentGithubUserListBinding
-import com.orcchg.direcall.domain.usecase.GetGithubUsersUseCase
-import com.orcchg.direcall.viewmodel.GithubUserListViewModel
-import com.orcchg.direcall.viewmodel.GithubUserListViewModelFactory
+import com.orcchg.direcall.databinding.FragmentGithubUserGistListBinding
+import com.orcchg.direcall.domain.usecase.GetGithubUserGistUseCase
+import com.orcchg.direcall.viewmodel.GithubUserGistListViewModel
+import com.orcchg.direcall.viewmodel.GithubUserGistListViewModelFactory
 import retrofit2.create
 
-class GithubUserListFragment : Fragment(R.layout.fragment_github_user_list) {
-    private val binding by viewBindings(FragmentGithubUserListBinding::bind)
+class GithubUserGistListFragment : Fragment(R.layout.fragment_github_user_gist_list) {
+    private val binding by viewBindings(FragmentGithubUserGistListBinding::bind)
     private val executor = UseCaseThreadExecutor()
     private val retrofit = CloudModule.retrofit(
         CloudModule.okHttpClient(CloudModule.loggingInterceptor()),
@@ -47,34 +43,19 @@ class GithubUserListFragment : Fragment(R.layout.fragment_github_user_list) {
         userRepoListConverter = userRepoListConverter,
         userGistListCloudConverter = userGistCloudConverter
     )
-    private val useCase = GetGithubUsersUseCase(gitRepo, scheduler)
-    private val myFactory by lazy { GithubUserListViewModelFactory(useCase) }
-    private val viewModel: GithubUserListViewModel by viewModels { myFactory }
 
-    private val layoutManager = LinearLayoutManager(activity)
+    private val useCase = GetGithubUserGistUseCase(gitRepo, scheduler)
+
+    private val myFactory by lazy { GithubUserGistListViewModelFactory(useCase) }
+    private val viewModel: GithubUserGistListViewModel by viewModels { myFactory }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = GithubUserListAdapter()
-        binding.rvItems.adapter = adapter
+        val adapter = GithubUserGistAdapter()
+        binding.rvGistItems.adapter = adapter
 
-        binding.rvItems.addItemDecoration(object :
-            DividerItemDecoration(requireContext(), layoutManager.orientation) {
-            override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
-                outRect.top = layoutManager.paddingTop
-                outRect.bottom = layoutManager.paddingBottom
-            }
-        })
-
-        adapter.onItemClick = {
-            val action = GithubUserListFragmentDirections
-                .actionNavFragmentGithubUserListToNavFragmentGithubUserDetails(it.login)
-
-            Navigation.findNavController(binding.root).navigate(action)
-        }
-
-        observe(viewModel.userList) {
+        observe(viewModel.gistList) {
             adapter.update(it)
         }
     }
