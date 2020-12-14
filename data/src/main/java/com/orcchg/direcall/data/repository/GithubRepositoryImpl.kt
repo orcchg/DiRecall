@@ -1,14 +1,8 @@
 package com.orcchg.direcall.data.repository
 
-import com.orcchg.direcall.data.convert.GithubUserListCloudConverter
-import com.orcchg.direcall.data.convert.GithubUserDetailsCloudConverter
-import com.orcchg.direcall.data.convert.GithubUserGistCloudConverter
-import com.orcchg.direcall.data.convert.GithubUserRepoCloudConverter
+import com.orcchg.direcall.data.convert.*
 import com.orcchg.direcall.data.remote.GithubUserCloudRest
-import com.orcchg.direcall.domain.model.GithubRepo
-import com.orcchg.direcall.domain.model.GithubUser
-import com.orcchg.direcall.domain.model.GithubUserDetails
-import com.orcchg.direcall.domain.model.GithubUserGist
+import com.orcchg.direcall.domain.model.*
 import com.orcchg.direcall.domain.repository.GithubRepository
 import io.reactivex.Single
 
@@ -17,7 +11,8 @@ class GithubRepositoryImpl(
     private val userDetailsConverter: GithubUserDetailsCloudConverter,
     private val userListConverter: GithubUserListCloudConverter,
     private val userRepoListConverter: GithubUserRepoCloudConverter,
-    private val userGistListCloudConverter: GithubUserGistCloudConverter
+    private val userGistListCloudConverter: GithubUserGistCloudConverter,
+    private val userFollowersCloudConverter: GithubUserFollowersCloudConverter
 ) : GithubRepository {
 
     override fun repos(login: String): Single<List<GithubRepo>> =
@@ -31,4 +26,7 @@ class GithubRepositoryImpl(
 
     override fun gists(login: String): Single<List<GithubUserGist>> =
         userCloud.userGist(login).map(userGistListCloudConverter::convertList)
+
+    override fun followers(login: String): Single<List<GithubUserFollower>> =
+        userCloud.userFollowers(login).map(userFollowersCloudConverter::convertList)
 }
