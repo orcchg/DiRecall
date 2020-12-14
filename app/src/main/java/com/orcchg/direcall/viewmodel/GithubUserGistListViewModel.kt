@@ -9,12 +9,13 @@ import com.uber.autodispose.autoDispose
 import timber.log.Timber
 
 class GithubUserGistListViewModel(
+    private val login: String,
     private val getGithubUserGistUseCase: GetGithubUserGistUseCase
 ) : AutoDisposeViewModel() {
 
     val gistList: LiveData<List<GithubUserGist>> by lazy(LazyThreadSafetyMode.NONE) {
         val liveData = MutableLiveData<List<GithubUserGist>>()
-        getGithubUserGistUseCase.source()
+        getGithubUserGistUseCase.source{"login" of login}
             .autoDispose(this)
             .subscribe({ liveData.value = it }, Timber::e)
         liveData
