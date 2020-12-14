@@ -10,16 +10,17 @@
     android:padding="@dimen/std_8">
 
     <ImageView
-        android:id="@+id/iv_avatar_follower"
+        android:id="@+id/iv_avatar_org"
         android:layout_width="@dimen/std_48"
         android:layout_height="@dimen/std_48"
         android:layout_marginStart="@dimen/std_8"
         android:layout_marginEnd="@dimen/std_16" />
 
     <TextView
-        android:id="@+id/tv_login_follower"
+        android:id="@+id/tv_login_org"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/colorAccent"
         tools:text="hello" />
+
 </LinearLayout>

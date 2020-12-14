@@ -35,6 +35,7 @@ class GithubUserDetailsFragment : Fragment(R.layout.fragment_github_user_details
     private val userRepoListConverter = GithubUserRepoCloudConverter()
     private val userGistListConverter = GithubUserGistCloudConverter()
     private val userFollowersCloudConverter = GithubUserFollowersCloudConverter()
+    private val userOrgsCloudConverter = GithubUserOrgsCloudConverter()
     private val scheduler = SchedulersFactoryImpl(executor)
     private val gitRepo = GithubRepositoryImpl(
         userCloud = userCloud,
@@ -42,7 +43,8 @@ class GithubUserDetailsFragment : Fragment(R.layout.fragment_github_user_details
         userListConverter = userListConverter,
         userRepoListConverter = userRepoListConverter,
         userGistListCloudConverter = userGistListConverter,
-        userFollowersCloudConverter = userFollowersCloudConverter
+        userFollowersCloudConverter = userFollowersCloudConverter,
+        userOrgsCloudConverter = userOrgsCloudConverter
     )
     private val useCase = GetGithubUserDetailsUseCase(gitRepo, scheduler)
     private val myFactory by lazy { GithubUserDetailsViewModelFactory(login, useCase) }
@@ -71,6 +73,13 @@ class GithubUserDetailsFragment : Fragment(R.layout.fragment_github_user_details
             .subscribe {
                 val action = GithubUserDetailsFragmentDirections
                     .actionNavFragmentGithubUserDetailsToNavFragmentGithubFolowersList(login)
+                Navigation.findNavController(binding.root).navigate(action)
+            }
+
+        binding.btnOrgsList.clicks().clickDebounce()
+            .subscribe {
+                val action = GithubUserDetailsFragmentDirections
+                    .actionNavFragmentGithubUserDetailsToNavFragmentGithubOrgsList(login)
                 Navigation.findNavController(binding.root).navigate(action)
             }
 

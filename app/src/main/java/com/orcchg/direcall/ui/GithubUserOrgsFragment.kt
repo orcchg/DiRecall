@@ -18,14 +18,14 @@ import com.orcchg.direcall.data.convert.*
 import com.orcchg.direcall.data.remote.CloudModule
 import com.orcchg.direcall.data.remote.GithubUserCloudRest
 import com.orcchg.direcall.data.repository.GithubRepositoryImpl
-import com.orcchg.direcall.databinding.FragmentGithubUserFollowerListBinding
-import com.orcchg.direcall.domain.usecase.GetGithubUserFollowersUseCase
-import com.orcchg.direcall.viewmodel.GithubUserFollowersListModelFactory
-import com.orcchg.direcall.viewmodel.GithubUserFollowersListViewModel
+import com.orcchg.direcall.databinding.FragmentGithubUserOrgsListBinding
+import com.orcchg.direcall.domain.usecase.GetGithubUserOrgsUseCase
+import com.orcchg.direcall.viewmodel.GithubUserOrgsListViewModel
+import com.orcchg.direcall.viewmodel.GithubUserOrgsListViewModelFactory
 import retrofit2.create
 
-class GithubUserFollowersFragment : Fragment(R.layout.fragment_github_user_follower_list) {
-    private val binding by viewBindings(FragmentGithubUserFollowerListBinding::bind)
+class GithubUserOrgsFragment : Fragment(R.layout.fragment_github_user_orgs_list) {
+    private val binding by viewBindings(FragmentGithubUserOrgsListBinding::bind)
     private val login by argument<String>("login")
     private val executor = UseCaseThreadExecutor()
     private val retrofit = CloudModule.retrofit(
@@ -49,19 +49,19 @@ class GithubUserFollowersFragment : Fragment(R.layout.fragment_github_user_follo
         userFollowersCloudConverter = userFollowersCloudConverter,
         userOrgsCloudConverter = userOrgsCloudConverter
     )
-    private val useCase = GetGithubUserFollowersUseCase(gitRepo, scheduler)
-    private val myFactory by lazy { GithubUserFollowersListModelFactory(login, useCase) }
-    private val viewModel: GithubUserFollowersListViewModel by viewModels { myFactory }
+    private val useCase = GetGithubUserOrgsUseCase(gitRepo, scheduler)
+    private val myFactory by lazy { GithubUserOrgsListViewModelFactory(login, useCase) }
+    private val viewModel: GithubUserOrgsListViewModel by viewModels { myFactory }
 
     private val layoutManager = LinearLayoutManager(activity)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = GithubUserFollowersAdapter()
-        binding.rvFollowersItems.adapter = adapter
+        val adapter = GithubUserOrgsAdapter()
+        binding.rvOrganizationsItems.adapter = adapter
 
-        binding.rvFollowersItems.addItemDecoration(object :
+        binding.rvOrganizationsItems.addItemDecoration(object :
             DividerItemDecoration(requireContext(), layoutManager.orientation) {
             override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
                 outRect.top = layoutManager.paddingTop
@@ -69,8 +69,9 @@ class GithubUserFollowersFragment : Fragment(R.layout.fragment_github_user_follo
             }
         })
 
-        observe(viewModel.followersList) {
+        observe(viewModel.orgsList) {
             adapter.update(it)
         }
     }
+
 }

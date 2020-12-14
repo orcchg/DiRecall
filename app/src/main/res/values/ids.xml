@@ -5,4 +5,5 @@
     <item name="nav_fragment_github_user_list" type="id" />
     <item name="nav_fragment_github_gist_list" type="id" />
     <item name="nav_fragment_github_followers_list" type="id" />
+    <item name="nav_fragment_github_orgs_list" type="id" />
 </resources>
