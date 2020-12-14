@@ -14,4 +14,6 @@ interface GithubRepository {
     fun gists(login: String): Single<List<GithubUserGist>>
 
     fun followers(login: String): Single<List<GithubUserFollower>>
+
+    fun organizations(login: String): Single<List<GithubUserOrg>>
 }

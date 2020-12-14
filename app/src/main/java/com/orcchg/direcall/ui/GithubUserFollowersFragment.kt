@@ -38,6 +38,7 @@ class GithubUserFollowersFragment : Fragment(R.layout.fragment_github_user_follo
     private val userRepoListConverter = GithubUserRepoCloudConverter()
     private val userGistCloudConverter = GithubUserGistCloudConverter()
     private val userFollowersCloudConverter = GithubUserFollowersCloudConverter()
+    private val userOrgsCloudConverter = GithubUserOrgsCloudConverter()
     private val scheduler = SchedulersFactoryImpl(executor)
     private val gitRepo = GithubRepositoryImpl(
         userCloud = userCloud,
@@ -45,7 +46,8 @@ class GithubUserFollowersFragment : Fragment(R.layout.fragment_github_user_follo
         userListConverter = userListConverter,
         userRepoListConverter = userRepoListConverter,
         userGistListCloudConverter = userGistCloudConverter,
-        userFollowersCloudConverter = userFollowersCloudConverter
+        userFollowersCloudConverter = userFollowersCloudConverter,
+        userOrgsCloudConverter = userOrgsCloudConverter
     )
     private val useCase = GetGithubUserFollowersUseCase(gitRepo, scheduler)
     private val myFactory by lazy { GithubUserFollowersListModelFactory(login, useCase) }
@@ -61,8 +63,7 @@ class GithubUserFollowersFragment : Fragment(R.layout.fragment_github_user_follo
 
         binding.rvFollowersItems.addItemDecoration(object :
             DividerItemDecoration(requireContext(), layoutManager.orientation) {
-            override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State
-            ) {
+            override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
                 outRect.top = layoutManager.paddingTop
                 outRect.bottom = layoutManager.paddingBottom
             }

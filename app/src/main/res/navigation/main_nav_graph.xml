@@ -21,6 +21,9 @@
         <action
             android:id="@+id/action_nav_fragment_github_user_details_to_nav_fragment_github_folowers_list"
             app:destination="@id/nav_fragment_github_followers_list" />
+        <action
+            android:id="@+id/action_nav_fragment_github_user_details_to_nav_fragment_github_orgs_list"
+            app:destination="@id/nav_fragment_github_orgs_list" />
     </fragment>
 
     <fragment
@@ -54,6 +57,15 @@
         android:id="@id/nav_fragment_github_followers_list"
         android:name="com.orcchg.direcall.ui.GithubUserFollowersFragment"
         tools:layout="@layout/fragment_github_user_follower_list">
+        <argument
+            android:name="login"
+            android:defaultValue="orcchg" />
+    </fragment>
+
+    <fragment
+        android:id="@id/nav_fragment_github_orgs_list"
+        android:name="com.orcchg.direcall.ui.GithubUserOrgsFragment"
+        tools:layout="@layout/fragment_github_user_orgs_list">
         <argument
             android:name="login"
             android:defaultValue="orcchg" />

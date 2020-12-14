@@ -24,4 +24,7 @@ interface GithubUserCloudRest {
 
     @GET("/users/{login}/followers")
     fun userFollowers(@Path("login") login: String): Single<List<GithubUserFollowersEntity>>
+
+    @GET("/users/{login}/orgs")
+    fun userOrganizations(@Path("login") login: String): Single<List<GithubUserOrgsEntity>>
 }

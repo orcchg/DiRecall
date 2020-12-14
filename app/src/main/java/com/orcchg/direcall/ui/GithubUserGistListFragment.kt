@@ -38,6 +38,7 @@ class GithubUserGistListFragment : Fragment(R.layout.fragment_github_user_gist_l
     private val userRepoListConverter = GithubUserRepoCloudConverter()
     private val userGistCloudConverter = GithubUserGistCloudConverter()
     private val userFollowersCloudConverter = GithubUserFollowersCloudConverter()
+    private val userOrgsCloudConverter = GithubUserOrgsCloudConverter()
     private val scheduler = SchedulersFactoryImpl(executor)
     private val gitRepo = GithubRepositoryImpl(
         userCloud = userCloud,
@@ -45,7 +46,8 @@ class GithubUserGistListFragment : Fragment(R.layout.fragment_github_user_gist_l
         userListConverter = userListConverter,
         userRepoListConverter = userRepoListConverter,
         userGistListCloudConverter = userGistCloudConverter,
-        userFollowersCloudConverter = userFollowersCloudConverter
+        userFollowersCloudConverter = userFollowersCloudConverter,
+        userOrgsCloudConverter = userOrgsCloudConverter
     )
 
     private val useCase = GetGithubUserGistUseCase(gitRepo, scheduler)

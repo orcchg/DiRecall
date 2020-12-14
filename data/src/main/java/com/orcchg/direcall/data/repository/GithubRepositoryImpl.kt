@@ -12,7 +12,8 @@ class GithubRepositoryImpl(
     private val userListConverter: GithubUserListCloudConverter,
     private val userRepoListConverter: GithubUserRepoCloudConverter,
     private val userGistListCloudConverter: GithubUserGistCloudConverter,
-    private val userFollowersCloudConverter: GithubUserFollowersCloudConverter
+    private val userFollowersCloudConverter: GithubUserFollowersCloudConverter,
+    private val userOrgsCloudConverter: GithubUserOrgsCloudConverter
 ) : GithubRepository {
 
     override fun repos(login: String): Single<List<GithubRepo>> =
@@ -29,4 +30,7 @@ class GithubRepositoryImpl(
 
     override fun followers(login: String): Single<List<GithubUserFollower>> =
         userCloud.userFollowers(login).map(userFollowersCloudConverter::convertList)
+
+    override fun organizations(login: String): Single<List<GithubUserOrg>> =
+        userCloud.userOrganizations(login).map(userOrgsCloudConverter::convertList)
 }
