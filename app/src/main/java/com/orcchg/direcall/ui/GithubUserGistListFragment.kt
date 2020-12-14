@@ -33,20 +33,18 @@ class GithubUserGistListFragment : Fragment(R.layout.fragment_github_user_gist_l
     private val userListConverter = GithubUserListCloudConverter()
     private val userRepoListConverter = GithubUserRepoCloudConverter()
     private val userGistCloudConverter = GithubUserGistCloudConverter()
-    private val userFollowersCloudConverter = GithubUserFollowersCloudConverter()
     private val scheduler = SchedulersFactoryImpl(executor)
     private val gitRepo = GithubRepositoryImpl(
         userCloud = userCloud,
         userDetailsConverter = userDetailsConverter,
         userListConverter = userListConverter,
         userRepoListConverter = userRepoListConverter,
-        userGistListCloudConverter = userGistCloudConverter,
-        userFollowersCloudConverter = userFollowersCloudConverter
+        userGistListCloudConverter = userGistCloudConverter
     )
 
     private val useCase = GetGithubUserGistUseCase(gitRepo, scheduler)
 
-    private val myFactory by lazy { GithubUserGistListViewModelFactory(login,useCase) }
+    private val myFactory by lazy { GithubUserGistListViewModelFactory(login, useCase) }
     private val viewModel: GithubUserGistListViewModel by viewModels { myFactory }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
