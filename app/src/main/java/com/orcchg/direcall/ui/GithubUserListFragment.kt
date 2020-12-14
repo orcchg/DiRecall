@@ -16,6 +16,7 @@ import com.orcchg.direcall.androidutil.observe
 import com.orcchg.direcall.androidutil.viewBindings
 import com.orcchg.direcall.base.usecase.UseCaseThreadExecutor
 import com.orcchg.direcall.data.convert.GithubUserDetailsCloudConverter
+import com.orcchg.direcall.data.convert.GithubUserGistCloudConverter
 import com.orcchg.direcall.data.convert.GithubUserListCloudConverter
 import com.orcchg.direcall.data.convert.GithubUserRepoCloudConverter
 import com.orcchg.direcall.data.remote.CloudModule
@@ -38,12 +39,14 @@ class GithubUserListFragment : Fragment(R.layout.fragment_github_user_list) {
     private val userDetailsConverter = GithubUserDetailsCloudConverter()
     private val userListConverter = GithubUserListCloudConverter()
     private val userRepoListConverter = GithubUserRepoCloudConverter()
+    private val userGistCloudConverter = GithubUserGistCloudConverter()
     private val scheduler = SchedulersFactoryImpl(executor)
     private val gitRepo = GithubRepositoryImpl(
         userCloud = userCloud,
         userDetailsConverter = userDetailsConverter,
         userListConverter = userListConverter,
-        userRepoListConverter = userRepoListConverter
+        userRepoListConverter = userRepoListConverter,
+        userGistListCloudConverter = userGistCloudConverter
     )
     private val useCase = GetGithubUsersUseCase(gitRepo, scheduler)
     private val myFactory by lazy { GithubUserListViewModelFactory(useCase) }

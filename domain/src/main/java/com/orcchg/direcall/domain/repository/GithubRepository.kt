@@ -1,5 +1,6 @@
 package com.orcchg.direcall.domain.repository
 
+import com.orcchg.direcall.domain.model.GithubUserGist
 import com.orcchg.direcall.domain.model.GithubRepo
 import com.orcchg.direcall.domain.model.GithubUser
 import com.orcchg.direcall.domain.model.GithubUserDetails
@@ -12,4 +13,6 @@ interface GithubRepository {
     fun user(login: String): Single<GithubUserDetails>
 
     fun users(): Single<List<GithubUser>>
+
+    fun gists(login: String): Single<List<GithubUserGist>>
 }

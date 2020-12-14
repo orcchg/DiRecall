@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">DiRecall</string>
     <string name="btn_github_repo_list">Repositories</string>
+    <string name="btn_github_gist_list">Gist</string>
+    <string name="btn_github_org_list">Organizations</string>
+    <string name="btn_github_followers_list">Followers</string>
 </resources>

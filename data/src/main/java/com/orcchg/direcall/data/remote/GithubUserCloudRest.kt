@@ -17,4 +17,7 @@ interface GithubUserCloudRest {
 
     @GET("/users/{login}/repos")
     fun repos(@Path("login") login: String): Single<List<GithubUserRepoEntity>>
+
+    @GET("/users/{login}/gists")
+    fun userGist(@Path("login") login: String): Single<List<GithubUserGistEntity>>
 }
