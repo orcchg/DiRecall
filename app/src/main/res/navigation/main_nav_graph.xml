@@ -18,6 +18,9 @@
         <action
             android:id="@+id/action_nav_fragment_github_user_details_to_nav_fragment_github_gist_list"
             app:destination="@id/nav_fragment_github_gist_list" />
+        <action
+            android:id="@+id/action_nav_fragment_github_user_details_to_nav_fragment_github_folowers_list"
+            app:destination="@id/nav_fragment_github_followers_list" />
     </fragment>
 
     <fragment
@@ -42,6 +45,15 @@
         android:id="@id/nav_fragment_github_gist_list"
         android:name="com.orcchg.direcall.ui.GithubUserGistListFragment"
         tools:layout="@layout/fragment_github_user_gist_list">
+        <argument
+            android:name="login"
+            android:defaultValue="orcchg" />
+    </fragment>
+
+    <fragment
+        android:id="@id/nav_fragment_github_followers_list"
+        android:name="com.orcchg.direcall.ui.GithubUserFollowersFragment"
+        tools:layout="@layout/fragment_github_user_follower_list">
         <argument
             android:name="login"
             android:defaultValue="orcchg" />

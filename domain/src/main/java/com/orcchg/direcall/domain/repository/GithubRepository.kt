@@ -1,9 +1,6 @@
 package com.orcchg.direcall.domain.repository
 
-import com.orcchg.direcall.domain.model.GithubUserGist
-import com.orcchg.direcall.domain.model.GithubRepo
-import com.orcchg.direcall.domain.model.GithubUser
-import com.orcchg.direcall.domain.model.GithubUserDetails
+import com.orcchg.direcall.domain.model.*
 import io.reactivex.Single
 
 interface GithubRepository {
@@ -15,4 +12,6 @@ interface GithubRepository {
     fun users(): Single<List<GithubUser>>
 
     fun gists(login: String): Single<List<GithubUserGist>>
+
+    fun followers(login: String): Single<List<GithubUserFollower>>
 }
