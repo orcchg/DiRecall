@@ -8,6 +8,7 @@ class GithubUserGistViewHolder(private val binding: RvItemGithubUserGistBinding)
     RecyclerView.ViewHolder(binding.root) {
 
     fun bind(githubGist: GithubUserGist) {
-        binding.tvGistDescription.text = githubGist.description
+        binding.tvGistDescription.text =
+            githubGist.description?.takeIf { it.isNotEmpty() } ?: "No description"
     }
 }
