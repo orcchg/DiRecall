@@ -18,7 +18,7 @@ class GithubRepositoryImpl(
 ) : GithubRepository {
 
     override fun repos(login: String): Single<List<GithubRepo>> =
-        userCloud.userRepo(login).map(userRepoListConverter::convertList)
+        userCloud.repos(login).map(userRepoListConverter::convertList)
 
     override fun users(): Single<List<GithubUser>> =
         userCloud.users().map(userListConverter::convertList)

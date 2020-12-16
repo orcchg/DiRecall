@@ -1,4 +1,4 @@
-package com.orcchg.direcall.ui
+package com.orcchg.direcall.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

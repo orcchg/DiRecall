@@ -8,12 +8,12 @@ import com.orcchg.direcall.domain.usecase.GetGithubUserRepoUseCase
 import com.uber.autodispose.autoDispose
 import timber.log.Timber
 
-class GithubUserRepoViewModel(
+class GithubUserReposViewModel(
     private val login: String,
     private val getGithubUserRepoUseCase: GetGithubUserRepoUseCase
 ) : AutoDisposeViewModel() {
 
-    val userRepoList: LiveData<List<GithubRepo>> by lazy(LazyThreadSafetyMode.NONE) {
+    val userReposList: LiveData<List<GithubRepo>> by lazy(LazyThreadSafetyMode.NONE) {
         val liveData = MutableLiveData<List<GithubRepo>>()
         getGithubUserRepoUseCase.source { "login" of login }
             .autoDispose(this)

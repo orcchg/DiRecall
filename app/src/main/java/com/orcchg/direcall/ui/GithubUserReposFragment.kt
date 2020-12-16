@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.orcchg.direcall.R
+import com.orcchg.direcall.adapter.GithubUserReposAdapter
 import com.orcchg.direcall.androidutil.SchedulersFactoryImpl
 import com.orcchg.direcall.androidutil.argument
 import com.orcchg.direcall.androidutil.observe
@@ -18,11 +19,11 @@ import com.orcchg.direcall.data.remote.GithubUserCloudRest
 import com.orcchg.direcall.data.repository.GithubRepositoryImpl
 import com.orcchg.direcall.databinding.FragmentGithubUserRepoListBinding
 import com.orcchg.direcall.domain.usecase.GetGithubUserRepoUseCase
-import com.orcchg.direcall.viewmodel.GithubUserRepoViewModel
-import com.orcchg.direcall.viewmodel.GithubUserRepoViewModelFactory
+import com.orcchg.direcall.viewmodel.GithubUserReposViewModel
+import com.orcchg.direcall.viewmodel.GithubUserReposViewModelFactory
 import retrofit2.create
 
-class GithubUserRepoFragment : Fragment(R.layout.fragment_github_user_repo_list) {
+class GithubUserReposFragment : Fragment(R.layout.fragment_github_user_repo_list) {
     private val binding by viewBindings(FragmentGithubUserRepoListBinding::bind)
     private val login by argument<String>("login")
     private val executor = UseCaseThreadExecutor()
@@ -42,17 +43,15 @@ class GithubUserRepoFragment : Fragment(R.layout.fragment_github_user_repo_list)
         userRepoListConverter = userRepoListConverter
     )
     private val userCase = GetGithubUserRepoUseCase(gitRepo, scheduler)
-    private val myFactory by lazy { GithubUserRepoViewModelFactory(login, userCase) }
-    private val viewModel: GithubUserRepoViewModel by viewModels { myFactory }
+    private val myFactory by lazy { GithubUserReposViewModelFactory(login, userCase) }
+    private val viewModel: GithubUserReposViewModel by viewModels { myFactory }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = GithubUserRepoAdapter()
+        val adapter = GithubUserReposAdapter()
         binding.rvRepoItems.adapter = adapter
 
-        observe(viewModel.userRepoList) {
-            adapter.update(it)
-        }
+        observe(viewModel.userReposList, adapter::update)
     }
 }

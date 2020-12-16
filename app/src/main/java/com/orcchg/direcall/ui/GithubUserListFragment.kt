@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.orcchg.direcall.R
+import com.orcchg.direcall.adapter.GithubUserListAdapter
 import com.orcchg.direcall.androidutil.SchedulersFactoryImpl
 import com.orcchg.direcall.androidutil.observe
 import com.orcchg.direcall.androidutil.viewBindings
@@ -71,8 +72,6 @@ class GithubUserListFragment : Fragment(R.layout.fragment_github_user_list) {
             Navigation.findNavController(binding.root).navigate(action)
         }
 
-        observe(viewModel.userList) {
-            adapter.update(it)
-        }
+        observe(viewModel.userList, adapter::update)
     }
 }
