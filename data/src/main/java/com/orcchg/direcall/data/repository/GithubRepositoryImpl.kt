@@ -26,11 +26,11 @@ class GithubRepositoryImpl(
         userCloud.userDetails(login).map(userDetailsConverter::convert)
 
     override fun gists(login: String): Single<List<GithubUserGist>> =
-        userCloud.userGist(login).map(userGistListCloudConverter::convertList)
+        userCloud.gists(login).map(userGistListCloudConverter::convertList)
 
     override fun followers(login: String): Single<List<GithubUserFollower>> =
-        userCloud.userFollowers(login).map(userFollowersCloudConverter::convertList)
+        userCloud.followers(login).map(userFollowersCloudConverter::convertList)
 
     override fun organizations(login: String): Single<List<GithubUserOrg>> =
-        userCloud.userOrganizations(login).map(userOrgsCloudConverter::convertList)
+        userCloud.organizations(login).map(userOrgsCloudConverter::convertList)
 }
