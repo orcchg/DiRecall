@@ -1,6 +1,8 @@
 package com.orcchg.direcall.data.remote
 
-import com.orcchg.direcall.data.model.*
+import com.orcchg.direcall.data.model.GithubUserDetailsEntity
+import com.orcchg.direcall.data.model.GithubUserEntity
+import com.orcchg.direcall.data.model.GithubUserRepoEntity
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Path
