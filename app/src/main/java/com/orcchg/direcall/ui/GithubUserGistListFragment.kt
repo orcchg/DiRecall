@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.orcchg.direcall.R
+import com.orcchg.direcall.adapter.GithubUserGistAdapter
 import com.orcchg.direcall.androidutil.SchedulersFactoryImpl
 import com.orcchg.direcall.androidutil.argument
 import com.orcchg.direcall.androidutil.observe
@@ -71,8 +72,6 @@ class GithubUserGistListFragment : Fragment(R.layout.fragment_github_user_gist_l
             }
         })
 
-        observe(viewModel.gistList) {
-            adapter.update(it)
-        }
+        observe(viewModel.gistList, adapter::update)
     }
 }

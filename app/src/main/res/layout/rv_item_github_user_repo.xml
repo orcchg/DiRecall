@@ -12,4 +12,5 @@
         android:padding="@dimen/std_8"
         android:textColor="@color/colorAccent"
         tools:text="Repo_name" />
+
 </LinearLayout>

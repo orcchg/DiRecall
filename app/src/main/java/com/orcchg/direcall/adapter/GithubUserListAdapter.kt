@@ -8,7 +8,7 @@ import com.orcchg.direcall.domain.model.GithubUser
 
 class GithubUserListAdapter : RecyclerView.Adapter<GithubUserViewHolder>() {
 
-    private var userList = listOf<GithubUser>()
+    private var items = listOf<GithubUser>()
     var onItemClick: ((GithubUser) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GithubUserViewHolder {
@@ -18,20 +18,20 @@ class GithubUserListAdapter : RecyclerView.Adapter<GithubUserViewHolder>() {
         binding.root.setOnClickListener {
             val position = holder.adapterPosition
             if (position != RecyclerView.NO_POSITION) {
-                onItemClick?.invoke(userList[position])
+                onItemClick?.invoke(items[position])
             }
         }
         return holder
     }
 
     override fun onBindViewHolder(holder: GithubUserViewHolder, position: Int) {
-        holder.bind(userList[position])
+        holder.bind(items[position])
     }
 
-    override fun getItemCount(): Int = userList.size
+    override fun getItemCount(): Int = items.size
 
     fun update(items: List<GithubUser>) {
-        this.userList = items
+        this.items = items
         notifyDataSetChanged()
     }
 }

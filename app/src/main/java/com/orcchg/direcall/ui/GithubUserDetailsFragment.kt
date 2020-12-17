@@ -66,7 +66,6 @@ class GithubUserDetailsFragment : Fragment(R.layout.fragment_github_user_details
                 val action = GithubUserDetailsFragmentDirections
                     .actionNavFragmentGithubUserDetailsToNavFragmentGithubGistList(login)
                 Navigation.findNavController(binding.root).navigate(action)
-
             }
 
         binding.btnFollowersList.clicks().clickDebounce()

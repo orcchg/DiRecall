@@ -1,4 +1,4 @@
-package com.orcchg.direcall.ui
+package com.orcchg.direcall.adapter
 
 import androidx.recyclerview.widget.RecyclerView
 import com.orcchg.direcall.databinding.RvItemGithubUserGistBinding

@@ -1,4 +1,4 @@
-package com.orcchg.direcall.ui
+package com.orcchg.direcall.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,7 +8,7 @@ import com.orcchg.direcall.domain.model.GithubUserGist
 
 class GithubUserGistAdapter : RecyclerView.Adapter<GithubUserGistViewHolder>() {
 
-    private var gistList = listOf<GithubUserGist>()
+    private var items = listOf<GithubUserGist>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GithubUserGistViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -17,13 +17,13 @@ class GithubUserGistAdapter : RecyclerView.Adapter<GithubUserGistViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: GithubUserGistViewHolder, position: Int) {
-        holder.bind(gistList[position])
+        holder.bind(items[position])
     }
 
-    override fun getItemCount(): Int = gistList.size
+    override fun getItemCount(): Int = items.size
 
     fun update(items: List<GithubUserGist>) {
-        this.gistList = items
+        this.items = items
         notifyDataSetChanged()
     }
 }

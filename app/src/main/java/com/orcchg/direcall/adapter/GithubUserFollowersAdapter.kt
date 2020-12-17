@@ -1,4 +1,4 @@
-package com.orcchg.direcall.ui
+package com.orcchg.direcall.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,23 +8,25 @@ import com.orcchg.direcall.domain.model.GithubUserFollower
 
 class GithubUserFollowersAdapter : RecyclerView.Adapter<GithubUserFollowersViewHolder>() {
 
-    private var followersList = listOf<GithubUserFollower>()
+    private var items = listOf<GithubUserFollower>()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GithubUserFollowersViewHolder {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): GithubUserFollowersViewHolder {
         var inflater = LayoutInflater.from(parent.context)
         val binding = RvItemGithubUserFollowerBinding.inflate(inflater, parent, false)
         return GithubUserFollowersViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: GithubUserFollowersViewHolder, position: Int) {
-        holder.bind(followersList[position])
+        holder.bind(items[position])
     }
 
-    override fun getItemCount(): Int = followersList.size
+    override fun getItemCount(): Int = items.size
 
     fun update(items: List<GithubUserFollower>) {
-        this.followersList = items
+        this.items = items
         notifyDataSetChanged()
     }
-
 }
