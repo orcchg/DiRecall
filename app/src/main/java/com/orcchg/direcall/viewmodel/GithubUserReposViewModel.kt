@@ -16,7 +16,7 @@ class GithubUserReposViewModel(
 
     val userReposList: LiveData<List<GithubRepo>> by lazy(LazyThreadSafetyMode.NONE) {
         val liveData = MutableLiveData<List<GithubRepo>>()
-        val useCase = app.serviceLokator[GetGithubUserRepoUseCase::class.java] as GetGithubUserRepoUseCase
+        val useCase = app.serviceLocator[GetGithubUserRepoUseCase::class.java] as GetGithubUserRepoUseCase
         useCase.source { "login" of login }
             .autoDispose(this)
             .subscribe({ liveData.value = it }, Timber::e)

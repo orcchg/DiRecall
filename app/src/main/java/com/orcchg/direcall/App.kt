@@ -42,7 +42,7 @@ class App : Application() {
     private val getGithubUsersGistUseCase = GetGithubUserGistUseCase(gitRepo, scheduler)
     private val getGithubUsersOrgsUseCase = GetGithubUserOrgsUseCase(gitRepo, scheduler)
 
-    val serviceLokator = mapOf<Class<*>, Any>(
+    val serviceLocator = mapOf<Class<*>, Any>(
         UseCaseThreadExecutor::class.java to executor,
         Retrofit::class.java to retrofit,
         GithubUserCloudRest::class.java to userCloud,
