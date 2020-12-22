@@ -8,58 +8,29 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.orcchg.direcall.App
 import com.orcchg.direcall.R
 import com.orcchg.direcall.adapter.GithubUserGistAdapter
-import com.orcchg.direcall.androidutil.SchedulersFactoryImpl
 import com.orcchg.direcall.androidutil.argument
 import com.orcchg.direcall.androidutil.observe
 import com.orcchg.direcall.androidutil.viewBindings
-import com.orcchg.direcall.base.usecase.UseCaseThreadExecutor
-import com.orcchg.direcall.data.convert.*
-import com.orcchg.direcall.data.remote.CloudModule
-import com.orcchg.direcall.data.remote.GithubUserCloudRest
-import com.orcchg.direcall.data.repository.GithubRepositoryImpl
 import com.orcchg.direcall.databinding.FragmentGithubUserGistListBinding
-import com.orcchg.direcall.domain.usecase.GetGithubUserGistUseCase
 import com.orcchg.direcall.viewmodel.GithubUserGistListViewModel
 import com.orcchg.direcall.viewmodel.GithubUserGistListViewModelFactory
-import retrofit2.create
 
 class GithubUserGistListFragment : Fragment(R.layout.fragment_github_user_gist_list) {
     private val binding by viewBindings(FragmentGithubUserGistListBinding::bind)
     private val login by argument<String>("login")
-    private val executor = UseCaseThreadExecutor()
-    private val retrofit = CloudModule.retrofit(
-        CloudModule.okHttpClient(CloudModule.loggingInterceptor()),
-        CloudModule.moshi()
-    )
-    private val userCloud: GithubUserCloudRest = retrofit.create()
-    private val userDetailsConverter = GithubUserDetailsCloudConverter()
-    private val userListConverter = GithubUserListCloudConverter()
-    private val userRepoListConverter = GithubUserRepoCloudConverter()
-    private val userGistCloudConverter = GithubUserGistCloudConverter()
-    private val userFollowersCloudConverter = GithubUserFollowersCloudConverter()
-    private val userOrgsCloudConverter = GithubUserOrgsCloudConverter()
-    private val scheduler = SchedulersFactoryImpl(executor)
-    private val gitRepo = GithubRepositoryImpl(
-        userCloud = userCloud,
-        userDetailsConverter = userDetailsConverter,
-        userListConverter = userListConverter,
-        userRepoListConverter = userRepoListConverter,
-        userGistListCloudConverter = userGistCloudConverter,
-        userFollowersCloudConverter = userFollowersCloudConverter,
-        userOrgsCloudConverter = userOrgsCloudConverter
-    )
-
-    private val useCase = GetGithubUserGistUseCase(gitRepo, scheduler)
-
-    private val myFactory by lazy { GithubUserGistListViewModelFactory(login, useCase) }
+    private lateinit var app: App
+    private val myFactory by lazy { GithubUserGistListViewModelFactory(login,app) }
     private val viewModel: GithubUserGistListViewModel by viewModels { myFactory }
 
     private val layoutManager = LinearLayoutManager(activity)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        app = requireActivity().application as App
 
         val adapter = GithubUserGistAdapter()
         binding.rvGistItems.adapter = adapter
