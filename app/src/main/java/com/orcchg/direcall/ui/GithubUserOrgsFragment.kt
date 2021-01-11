@@ -24,7 +24,7 @@ class GithubUserOrgsFragment : Fragment(R.layout.fragment_github_user_orgs_list)
     private val login by argument<String>("login")
     private lateinit var app: App
     private val useCase by lazy {
-        app.serviceLocator[GetGithubUserOrgsUseCase::class.java] as GetGithubUserOrgsUseCase
+        app.serviceLocator.get(GetGithubUserOrgsUseCase::class.java) as GetGithubUserOrgsUseCase
     }
     private val myFactory by lazy { GithubUserOrgsListViewModelFactory(login, useCase) }
     private val viewModel: GithubUserOrgsListViewModel by viewModels { myFactory }

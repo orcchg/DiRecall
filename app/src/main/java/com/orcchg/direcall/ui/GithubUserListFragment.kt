@@ -23,7 +23,7 @@ class GithubUserListFragment : Fragment(R.layout.fragment_github_user_list) {
     private val binding by viewBindings(FragmentGithubUserListBinding::bind)
     private lateinit var app: App
     private val useCase by lazy {
-        app.serviceLocator[GetGithubUsersUseCase::class.java] as GetGithubUsersUseCase
+        app.serviceLocator.get(GetGithubUsersUseCase::class.java) as GetGithubUsersUseCase
     }
     private val myFactory by lazy { GithubUserListViewModelFactory(useCase) }
     private val viewModel: GithubUserListViewModel by viewModels { myFactory }

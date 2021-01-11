@@ -6,10 +6,10 @@ import com.orcchg.direcall.domain.usecase.GetGithubUserRepoUseCase
 
 class GithubUserReposViewModelFactory(
     private val login: String,
-    private val useCase: GetGithubUserRepoUseCase
+    private val getGithubUserRepoUseCase: GetGithubUserRepoUseCase
 ) : ViewModelProvider.Factory {
 
     @Suppress("Unchecked_Cast")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T =
-        GithubUserReposViewModel(login, useCase) as T
+        GithubUserReposViewModel(login, getGithubUserRepoUseCase) as T
 }

@@ -4,7 +4,7 @@ import android.app.Application
 import timber.log.Timber
 
 class App : Application() {
-    val serviceLocator = ServiceLocator().serviceLocator
+    val serviceLocator = ServiceLocator()
 
     override fun onCreate() {
         super.onCreate()

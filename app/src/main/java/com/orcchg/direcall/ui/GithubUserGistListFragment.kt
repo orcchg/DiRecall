@@ -24,7 +24,7 @@ class GithubUserGistListFragment : Fragment(R.layout.fragment_github_user_gist_l
     private val login by argument<String>("login")
     private lateinit var app: App
     private val useCase by lazy {
-        app.serviceLocator[GetGithubUserGistUseCase::class.java] as GetGithubUserGistUseCase
+        app.serviceLocator.get(GetGithubUserGistUseCase::class.java) as GetGithubUserGistUseCase
     }
     private val myFactory by lazy {
         GithubUserGistListViewModelFactory(login, useCase)

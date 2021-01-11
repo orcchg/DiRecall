@@ -40,7 +40,7 @@ class ServiceLocator {
     private val getGithubUsersGistUseCase = GetGithubUserGistUseCase(gitRepo, scheduler)
     private val getGithubUsersOrgsUseCase = GetGithubUserOrgsUseCase(gitRepo, scheduler)
 
-    val serviceLocator = mapOf<Class<*>, Any>(
+    private val serviceLocator = mapOf<Class<*>, Any>(
         UseCaseThreadExecutor::class.java to executor,
         Retrofit::class.java to retrofit,
         GithubUserCloudRest::class.java to userCloud,
@@ -56,5 +56,8 @@ class ServiceLocator {
         GetGithubUserRepoUseCase::class.java to getGithubUsersRepoUseCase,
         GetGithubUserFollowersUseCase::class.java to getGithubUsersFollowersUseCase,
         GetGithubUserOrgsUseCase::class.java to getGithubUsersOrgsUseCase,
-        GetGithubUserGistUseCase::class.java to getGithubUsersGistUseCase)
+        GetGithubUserGistUseCase::class.java to getGithubUsersGistUseCase
+    )
+
+    fun get(clazz: Class<*>) = serviceLocator[clazz]
 }

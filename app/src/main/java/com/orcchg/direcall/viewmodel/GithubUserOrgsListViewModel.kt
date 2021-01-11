@@ -10,12 +10,12 @@ import timber.log.Timber
 
 class GithubUserOrgsListViewModel(
     private val login: String,
-    private val useCase: GetGithubUserOrgsUseCase
+    private val getGithubUserOrgsUseCase: GetGithubUserOrgsUseCase
 ) : AutoDisposeViewModel() {
 
     val orgsList: LiveData<List<GithubUserOrg>> by lazy(LazyThreadSafetyMode.NONE) {
         val liveData = MutableLiveData<List<GithubUserOrg>>()
-        useCase.source { "login" of login }
+        getGithubUserOrgsUseCase.source { "login" of login }
             .autoDispose(this)
             .subscribe({ liveData.value = it }, Timber::e)
         liveData
