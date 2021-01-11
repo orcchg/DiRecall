@@ -20,7 +20,7 @@ class GithubUserReposFragment : Fragment(R.layout.fragment_github_user_repo_list
     private val login by argument<String>("login")
     private lateinit var app: App
     private val useCase by lazy {
-        app.serviceLocator.get(GetGithubUserRepoUseCase::class.java) as GetGithubUserRepoUseCase
+        app.serviceLocator.get<GetGithubUserRepoUseCase>()
     }
     private val myFactory by lazy { GithubUserReposViewModelFactory(login, useCase) }
     private val viewModel: GithubUserReposViewModel by viewModels { myFactory }
