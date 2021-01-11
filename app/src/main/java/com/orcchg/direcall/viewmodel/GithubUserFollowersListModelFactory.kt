@@ -2,14 +2,14 @@ package com.orcchg.direcall.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.orcchg.direcall.App
+import com.orcchg.direcall.domain.usecase.GetGithubUserFollowersUseCase
 
 class GithubUserFollowersListModelFactory(
     private val login: String,
-    private val app: App
+    private val useCase: GetGithubUserFollowersUseCase
 ) : ViewModelProvider.Factory {
 
     @Suppress("Unchecked_Cast")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T =
-        GithubUserFollowersListViewModel(login, app) as T
+        GithubUserFollowersListViewModel(login, useCase) as T
 }

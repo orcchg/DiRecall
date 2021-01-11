@@ -15,13 +15,17 @@ import com.orcchg.direcall.adapter.GithubUserListAdapter
 import com.orcchg.direcall.androidutil.observe
 import com.orcchg.direcall.androidutil.viewBindings
 import com.orcchg.direcall.databinding.FragmentGithubUserListBinding
+import com.orcchg.direcall.domain.usecase.GetGithubUsersUseCase
 import com.orcchg.direcall.viewmodel.GithubUserListViewModel
 import com.orcchg.direcall.viewmodel.GithubUserListViewModelFactory
 
 class GithubUserListFragment : Fragment(R.layout.fragment_github_user_list) {
     private val binding by viewBindings(FragmentGithubUserListBinding::bind)
     private lateinit var app: App
-    private val myFactory by lazy { GithubUserListViewModelFactory(app) }
+    private val useCase by lazy {
+        app.serviceLocator[GetGithubUsersUseCase::class.java] as GetGithubUsersUseCase
+    }
+    private val myFactory by lazy { GithubUserListViewModelFactory(useCase) }
     private val viewModel: GithubUserListViewModel by viewModels { myFactory }
 
     private val layoutManager = LinearLayoutManager(activity)

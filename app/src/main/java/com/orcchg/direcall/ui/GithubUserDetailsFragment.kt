@@ -15,6 +15,7 @@ import com.orcchg.direcall.androidutil.clickDebounce
 import com.orcchg.direcall.androidutil.observe
 import com.orcchg.direcall.androidutil.viewBindings
 import com.orcchg.direcall.databinding.FragmentGithubUserDetailsBinding
+import com.orcchg.direcall.domain.usecase.GetGithubUserDetailsUseCase
 import com.orcchg.direcall.viewmodel.GithubUserDetailsViewModel
 import com.orcchg.direcall.viewmodel.GithubUserDetailsViewModelFactory
 
@@ -22,7 +23,10 @@ class GithubUserDetailsFragment : Fragment(R.layout.fragment_github_user_details
     private val binding by viewBindings(FragmentGithubUserDetailsBinding::bind)
     private val login by argument<String>("login")
     private lateinit var app: App
-    private val myFactory by lazy { GithubUserDetailsViewModelFactory(login, app) }
+    private val useCase by lazy {
+        app.serviceLocator[GetGithubUserDetailsUseCase::class.java] as GetGithubUserDetailsUseCase
+    }
+    private val myFactory by lazy { GithubUserDetailsViewModelFactory(login, useCase) }
     private val viewModel: GithubUserDetailsViewModel by viewModels { myFactory }
 
     @SuppressLint("AutoDispose", "CheckResult")

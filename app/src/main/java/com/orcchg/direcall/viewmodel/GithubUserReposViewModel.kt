@@ -2,7 +2,6 @@ package com.orcchg.direcall.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.orcchg.direcall.App
 import com.orcchg.direcall.androidutil.AutoDisposeViewModel
 import com.orcchg.direcall.domain.model.GithubRepo
 import com.orcchg.direcall.domain.usecase.GetGithubUserRepoUseCase
@@ -11,12 +10,11 @@ import timber.log.Timber
 
 class GithubUserReposViewModel(
     private val login: String,
-    private val app: App
+    private val useCase: GetGithubUserRepoUseCase
 ) : AutoDisposeViewModel() {
 
     val userReposList: LiveData<List<GithubRepo>> by lazy(LazyThreadSafetyMode.NONE) {
         val liveData = MutableLiveData<List<GithubRepo>>()
-        val useCase = app.serviceLocator[GetGithubUserRepoUseCase::class.java] as GetGithubUserRepoUseCase
         useCase.source { "login" of login }
             .autoDispose(this)
             .subscribe({ liveData.value = it }, Timber::e)
