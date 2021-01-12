@@ -15,7 +15,6 @@ import com.orcchg.direcall.androidutil.argument
 import com.orcchg.direcall.androidutil.observe
 import com.orcchg.direcall.androidutil.viewBindings
 import com.orcchg.direcall.databinding.FragmentGithubUserFollowerListBinding
-import com.orcchg.direcall.domain.usecase.GetGithubUserFollowersUseCase
 import com.orcchg.direcall.viewmodel.GithubUserFollowersListModelFactory
 import com.orcchg.direcall.viewmodel.GithubUserFollowersListViewModel
 
@@ -23,11 +22,8 @@ class GithubUserFollowersFragment : Fragment(R.layout.fragment_github_user_follo
     private val binding by viewBindings(FragmentGithubUserFollowerListBinding::bind)
     private val login by argument<String>("login")
     private lateinit var app: App
-    private val useCase by lazy {
-        app.serviceLocator.get<GetGithubUserFollowersUseCase>()
-    }
     private val myFactory by lazy {
-        GithubUserFollowersListModelFactory(login, useCase)
+        GithubUserFollowersListModelFactory(login, app.serviceLocator.get())
     }
     private val viewModel: GithubUserFollowersListViewModel by viewModels { myFactory }
 

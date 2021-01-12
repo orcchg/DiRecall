@@ -11,7 +11,6 @@ import com.orcchg.direcall.androidutil.argument
 import com.orcchg.direcall.androidutil.observe
 import com.orcchg.direcall.androidutil.viewBindings
 import com.orcchg.direcall.databinding.FragmentGithubUserRepoListBinding
-import com.orcchg.direcall.domain.usecase.GetGithubUserRepoUseCase
 import com.orcchg.direcall.viewmodel.GithubUserReposViewModel
 import com.orcchg.direcall.viewmodel.GithubUserReposViewModelFactory
 
@@ -19,10 +18,7 @@ class GithubUserReposFragment : Fragment(R.layout.fragment_github_user_repo_list
     private val binding by viewBindings(FragmentGithubUserRepoListBinding::bind)
     private val login by argument<String>("login")
     private lateinit var app: App
-    private val useCase by lazy {
-        app.serviceLocator.get<GetGithubUserRepoUseCase>()
-    }
-    private val myFactory by lazy { GithubUserReposViewModelFactory(login, useCase) }
+    private val myFactory by lazy { GithubUserReposViewModelFactory(login, app.serviceLocator.get()) }
     private val viewModel: GithubUserReposViewModel by viewModels { myFactory }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

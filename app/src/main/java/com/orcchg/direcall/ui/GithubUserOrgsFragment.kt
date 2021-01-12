@@ -15,7 +15,6 @@ import com.orcchg.direcall.androidutil.argument
 import com.orcchg.direcall.androidutil.observe
 import com.orcchg.direcall.androidutil.viewBindings
 import com.orcchg.direcall.databinding.FragmentGithubUserOrgsListBinding
-import com.orcchg.direcall.domain.usecase.GetGithubUserOrgsUseCase
 import com.orcchg.direcall.viewmodel.GithubUserOrgsListViewModel
 import com.orcchg.direcall.viewmodel.GithubUserOrgsListViewModelFactory
 
@@ -23,10 +22,7 @@ class GithubUserOrgsFragment : Fragment(R.layout.fragment_github_user_orgs_list)
     private val binding by viewBindings(FragmentGithubUserOrgsListBinding::bind)
     private val login by argument<String>("login")
     private lateinit var app: App
-    private val useCase by lazy {
-        app.serviceLocator.get<GetGithubUserOrgsUseCase>()
-    }
-    private val myFactory by lazy { GithubUserOrgsListViewModelFactory(login, useCase) }
+    private val myFactory by lazy { GithubUserOrgsListViewModelFactory(login, app.serviceLocator.get()) }
     private val viewModel: GithubUserOrgsListViewModel by viewModels { myFactory }
 
     private val layoutManager = LinearLayoutManager(activity)
