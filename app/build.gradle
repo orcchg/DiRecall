@@ -17,7 +17,8 @@ dependencies {
             project(':androidUtil'),
             project(':base'),
             project(':data'),
-            project(':domain')
+            project(':domain'),
+            project(':util')
     )
     implementation(
             Dependencies.AndroidX.appCompat,
@@ -26,6 +27,9 @@ dependencies {
             Dependencies.AndroidX.navigation,
             Dependencies.AndroidX.navigationUi,
             Dependencies.Lib.glide,
+            Dependencies.Lib.koin,
+            Dependencies.Lib.koinAndroid,
+            Dependencies.Lib.koinAndroidVM,
             Dependencies.Lib.ktStdLib,
             Dependencies.Lib.ktStdLibJdk7,
             Dependencies.Lib.timber,

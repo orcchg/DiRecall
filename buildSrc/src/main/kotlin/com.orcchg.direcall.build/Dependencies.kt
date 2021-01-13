@@ -31,6 +31,7 @@ object Versions {
     const val rxBinding = "3.1.0"
     const val rxKt = "2.4.0"
     const val timber = "4.7.1"
+    const val koin = "2.2.1"
 }
 
 object Dependencies {
@@ -55,6 +56,9 @@ object Dependencies {
         @JvmStatic val ktStdLib = dependency("org.jetbrains.kotlin:kotlin-stdlib:${Versions.ktStdLib}")
         @JvmStatic val ktStdLibJdk7 = dependency("org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.ktStdLib}")
         @JvmStatic val timber = dependency("com.jakewharton.timber:timber:${Versions.timber}")
+        @JvmStatic val koin = dependency("org.koin:koin-core:${Versions.koin}")
+        @JvmStatic val koinAndroid = dependency("org.koin:koin-android:${Versions.koin}")
+        @JvmStatic val koinAndroidVM = dependency("org.koin:koin-android-viewmodel:${Versions.koin}")
     }
 
     object Network {

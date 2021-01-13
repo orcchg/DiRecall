@@ -3,7 +3,7 @@ package com.orcchg.direcall.ui
 import android.graphics.Rect
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,16 +13,14 @@ import com.orcchg.direcall.androidutil.argument
 import com.orcchg.direcall.androidutil.observe
 import com.orcchg.direcall.androidutil.viewBindings
 import com.orcchg.direcall.databinding.FragmentGithubUserFollowerListBinding
-import com.orcchg.direcall.viewmodel.GithubUserFollowersListModelFactory
 import com.orcchg.direcall.viewmodel.GithubUserFollowersListViewModel
+import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 
-class GithubUserFollowersFragment : BaseFragment(R.layout.fragment_github_user_follower_list) {
+class GithubUserFollowersFragment : Fragment(R.layout.fragment_github_user_follower_list) {
     private val binding by viewBindings(FragmentGithubUserFollowerListBinding::bind)
     private val login by argument<String>("login")
-    private val myFactory by lazy {
-        GithubUserFollowersListModelFactory(login, serviceLocator.get())
-    }
-    private val viewModel: GithubUserFollowersListViewModel by viewModels { myFactory }
+    private val viewModel by viewModel<GithubUserFollowersListViewModel> { parametersOf(login) }
 
     private val layoutManager = LinearLayoutManager(activity)
 

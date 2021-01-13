@@ -3,7 +3,7 @@ package com.orcchg.direcall.ui
 import android.graphics.Rect
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -14,15 +14,13 @@ import com.orcchg.direcall.androidutil.observe
 import com.orcchg.direcall.androidutil.viewBindings
 import com.orcchg.direcall.databinding.FragmentGithubUserGistListBinding
 import com.orcchg.direcall.viewmodel.GithubUserGistListViewModel
-import com.orcchg.direcall.viewmodel.GithubUserGistListViewModelFactory
+import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 
-class GithubUserGistListFragment : BaseFragment(R.layout.fragment_github_user_gist_list) {
+class GithubUserGistListFragment : Fragment(R.layout.fragment_github_user_gist_list) {
     private val binding by viewBindings(FragmentGithubUserGistListBinding::bind)
     private val login by argument<String>("login")
-    private val myFactory by lazy {
-        GithubUserGistListViewModelFactory(login, serviceLocator.get())
-    }
-    private val viewModel: GithubUserGistListViewModel by viewModels { myFactory }
+    private val viewModel by viewModel<GithubUserGistListViewModel> { parametersOf(login) }
 
     private val layoutManager = LinearLayoutManager(activity)
 
