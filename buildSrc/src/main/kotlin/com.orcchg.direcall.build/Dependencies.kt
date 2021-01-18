@@ -10,6 +10,7 @@ object Versions {
     const val buildToolsVersion = "30.0.0"
     const val constraintLayout = "2.0.0-rc1"
     const val coreKtx = "1.3.1"
+    const val dagger = "2.20"
     const val espresso = "3.2.0"
     const val fragmentKtx = "1.2.5"
     const val glide = "4.11.0"
@@ -48,6 +49,13 @@ object Dependencies {
     object Gradle {
         @JvmStatic val androidGradle = dependency("com.android.tools.build:gradle:${Versions.gradleAndroid}")
         @JvmStatic val ktGradle = dependency("org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.ktStdLib}")
+    }
+
+    object Dagger{
+        @JvmStatic val dagger = dependency("com.google.dagger:dagger:${Versions.dagger}")
+        @JvmStatic val daggerAndroid = dependency("com.google.dagger:dagger-android-support:${Versions.dagger}")
+        @JvmStatic val daggerAndroidProcessor = dependency("com.google.dagger:dagger-android-processor:${Versions.dagger}")
+        @JvmStatic val daggerCompiler = dependency("com.google.dagger:dagger-compiler:${Versions.dagger}")
     }
 
     object Lib {

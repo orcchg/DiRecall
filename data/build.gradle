@@ -11,6 +11,8 @@ dependencies {
             project(':util')
     )
     implementation(
+            Dependencies.Dagger.dagger,
+            Dependencies.Dagger.daggerAndroid,
             Dependencies.Lib.ktStdLibJdk7,
             Dependencies.Network.okHttpLog,
             Dependencies.Network.retrofit,
@@ -21,6 +23,8 @@ dependencies {
             Dependencies.Parser.moshiKotlin
     )
     kapt(
+            Dependencies.Dagger.daggerAndroidProcessor,
+            Dependencies.Dagger.daggerCompiler,
             Dependencies.Parser.moshiKotlinCodegen
     )
 }

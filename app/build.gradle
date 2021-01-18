@@ -4,6 +4,7 @@ apply plugin: Dependencies.Plugin.androidApp
 apply plugin: Dependencies.Plugin.kotlinAndroid
 apply plugin: Dependencies.Plugin.kotlinAndroidExt
 apply plugin: Dependencies.Plugin.navSafeArgs
+apply plugin: Dependencies.Plugin.kotlinAnnotation
 
 android {
     defaultConfig {
@@ -22,6 +23,8 @@ dependencies {
     implementation(
             Dependencies.AndroidX.appCompat,
             Dependencies.AndroidX.coreKtx,
+            Dependencies.Dagger.dagger,
+            Dependencies.Dagger.daggerAndroid,
             Dependencies.AndroidX.fragmentKtx,
             Dependencies.AndroidX.navigation,
             Dependencies.AndroidX.navigationUi,
@@ -44,6 +47,11 @@ dependencies {
             Dependencies.Rx.rxBindingCore,
             Dependencies.View.constraintLayout,
             Dependencies.View.recyclerView
+    )
+
+    kapt(
+            Dependencies.Dagger.daggerAndroidProcessor,
+            Dependencies.Dagger.daggerCompiler
     )
     testImplementation Dependencies.Test.junit
     androidTestImplementation(
