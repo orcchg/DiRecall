@@ -16,15 +16,11 @@ dependencies {
             Dependencies.AndroidX.fragmentKtx,
             Dependencies.AndroidX.liveData,
             Dependencies.Dagger.dagger,
-            Dependencies.Dagger.daggerAndroid,
             Dependencies.Rx.rx,
             Dependencies.Rx.rxAndroid,
             Dependencies.Rx.rxBinding,
             Dependencies.Rx.autoDispose,
             Dependencies.Rx.autoDisposeAndroidAC
     )
-    kapt(
-            Dependencies.Dagger.daggerAndroidProcessor,
-            Dependencies.Dagger.daggerCompiler
-    )
+    kapt Dependencies.Dagger.daggerCompiler
 }

@@ -24,7 +24,6 @@ dependencies {
             Dependencies.AndroidX.appCompat,
             Dependencies.AndroidX.coreKtx,
             Dependencies.Dagger.dagger,
-            Dependencies.Dagger.daggerAndroid,
             Dependencies.AndroidX.fragmentKtx,
             Dependencies.AndroidX.navigation,
             Dependencies.AndroidX.navigationUi,
@@ -49,10 +48,8 @@ dependencies {
             Dependencies.View.recyclerView
     )
 
-    kapt(
-            Dependencies.Dagger.daggerAndroidProcessor,
-            Dependencies.Dagger.daggerCompiler
-    )
+    kapt Dependencies.Dagger.daggerCompiler
+
     testImplementation Dependencies.Test.junit
     androidTestImplementation(
             Dependencies.AndroidTest.espresso,

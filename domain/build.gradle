@@ -9,13 +9,9 @@ dependencies {
     implementation project(":base")
     implementation(
             Dependencies.Dagger.dagger,
-            Dependencies.Dagger.daggerAndroid,
             Dependencies.Lib.ktStdLibJdk7,
             Dependencies.Rx.rx,
             Dependencies.Rx.rxKt
     )
-    kapt(
-            Dependencies.Dagger.daggerAndroidProcessor,
-            Dependencies.Dagger.daggerCompiler
-    )
+    kapt Dependencies.Dagger.daggerCompiler
 }
