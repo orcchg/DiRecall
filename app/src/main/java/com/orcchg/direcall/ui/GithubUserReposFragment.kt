@@ -25,9 +25,9 @@ class GithubUserReposFragment : Fragment(R.layout.fragment_github_user_repo_list
     private val binding by viewBindings(FragmentGithubUserRepoListBinding::bind)
     private val login by argument<String>("login")
     private val executor = UseCaseThreadExecutor()
-    private val retrofit = CloudModule.provideRetrofit(
-        CloudModule.provideOkHttpClient(CloudModule.provideLoggingInterceptor()),
-        CloudModule.provideMoshi()
+    private val retrofit = CloudModule.retrofit(
+        CloudModule.okHttpClient(CloudModule.loggingInterceptor()),
+        CloudModule.moshi()
     )
     private val userCloud: GithubUserCloudRest = retrofit.create()
     private val userDetailsConverter = GithubUserDetailsCloudConverter()
