@@ -14,5 +14,5 @@ class App : Application() {
     val networkComponent = DaggerNetworkComponent.create()
 
     fun provideGithubUserCloudRest(): GithubUserCloudRest =
-        networkComponent.retrofit().create(GithubUserCloudRest::class.java)
+        networkComponent.rest()
 }

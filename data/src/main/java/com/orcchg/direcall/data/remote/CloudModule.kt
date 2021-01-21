@@ -39,4 +39,8 @@ object CloudModule {
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .baseUrl("https://api.github.com/")
             .build()
+
+    @Provides
+    fun rest(retrofit: Retrofit): GithubUserCloudRest =
+        retrofit.create(GithubUserCloudRest::class.java)
 }
