@@ -6,5 +6,6 @@ import dagger.Component
 
 @Component(modules = [CloudModule::class])
 interface NetworkComponent {
+
     fun rest(): GithubUserCloudRest
 }
