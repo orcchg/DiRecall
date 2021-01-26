@@ -23,11 +23,10 @@ import javax.inject.Inject
 class GithubUserGistListFragment : BaseFragment(R.layout.fragment_github_user_gist_list) {
 
     override fun onAttach(context: Context) {
-        val component = DaggerGithubUserGistListFeatureComponent.builder()
-            .viewModelFactoryModule(ViewModelFactoryModule(login))
-            .networkComponent(networkComponent)
-            .build()
-        component.inject(this)
+        DaggerGithubUserGistListFeatureComponent
+            .factory()
+            .create(networkComponent, ViewModelFactoryModule(login))
+            .inject(this)
         super.onAttach(context)
     }
 

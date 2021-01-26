@@ -6,8 +6,7 @@ import com.orcchg.direcall.data.di.NetworkComponent
 import timber.log.Timber
 
 class App : Application() {
-    val networkComponent: NetworkComponent =
-        DaggerNetworkComponent.create()
+    val networkComponent: NetworkComponent by lazy { DaggerNetworkComponent.create() }
 
     override fun onCreate() {
         super.onCreate()

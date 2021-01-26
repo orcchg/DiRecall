@@ -23,18 +23,17 @@ import javax.inject.Inject
 class GithubUserDetailsFragment : BaseFragment(R.layout.fragment_github_user_details) {
 
     override fun onAttach(context: Context) {
-        val component = DaggerGithubUserDetailsFeatureComponent.builder()
-            .viewModelFactoryModule(ViewModelFactoryModule(login))
-            .networkComponent(networkComponent)
-            .build()
+        DaggerGithubUserDetailsFeatureComponent
+            .factory()
+            .create(networkComponent, ViewModelFactoryModule(login))
+            .inject(this)
 
-        component.inject(this)
         super.onAttach(context)
     }
 
     private val binding by viewBindings(FragmentGithubUserDetailsBinding::bind)
     private val login by argument<String>("login")
-    @Inject lateinit var myFactory : GithubUserDetailsViewModelFactory
+    @Inject lateinit var myFactory: GithubUserDetailsViewModelFactory
     private val viewModel: GithubUserDetailsViewModel by viewModels { myFactory }
 
     @SuppressLint("AutoDispose", "CheckResult")

@@ -6,7 +6,7 @@ import dagger.Module
 import dagger.Provides
 
 @Module(includes = [UseCaseModule::class])
-class ViewModelFactoryModule(val login: String = "orcchg") {
+class ViewModelFactoryModule(val login: String) {
 
     @Provides
     fun userDetailsVMFactory(useCase: GetGithubUserDetailsUseCase) =
@@ -21,7 +21,7 @@ class ViewModelFactoryModule(val login: String = "orcchg") {
         GithubUserGistListViewModelFactory(login, useCase)
 
     @Provides
-    fun userReposVMFactroy(useCase: GetGithubUserRepoUseCase) =
+    fun userReposVMFactory(useCase: GetGithubUserRepoUseCase) =
         GithubUserReposViewModelFactory(login, useCase)
 
     @Provides
