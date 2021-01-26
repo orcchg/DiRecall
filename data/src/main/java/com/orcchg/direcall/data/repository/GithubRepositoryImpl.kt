@@ -5,8 +5,9 @@ import com.orcchg.direcall.data.remote.GithubUserCloudRest
 import com.orcchg.direcall.domain.model.*
 import com.orcchg.direcall.domain.repository.GithubRepository
 import io.reactivex.Single
+import javax.inject.Inject
 
-class GithubRepositoryImpl(
+class GithubRepositoryImpl @Inject constructor(
     private val userCloud: GithubUserCloudRest,
     private val userDetailsConverter: GithubUserDetailsCloudConverter,
     private val userListConverter: GithubUserListCloudConverter,

@@ -14,7 +14,8 @@ import com.orcchg.direcall.androidutil.argument
 import com.orcchg.direcall.androidutil.observe
 import com.orcchg.direcall.androidutil.viewBindings
 import com.orcchg.direcall.databinding.FragmentGithubUserGistListBinding
-import com.orcchg.direcall.domain.usecase.GetGithubUserGistUseCase
+import com.orcchg.direcall.di.DaggerGithubUserGistListFeatureComponent
+import com.orcchg.direcall.di.ViewModelFactoryModule
 import com.orcchg.direcall.viewmodel.GithubUserGistListViewModel
 import com.orcchg.direcall.viewmodel.GithubUserGistListViewModelFactory
 import javax.inject.Inject
@@ -22,18 +23,18 @@ import javax.inject.Inject
 class GithubUserGistListFragment : BaseFragment(R.layout.fragment_github_user_gist_list) {
 
     override fun onAttach(context: Context) {
-        githubUserGistComponent.inject(this)
+        val component = DaggerGithubUserGistListFeatureComponent.builder()
+            .viewModelFactoryModule(ViewModelFactoryModule(login))
+            .networkComponent(networkComponent)
+            .build()
+        component.inject(this)
         super.onAttach(context)
     }
 
     private val binding by viewBindings(FragmentGithubUserGistListBinding::bind)
     private val login by argument<String>("login")
-
-    @Inject lateinit var useCase:GetGithubUserGistUseCase
-
-    private val myFactory by lazy { GithubUserGistListViewModelFactory(login, useCase) }
+    @Inject lateinit var myFactory: GithubUserGistListViewModelFactory
     private val viewModel: GithubUserGistListViewModel by viewModels { myFactory }
-
     private val layoutManager = LinearLayoutManager(activity)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

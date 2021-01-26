@@ -14,7 +14,8 @@ import com.orcchg.direcall.androidutil.clickDebounce
 import com.orcchg.direcall.androidutil.observe
 import com.orcchg.direcall.androidutil.viewBindings
 import com.orcchg.direcall.databinding.FragmentGithubUserDetailsBinding
-import com.orcchg.direcall.domain.usecase.GetGithubUserDetailsUseCase
+import com.orcchg.direcall.di.DaggerGithubUserDetailsFeatureComponent
+import com.orcchg.direcall.di.ViewModelFactoryModule
 import com.orcchg.direcall.viewmodel.GithubUserDetailsViewModel
 import com.orcchg.direcall.viewmodel.GithubUserDetailsViewModelFactory
 import javax.inject.Inject
@@ -22,17 +23,19 @@ import javax.inject.Inject
 class GithubUserDetailsFragment : BaseFragment(R.layout.fragment_github_user_details) {
 
     override fun onAttach(context: Context) {
-        githubUserDetailsComponent.inject(this)
+        val component = DaggerGithubUserDetailsFeatureComponent.builder()
+            .viewModelFactoryModule(ViewModelFactoryModule(login))
+            .networkComponent(networkComponent)
+            .build()
+
+        component.inject(this)
         super.onAttach(context)
     }
 
     private val binding by viewBindings(FragmentGithubUserDetailsBinding::bind)
     private val login by argument<String>("login")
-
-    @Inject lateinit var useCase : GetGithubUserDetailsUseCase
-    private val myFactory by lazy { GithubUserDetailsViewModelFactory(login, useCase) }
+    @Inject lateinit var myFactory : GithubUserDetailsViewModelFactory
     private val viewModel: GithubUserDetailsViewModel by viewModels { myFactory }
-
 
     @SuppressLint("AutoDispose", "CheckResult")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

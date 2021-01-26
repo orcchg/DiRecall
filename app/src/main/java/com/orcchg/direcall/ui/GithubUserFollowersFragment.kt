@@ -14,7 +14,8 @@ import com.orcchg.direcall.androidutil.argument
 import com.orcchg.direcall.androidutil.observe
 import com.orcchg.direcall.androidutil.viewBindings
 import com.orcchg.direcall.databinding.FragmentGithubUserFollowerListBinding
-import com.orcchg.direcall.domain.usecase.GetGithubUserFollowersUseCase
+import com.orcchg.direcall.di.DaggerGithubUserFollowersFeatureComponent
+import com.orcchg.direcall.di.ViewModelFactoryModule
 import com.orcchg.direcall.viewmodel.GithubUserFollowersListModelFactory
 import com.orcchg.direcall.viewmodel.GithubUserFollowersListViewModel
 import javax.inject.Inject
@@ -22,18 +23,19 @@ import javax.inject.Inject
 class GithubUserFollowersFragment : BaseFragment(R.layout.fragment_github_user_follower_list) {
 
     override fun onAttach(context: Context) {
-        githubUserFollowersComponent.inject(this)
+        val component = DaggerGithubUserFollowersFeatureComponent.builder()
+            .viewModelFactoryModule(ViewModelFactoryModule(login))
+            .networkComponent(networkComponent)
+            .build()
+
+        component.inject(this)
         super.onAttach(context)
     }
 
     private val binding by viewBindings(FragmentGithubUserFollowerListBinding::bind)
     private val login by argument<String>("login")
-
-    @Inject lateinit var useCase: GetGithubUserFollowersUseCase
-
-    private val myFactory by lazy { GithubUserFollowersListModelFactory(login, useCase) }
+    @Inject lateinit var myFactory: GithubUserFollowersListModelFactory
     private val viewModel: GithubUserFollowersListViewModel by viewModels { myFactory }
-
     private val layoutManager = LinearLayoutManager(activity)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

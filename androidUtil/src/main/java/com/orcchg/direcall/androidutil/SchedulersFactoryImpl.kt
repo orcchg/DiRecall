@@ -5,8 +5,9 @@ import com.orcchg.direcall.base.usecase.UseCaseThreadExecutor
 import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
-class SchedulersFactoryImpl(
+class SchedulersFactoryImpl @Inject constructor(
     private val useCaseExecutor: UseCaseThreadExecutor
 ) : SchedulersFactory {
 

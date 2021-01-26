@@ -7,8 +7,9 @@ import com.orcchg.direcall.base.usecase.SingleUseCase
 import com.orcchg.direcall.domain.model.GithubUserGist
 import com.orcchg.direcall.domain.repository.GithubRepository
 import io.reactivex.Single
+import javax.inject.Inject
 
-class GetGithubUserGistUseCase(
+class GetGithubUserGistUseCase @Inject constructor(
     private val repository: GithubRepository,
     schedulersFactory: SchedulersFactory
 ) : SingleUseCase<List<GithubUserGist>>(schedulersFactory) {

@@ -14,7 +14,8 @@ import com.orcchg.direcall.adapter.GithubUserListAdapter
 import com.orcchg.direcall.androidutil.observe
 import com.orcchg.direcall.androidutil.viewBindings
 import com.orcchg.direcall.databinding.FragmentGithubUserListBinding
-import com.orcchg.direcall.domain.usecase.GetGithubUsersUseCase
+import com.orcchg.direcall.di.DaggerGithubUsersFeatureComponent
+import com.orcchg.direcall.di.ViewModelFactoryModule
 import com.orcchg.direcall.viewmodel.GithubUserListViewModel
 import com.orcchg.direcall.viewmodel.GithubUserListViewModelFactory
 import javax.inject.Inject
@@ -22,17 +23,17 @@ import javax.inject.Inject
 class GithubUserListFragment : BaseFragment(R.layout.fragment_github_user_list) {
 
     override fun onAttach(context: Context) {
-        githubUsersComponent.inject(this)
+        val component = DaggerGithubUsersFeatureComponent.builder()
+            .viewModelFactoryModule(ViewModelFactoryModule())
+            .networkComponent(networkComponent)
+            .build()
+        component.inject(this)
         super.onAttach(context)
     }
 
     private val binding by viewBindings(FragmentGithubUserListBinding::bind)
-
-    @Inject lateinit var useCase: GetGithubUsersUseCase
-
-    private val myFactory by lazy { GithubUserListViewModelFactory(useCase) }
+    @Inject lateinit var myFactory: GithubUserListViewModelFactory
     private val viewModel: GithubUserListViewModel by viewModels { myFactory }
-
     private val layoutManager = LinearLayoutManager(activity)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

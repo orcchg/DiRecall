@@ -5,7 +5,7 @@ import com.orcchg.direcall.ui.GithubUserOrgsFragment
 import dagger.Component
 
 
-@Component(dependencies = [NetworkComponent::class], modules = [RepoModule::class, UseCaseModule::class])
+@Component(dependencies = [NetworkComponent::class], modules = [ViewModelFactoryModule::class])
 interface GithubUserOrgsFeatureComponent {
 
     fun inject(userOrgsFragment: GithubUserOrgsFragment)

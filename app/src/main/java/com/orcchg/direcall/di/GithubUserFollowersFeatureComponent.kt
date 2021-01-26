@@ -5,8 +5,8 @@ import com.orcchg.direcall.ui.GithubUserFollowersFragment
 import dagger.Component
 
 
-@Component(dependencies = [NetworkComponent::class], modules = [RepoModule::class, UseCaseModule::class])
-interface GithubUserFollowersFeatureComponent{
+@Component(dependencies = [NetworkComponent::class], modules = [ViewModelFactoryModule::class])
+interface GithubUserFollowersFeatureComponent {
 
     fun inject(userFollowersFragment: GithubUserFollowersFragment)
 }
