@@ -9,7 +9,7 @@ import dagger.Component
 interface GithubUserDetailsFeatureComponent {
 
     @Component.Factory
-    interface Factory{
+    interface Factory {
         fun create(
             networkComponent: NetworkComponent, viewModelFactoryModule: ViewModelFactoryModule
         ): GithubUserDetailsFeatureComponent

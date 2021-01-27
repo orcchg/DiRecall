@@ -14,7 +14,7 @@ class ViewModelFactoryModule(val login: String) {
 
     @Provides
     fun userFollowersVMFactory(useCase: GetGithubUserFollowersUseCase) =
-        GithubUserFollowersListModelFactory(login, useCase)
+        GithubUserFollowersListViewModelFactory(login, useCase)
 
     @Provides
     fun userGistVMFactory(useCase: GetGithubUserGistUseCase) =

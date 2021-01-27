@@ -16,8 +16,8 @@ import com.orcchg.direcall.androidutil.viewBindings
 import com.orcchg.direcall.databinding.FragmentGithubUserFollowerListBinding
 import com.orcchg.direcall.di.DaggerGithubUserFollowersFeatureComponent
 import com.orcchg.direcall.di.ViewModelFactoryModule
-import com.orcchg.direcall.viewmodel.GithubUserFollowersListModelFactory
 import com.orcchg.direcall.viewmodel.GithubUserFollowersListViewModel
+import com.orcchg.direcall.viewmodel.GithubUserFollowersListViewModelFactory
 import javax.inject.Inject
 
 class GithubUserFollowersFragment : BaseFragment(R.layout.fragment_github_user_follower_list) {
@@ -33,7 +33,7 @@ class GithubUserFollowersFragment : BaseFragment(R.layout.fragment_github_user_f
 
     private val binding by viewBindings(FragmentGithubUserFollowerListBinding::bind)
     private val login by argument<String>("login")
-    @Inject lateinit var myFactory: GithubUserFollowersListModelFactory
+    @Inject lateinit var myFactory: GithubUserFollowersListViewModelFactory
     private val viewModel: GithubUserFollowersListViewModel by viewModels { myFactory }
     private val layoutManager = LinearLayoutManager(activity)
 

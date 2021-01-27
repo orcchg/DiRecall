@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.orcchg.direcall.domain.usecase.GetGithubUserFollowersUseCase
 
-class GithubUserFollowersListModelFactory(
+class GithubUserFollowersListViewModelFactory(
     private val login: String,
     private val getGithubUserFollowersUseCase: GetGithubUserFollowersUseCase
 ) : ViewModelProvider.Factory {
