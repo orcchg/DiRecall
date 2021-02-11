@@ -1,4 +1,6 @@
-## Architecture Playground
+## Master structured
+
+A better project structure based on 'master' branch, for more convenient foundation for further approaches.
 
 This Repo contains a set of modern architectural approaches for building Android apps from scratch.
 It utilizes different DI frameworks but the main concept is based on Clean Arch + MVVM.
