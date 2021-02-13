@@ -10,7 +10,9 @@ import com.orcchg.direcall.domain.model.GithubRepo
 import com.orcchg.direcall.domain.model.GithubUser
 import com.orcchg.direcall.domain.model.GithubUserDetails
 import io.reactivex.Single
+import toothpick.InjectConstructor
 
+@InjectConstructor
 class GithubRepositoryImpl(
     private val repoCloud: GithubRepoCloudRest,
     private val userCloud: GithubUserCloudRest,

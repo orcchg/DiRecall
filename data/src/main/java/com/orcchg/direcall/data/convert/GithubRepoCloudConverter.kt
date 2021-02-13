@@ -3,7 +3,9 @@ package com.orcchg.direcall.data.convert
 import com.orcchg.direcall.data.model.GithubRepoEntity
 import com.orcchg.direcall.domain.model.GithubRepo
 import com.orcchg.direcall.util.Converter
+import toothpick.InjectConstructor
 
+@InjectConstructor
 class GithubRepoCloudConverter : Converter<GithubRepoEntity, GithubRepo> {
 
     override fun convert(from: GithubRepoEntity): GithubRepo =

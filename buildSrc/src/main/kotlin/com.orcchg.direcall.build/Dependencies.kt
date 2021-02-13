@@ -31,6 +31,7 @@ object Versions {
     const val rxBinding = "3.1.0"
     const val rxKt = "2.4.0"
     const val timber = "4.7.1"
+    const val toothpick = "3.1.0"
 }
 
 object Dependencies {
@@ -43,6 +44,11 @@ object Dependencies {
         @JvmStatic val navigation = dependency("androidx.navigation:navigation-fragment-ktx:${Versions.navigation}")
         @JvmStatic val navigationSafeArgs = dependency("androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navigation}")
         @JvmStatic val navigationUi = dependency("androidx.navigation:navigation-ui-ktx:${Versions.navigation}")
+    }
+
+    object Di {
+        @JvmStatic val toothpick = dependency("com.github.stephanenicolas.toothpick:ktp:${Versions.toothpick}")
+        @JvmStatic val toothpickCompiler = dependency("com.github.stephanenicolas.toothpick:toothpick-compiler:${Versions.toothpick}")
     }
 
     object Gradle {

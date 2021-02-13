@@ -11,7 +11,8 @@ dependencies {
             project(':util')
     )
     implementation(
-            Dependencies.Lib.ktStdLibJdk7,
+            Dependencies.Di.toothpick,
+            Dependencies.Lib.ktStdLib,
             Dependencies.Network.okHttpLog,
             Dependencies.Network.retrofit,
             Dependencies.Network.retrofitMoshi,
@@ -21,6 +22,11 @@ dependencies {
             Dependencies.Parser.moshiKotlin
     )
     kapt(
+            Dependencies.Di.toothpickCompiler,
             Dependencies.Parser.moshiKotlinCodegen
     )
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = "1.8"
 }

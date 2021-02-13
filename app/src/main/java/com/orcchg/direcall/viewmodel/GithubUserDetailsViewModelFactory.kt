@@ -3,7 +3,9 @@ package com.orcchg.direcall.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.orcchg.direcall.domain.usecase.GetGithubUserDetailsUseCase
+import toothpick.InjectConstructor
 
+@InjectConstructor
 class GithubUserDetailsViewModelFactory(
     private val login: String,
     private val getGithubUserDetailsUseCase: GetGithubUserDetailsUseCase

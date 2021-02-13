@@ -3,7 +3,9 @@ package com.orcchg.direcall.data.convert
 import com.orcchg.direcall.data.model.GithubUserDetailsEntity
 import com.orcchg.direcall.domain.model.GithubUserDetails
 import com.orcchg.direcall.util.Converter
+import toothpick.InjectConstructor
 
+@InjectConstructor
 class GithubUserDetailsCloudConverter : Converter<GithubUserDetailsEntity, GithubUserDetails> {
 
     override fun convert(from: GithubUserDetailsEntity): GithubUserDetails =

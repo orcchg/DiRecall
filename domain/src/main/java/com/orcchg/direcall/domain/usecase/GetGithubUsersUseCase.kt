@@ -6,7 +6,9 @@ import com.orcchg.direcall.base.usecase.SingleUseCase
 import com.orcchg.direcall.domain.repository.GithubRepository
 import com.orcchg.direcall.domain.model.GithubUser
 import io.reactivex.Single
+import toothpick.InjectConstructor
 
+@InjectConstructor
 class GetGithubUsersUseCase(
     private val repository: GithubRepository,
     schedulersFactory: SchedulersFactory

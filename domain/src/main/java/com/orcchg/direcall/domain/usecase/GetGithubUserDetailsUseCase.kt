@@ -7,7 +7,9 @@ import com.orcchg.direcall.base.processSingle
 import com.orcchg.direcall.domain.repository.GithubRepository
 import com.orcchg.direcall.domain.model.GithubUserDetails
 import io.reactivex.Single
+import toothpick.InjectConstructor
 
+@InjectConstructor
 class GetGithubUserDetailsUseCase(
     private val repository: GithubRepository,
     schedulersFactory: SchedulersFactory
