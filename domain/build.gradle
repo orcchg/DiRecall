@@ -7,8 +7,13 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(":base")
     implementation(
-            Dependencies.Lib.ktStdLibJdk7,
+            Dependencies.Di.kodein,
+            Dependencies.Lib.ktStdLib,
             Dependencies.Rx.rx,
             Dependencies.Rx.rxKt
     )
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = "1.8"
 }

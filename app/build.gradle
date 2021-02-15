@@ -16,6 +16,7 @@ dependencies {
     implementation(
             project(':androidUtil'),
             project(':base'),
+            project(':data'),
             project(':domain')
     )
     implementation(
@@ -24,6 +25,8 @@ dependencies {
             Dependencies.AndroidX.fragmentKtx,
             Dependencies.AndroidX.navigation,
             Dependencies.AndroidX.navigationUi,
+            Dependencies.Di.kodein,
+            Dependencies.Di.kodeinAndroid,
             Dependencies.Lib.glide,
             Dependencies.Lib.ktStdLib,
             Dependencies.Lib.timber,

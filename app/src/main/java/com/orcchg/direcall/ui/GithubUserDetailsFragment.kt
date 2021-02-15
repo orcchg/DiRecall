@@ -11,16 +11,28 @@ import com.jakewharton.rxbinding3.view.clicks
 import com.orcchg.direcall.R
 import com.orcchg.direcall.androidutil.argument
 import com.orcchg.direcall.androidutil.clickDebounce
+import com.orcchg.direcall.androidutil.di.rootDi
 import com.orcchg.direcall.androidutil.observe
-import com.orcchg.direcall.databinding.FragmentGithubUserDetailsBinding
 import com.orcchg.direcall.androidutil.viewBindings
+import com.orcchg.direcall.databinding.FragmentGithubUserDetailsBinding
+import com.orcchg.direcall.di.githubUserDetailsFragment
 import com.orcchg.direcall.viewmodel.GithubUserDetailsViewModel
+import com.orcchg.direcall.viewmodel.GithubUserDetailsViewModelFactory
+import org.kodein.di.DI
+import org.kodein.di.DIAware
+import org.kodein.di.instance
 
-class GithubUserDetailsFragment : Fragment(R.layout.fragment_github_user_details) {
+class GithubUserDetailsFragment : Fragment(R.layout.fragment_github_user_details), DIAware {
 
     private val binding by viewBindings(FragmentGithubUserDetailsBinding::bind)
     private val login by argument<String>("login")
-    private val viewModel by viewModels<GithubUserDetailsViewModel>()
+    private val factory: GithubUserDetailsViewModelFactory by instance()
+    private val viewModel by viewModels<GithubUserDetailsViewModel> { factory }
+
+    override val di: DI by DI.lazy {
+        extend(rootDi())
+        import(githubUserDetailsFragment(login))
+    }
 
     @SuppressLint("AutoDispose", "CheckResult")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
