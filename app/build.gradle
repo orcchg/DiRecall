@@ -13,6 +13,8 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation(
+            project(':core:network'),
+            project(':core:scheduler'),
             project(':design'),
             project(':feature:github_repo'),
             project(':feature:github_user_details'),
@@ -22,6 +24,8 @@ dependencies {
     implementation(
             Dependencies.AndroidX.appCompat,
             Dependencies.AndroidX.coreKtx,
+            Dependencies.Di.kodein,
+            Dependencies.Di.kodeinAndroid,
             Dependencies.Lib.ktStdLib,
             Dependencies.Lib.timber,
             Dependencies.View.constraintLayout

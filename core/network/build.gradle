@@ -7,6 +7,7 @@ apply plugin: Dependencies.Plugin.kotlinAnnotation
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation(
+            Dependencies.Di.kodein,
             Dependencies.Lib.ktStdLib,
             Dependencies.Network.okHttpLog,
             Dependencies.Network.retrofit,
@@ -19,4 +20,8 @@ dependencies {
     kapt(
             Dependencies.Parser.moshiKotlinCodegen
     )
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = "1.8"
 }

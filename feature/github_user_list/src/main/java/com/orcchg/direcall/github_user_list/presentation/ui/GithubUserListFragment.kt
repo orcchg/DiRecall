@@ -8,9 +8,11 @@ import com.orcchg.direcall.androidutil.observe
 import com.orcchg.direcall.androidutil.viewBindings
 import com.orcchg.direcall.github_user_list.R
 import com.orcchg.direcall.github_user_list.databinding.FragmentGithubUserListBinding
+import com.orcchg.direcall.github_user_list.di.githubUserListModule
 import com.orcchg.direcall.github_user_list.presentation.adapter.GithubUserListAdapter
 import com.orcchg.direcall.github_user_list.presentation.viewmodel.GithubUserListViewModel
 import com.orcchg.direcall.ui_core_lib.BaseFragment
+import org.kodein.di.DI
 
 class GithubUserListFragment : BaseFragment(R.layout.fragment_github_user_list) {
 
@@ -21,7 +23,12 @@ class GithubUserListFragment : BaseFragment(R.layout.fragment_github_user_list) 
         }
     }
     private val binding by viewBindings(FragmentGithubUserListBinding::bind)
-    private val viewModel by viewModels<GithubUserListViewModel>()
+    private val viewModel by viewModels<GithubUserListViewModel> { factory }
+
+    override val di by DI.lazy {
+        extend(baseDi)
+        import(githubUserListModule)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
