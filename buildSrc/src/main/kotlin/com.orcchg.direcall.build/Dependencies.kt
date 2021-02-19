@@ -19,7 +19,7 @@ object Versions {
     const val junitAndroidExt = "1.1.1"
     const val ktlint = "0.38.0"
     const val ktlintGradle = "9.4.1"
-    const val ktStdLib = "1.4.21"
+    const val ktStdLib = "1.4.30"
     const val lifecycle = "2.2.0"
     const val lint = "27.0.1"
     const val moshi = "1.9.3"
