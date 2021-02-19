@@ -4,8 +4,9 @@ import com.orcchg.direcall.github_user_details.data.convert.GithubUserDetailsClo
 import com.orcchg.direcall.github_user_details.data.remote.GithubUserDetailsCloudRest
 import com.orcchg.direcall.github_user_details.domain.model.GithubUserDetails
 import io.reactivex.Single
+import javax.inject.Inject
 
-class GithubUserDetailsRepository(
+class GithubUserDetailsRepository @Inject constructor(
     private val userCloud: GithubUserDetailsCloudRest,
     private val userDetailsConverter: GithubUserDetailsCloudConverter
 ) {

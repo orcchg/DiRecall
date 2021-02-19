@@ -7,6 +7,10 @@ apply plugin: Dependencies.Plugin.kotlinAnnotation
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation(
+            project(':core:network_api')
+    )
+    implementation(
+            Dependencies.Di.dagger,
             Dependencies.Lib.ktStdLib,
             Dependencies.Network.okHttpLog,
             Dependencies.Network.retrofit,
@@ -17,6 +21,7 @@ dependencies {
             Dependencies.Parser.moshiKotlin
     )
     kapt(
+            Dependencies.Di.daggerCompiler,
             Dependencies.Parser.moshiKotlinCodegen
     )
 }

@@ -10,6 +10,7 @@ object Versions {
     const val buildToolsVersion = "30.0.0"
     const val constraintLayout = "2.0.0-rc1"
     const val coreKtx = "1.3.1"
+    const val dagger = "2.29"
     const val espresso = "3.2.0"
     const val fragmentKtx = "1.2.5"
     const val glide = "4.11.0"
@@ -18,7 +19,7 @@ object Versions {
     const val junitAndroidExt = "1.1.1"
     const val ktlint = "0.38.0"
     const val ktlintGradle = "9.4.1"
-    const val ktStdLib = "1.4.10"
+    const val ktStdLib = "1.4.21"
     const val lifecycle = "2.2.0"
     const val lint = "27.0.1"
     const val moshi = "1.9.3"
@@ -43,6 +44,13 @@ object Dependencies {
         @JvmStatic val navigation = dependency("androidx.navigation:navigation-fragment-ktx:${Versions.navigation}")
         @JvmStatic val navigationSafeArgs = dependency("androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navigation}")
         @JvmStatic val navigationUi = dependency("androidx.navigation:navigation-ui-ktx:${Versions.navigation}")
+    }
+
+    object Di {
+        @JvmStatic val dagger = dependency("com.google.dagger:dagger:${Versions.dagger}")
+        @JvmStatic val daggerAndroidProcessor = dependency("com.google.dagger:dagger-android-processor:${Versions.dagger}")
+        @JvmStatic val daggerAndroidSupport = dependency("com.google.dagger:dagger-android-support:${Versions.dagger}")
+        @JvmStatic val daggerCompiler = dependency("com.google.dagger:dagger-compiler:${Versions.dagger}")
     }
 
     object Gradle {

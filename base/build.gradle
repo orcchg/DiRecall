@@ -9,6 +9,7 @@ dependencies {
             project(':core:scheduler_api')
     )
     implementation(
+            Dependencies.Di.dagger,
             Dependencies.Lib.ktStdLib,
             Dependencies.Rx.rx
     )

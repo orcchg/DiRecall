@@ -2,7 +2,7 @@ import com.orcchg.direcall.build.Dependencies
 
 apply plugin: Dependencies.Plugin.androidApp
 apply plugin: Dependencies.Plugin.kotlinAndroid
-apply plugin: Dependencies.Plugin.kotlinAndroidExt
+apply plugin: Dependencies.Plugin.kotlinAnnotation
 
 android {
     defaultConfig {
@@ -13,6 +13,11 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation(
+            project(':core:di_core_lib'),
+            project(':core:network_api'),
+            project(':core:network'),
+            project(':core:scheduler_api'),
+            project(':core:scheduler'),
             project(':design'),
             project(':feature:github_repo'),
             project(':feature:github_user_details'),

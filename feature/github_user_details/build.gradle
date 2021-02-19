@@ -2,13 +2,15 @@ import com.orcchg.direcall.build.Dependencies
 
 apply plugin: Dependencies.Plugin.androidLib
 apply plugin: Dependencies.Plugin.kotlinAndroid
-apply plugin: Dependencies.Plugin.kotlinAndroidExt
+apply plugin: Dependencies.Plugin.kotlinAnnotation
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation(
             project(':androidUtil'),
             project(':base'),
+            project(':core:di_core_lib'),
+            project(':core:network_api'),
             project(':core:scheduler_api'),
             project(':core:ui_core_lib'),
             project(':design'),
@@ -21,6 +23,7 @@ dependencies {
             Dependencies.AndroidX.fragmentKtx,
             Dependencies.AndroidX.navigation,
             Dependencies.AndroidX.navigationUi,
+            Dependencies.Di.dagger,
             Dependencies.Lib.glide,
             Dependencies.Lib.ktStdLib,
             Dependencies.Lib.timber,
@@ -34,5 +37,8 @@ dependencies {
             Dependencies.Rx.rxBinding,
             Dependencies.Rx.rxBindingCore,
             Dependencies.View.constraintLayout
+    )
+    kapt(
+            Dependencies.Di.daggerCompiler
     )
 }
