@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Rect
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -16,9 +17,11 @@ import com.orcchg.direcall.androidutil.viewBindings
 import com.orcchg.direcall.databinding.FragmentGithubUserListBinding
 import com.orcchg.direcall.di.DaggerGithubUsersFeatureComponent
 import com.orcchg.direcall.di.ViewModelFactoryModule
+import com.orcchg.direcall.domain.model.SomeEntity
 import com.orcchg.direcall.viewmodel.GithubUserListViewModel
 import com.orcchg.direcall.viewmodel.GithubUserListViewModelFactory
 import javax.inject.Inject
+import javax.inject.Named
 
 class GithubUserListFragment : BaseFragment(R.layout.fragment_github_user_list) {
 
@@ -32,6 +35,7 @@ class GithubUserListFragment : BaseFragment(R.layout.fragment_github_user_list) 
 
     private val binding by viewBindings(FragmentGithubUserListBinding::bind)
     @Inject lateinit var myFactory: GithubUserListViewModelFactory
+    @Inject @Named("firstId") lateinit var someEntity: SomeEntity
     private val viewModel: GithubUserListViewModel by viewModels { myFactory }
     private val layoutManager = LinearLayoutManager(activity)
 
@@ -59,6 +63,7 @@ class GithubUserListFragment : BaseFragment(R.layout.fragment_github_user_list) 
                 .actionNavFragmentGithubUserListToNavFragmentGithubUserDetails(it.login)
 
             Navigation.findNavController(binding.root).navigate(action)
+            Toast.makeText(context, "Проверяем ${someEntity.id}", Toast.LENGTH_LONG).show()
         }
 
         observe(viewModel.userList, adapter::update)

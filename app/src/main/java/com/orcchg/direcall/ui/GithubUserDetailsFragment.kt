@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
@@ -16,9 +17,11 @@ import com.orcchg.direcall.androidutil.viewBindings
 import com.orcchg.direcall.databinding.FragmentGithubUserDetailsBinding
 import com.orcchg.direcall.di.DaggerGithubUserDetailsFeatureComponent
 import com.orcchg.direcall.di.ViewModelFactoryModule
+import com.orcchg.direcall.domain.model.SomeEntity
 import com.orcchg.direcall.viewmodel.GithubUserDetailsViewModel
 import com.orcchg.direcall.viewmodel.GithubUserDetailsViewModelFactory
 import javax.inject.Inject
+import javax.inject.Named
 
 class GithubUserDetailsFragment : BaseFragment(R.layout.fragment_github_user_details) {
 
@@ -34,6 +37,7 @@ class GithubUserDetailsFragment : BaseFragment(R.layout.fragment_github_user_det
     private val binding by viewBindings(FragmentGithubUserDetailsBinding::bind)
     private val login by argument<String>("login")
     @Inject lateinit var myFactory: GithubUserDetailsViewModelFactory
+    @Inject @Named("secondId") lateinit var someEntity: SomeEntity
     private val viewModel: GithubUserDetailsViewModel by viewModels { myFactory }
 
     @SuppressLint("AutoDispose", "CheckResult")
@@ -45,6 +49,8 @@ class GithubUserDetailsFragment : BaseFragment(R.layout.fragment_github_user_det
                 val action = GithubUserDetailsFragmentDirections
                     .actionNavFragmentGithubUserDetailsToNavFragmentGithubRepoList(login)
                 Navigation.findNavController(binding.root).navigate(action)
+
+                Toast.makeText(context, "Проверяем ${someEntity.id}", Toast.LENGTH_LONG).show()
             }
 
         binding.btnGistList.clicks().clickDebounce()
