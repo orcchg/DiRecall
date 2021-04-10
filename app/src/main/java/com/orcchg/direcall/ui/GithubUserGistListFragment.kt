@@ -15,7 +15,6 @@ import com.orcchg.direcall.androidutil.observe
 import com.orcchg.direcall.androidutil.viewBindings
 import com.orcchg.direcall.databinding.FragmentGithubUserGistListBinding
 import com.orcchg.direcall.di.DaggerGithubUserGistListFeatureComponent
-import com.orcchg.direcall.di.ViewModelFactoryModule
 import com.orcchg.direcall.viewmodel.GithubUserGistListViewModel
 import com.orcchg.direcall.viewmodel.GithubUserGistListViewModelFactory
 import javax.inject.Inject
@@ -25,7 +24,7 @@ class GithubUserGistListFragment : BaseFragment(R.layout.fragment_github_user_gi
     override fun onAttach(context: Context) {
         DaggerGithubUserGistListFeatureComponent
             .factory()
-            .create(networkComponent, ViewModelFactoryModule(login))
+            .create(login, networkComponent, repositoryComponent, schedulerComponent)
             .inject(this)
         super.onAttach(context)
     }

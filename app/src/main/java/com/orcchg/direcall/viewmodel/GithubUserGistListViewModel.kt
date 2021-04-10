@@ -7,9 +7,11 @@ import com.orcchg.direcall.domain.model.GithubUserGist
 import com.orcchg.direcall.domain.usecase.GetGithubUserGistUseCase
 import com.uber.autodispose.autoDispose
 import timber.log.Timber
+import javax.inject.Inject
+import javax.inject.Named
 
-class GithubUserGistListViewModel(
-    private val login: String,
+class GithubUserGistListViewModel @Inject constructor(
+    @Named("login") private val login: String,
     private val getGithubUserGistUseCase: GetGithubUserGistUseCase
 ) : AutoDisposeViewModel() {
 

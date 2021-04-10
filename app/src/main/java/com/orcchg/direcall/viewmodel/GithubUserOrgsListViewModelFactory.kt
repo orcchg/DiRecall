@@ -2,14 +2,14 @@ package com.orcchg.direcall.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.orcchg.direcall.domain.usecase.GetGithubUserOrgsUseCase
+import javax.inject.Inject
+import javax.inject.Provider
 
-class GithubUserOrgsListViewModelFactory(
-    private val login: String,
-    private val getGithubUserOrgsUseCase: GetGithubUserOrgsUseCase
+class GithubUserOrgsListViewModelFactory @Inject constructor(
+    private val provider: Provider<GithubUserOrgsListViewModel>
 ) : ViewModelProvider.Factory {
 
     @Suppress("Unchecked_Cast")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T =
-        GithubUserOrgsListViewModel(login, getGithubUserOrgsUseCase) as T
+        provider.get() as T
 }

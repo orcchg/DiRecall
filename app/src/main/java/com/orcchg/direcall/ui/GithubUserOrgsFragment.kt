@@ -15,7 +15,6 @@ import com.orcchg.direcall.androidutil.observe
 import com.orcchg.direcall.androidutil.viewBindings
 import com.orcchg.direcall.databinding.FragmentGithubUserOrgsListBinding
 import com.orcchg.direcall.di.DaggerGithubUserOrgsFeatureComponent
-import com.orcchg.direcall.di.ViewModelFactoryModule
 import com.orcchg.direcall.viewmodel.GithubUserOrgsListViewModel
 import com.orcchg.direcall.viewmodel.GithubUserOrgsListViewModelFactory
 import javax.inject.Inject
@@ -25,7 +24,7 @@ class GithubUserOrgsFragment : BaseFragment(R.layout.fragment_github_user_orgs_l
     override fun onAttach(context: Context) {
         DaggerGithubUserOrgsFeatureComponent
             .factory()
-            .create(networkComponent, ViewModelFactoryModule(login))
+            .create(login, networkComponent, repositoryComponent, schedulerComponent)
             .inject(this)
 
         super.onAttach(context)

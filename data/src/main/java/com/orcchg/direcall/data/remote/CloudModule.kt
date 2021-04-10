@@ -4,6 +4,7 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
+import dagger.Reusable
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -41,6 +42,7 @@ object CloudModule {
             .build()
 
     @Provides
+    @Reusable
     fun rest(retrofit: Retrofit): GithubUserCloudRest =
         retrofit.create(GithubUserCloudRest::class.java)
 }
